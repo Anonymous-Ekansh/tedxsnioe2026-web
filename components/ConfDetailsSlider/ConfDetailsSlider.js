@@ -16,7 +16,7 @@ function ConfDetailsSlider({images}) {
     // ];
     return (
         <div className='PastConf--carousel'>
-            <Carousel>
+            <Carousel swipeable={true} emulateTouch={true}>
                 {images.map((item, index) => {
                     return (
                         <img key={index} src={item.url} />

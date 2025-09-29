@@ -3,6 +3,15 @@ import './ConfDetailsSlider.scss'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
+<Carousel
+  swipeable={true}
+  emulateTouch={true}
+  useKeyboardArrows={true}
+  showThumbs={false}
+  axis="horizontal"
+>
+
+      
 function ConfDetailsSlider({images}) {
     const [checked, setChecked] = React.useState("1");
     const handleClick = (value) => {

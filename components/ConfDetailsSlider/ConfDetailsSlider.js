@@ -9,7 +9,7 @@ import { Carousel } from 'react-responsive-carousel';
   useKeyboardArrows={true}
   showThumbs={false}
   axis="horizontal"
->
+></Carousel>
 
       
 function ConfDetailsSlider({images}) {

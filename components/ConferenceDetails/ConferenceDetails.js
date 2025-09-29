@@ -92,83 +92,73 @@ function ConfDetails() {
         },
         {
             title: "Kaleidoscope",
-            // TODO: Update the description and year and the image paths
-            desc: "Kaleidoscope- Capturing the beauty of shifting perspectives, the ones that are close to us and the ones far away. A small change in angles of perspective changes what we see, what we feel, what we think. We learn to understand there's no such thing as an objective truth, objective right or wrong, only how we see things or how they are shown to us.",
+            desc: "Even for the same scenarios, turning the mirrors of perception yields unique patterns, reminding us to continually adapt our lens and embrace the ever-changing landscape before us. For the 2023 conference ,TEDxShivNadarUniversity brought together 7 speakers and 3 performers all with wonderfully different ideas who conveyed to the audience that life is indeed about perspective!",
             year: "2023",
-            url: "placeholder insert yt link",
+            url: "https://www.youtube.com/watch?v=55QuxoQRGc0",
             speakers: [
                 {
-                    name: 'Kavitha Emmanuel',
-                    profession: 'Anti-colourism activist',
-                    image: './Images/2022_speakers/kavitha.jpg'
+                    name: 'Shirish Beri',
+                    profession: 'Architect',
+                    image: './Images/2023_speakers/shirish.jpg'
                 },
                 {
-                    name: 'Vanika Sangtani',
-                    profession: 'Storyteller',
-                    image: './Images/2022_speakers/vanika.jpg'
+                    name: 'Seema Rao',
+                    profession: 'Commando Trainer',
+                    image: './Images/2023_speakers/seema-rao-2.jpg'
                 },
                 {
-                    name: 'Chinab',
-                    profession: 'Illustrator, political artist',
-                    image: './Images/2022_speakers/chinab.jpg'
+                    name: 'Gursakhi Lugani',
+                    profession: 'Sustainable Fashion Designer',
+                    image: './Images/2023_speakers/gursakhi.jpg'
                 },
                 {
-                    name: 'Anurag Vashisht',
-                    profession: 'Singer',
-                    image: './Images/2022_speakers/anurag123.jpg'
+                    name: 'Rishab Jain',
+                    profession: 'Finance Advisor, YouTuber',
+                    image: './Images/2023_speakers/rishab.png'
                 },
                 {
-                    name: 'Prachi Thakur',
+                    name: 'Bhanupriya Rao',
+                    profession: 'Activist',
+                    image: './Images/2023_speakers/bhanu.jpg'
+                },
+                {
+                    name: 'Debojyoti Chakraborty',
                     profession: 'Diversity strategist',
-                    image: './Images/2022_speakers/prachi.jpg'
+                    image: './Images/2023_speakers/deb.jpg'
                 },
                 {
-                    name: 'Ritika Khatnani',
-                    profession: 'Miss Supernational Asia 2022',
-                    image: './Images/2022_speakers/ritika.jpg'
+                    name: 'Aastha Khanna',
+                    profession: 'Intimacy Coordinator',
+                    image: './Images/2023_speakers/aastha.jpg'
                 },
                 {
-                    name: 'Himanshu Rai',
-                    profession: 'Author',
-                    image: './Images/2022_speakers/himanshu.jpg'
+                    name: 'Aashima Mahajan',
+                    profession: 'Singer',
+                    image: './Images/2023_speakers/aashima.jpg'
                 },
                 {
-                    name: 'Sudhir R',
-                    profession: 'Fluteboxer',
-                    image: './Images/2022_speakers/sudhir.jpg'
+                    name: 'Anurita Jha',
+                    profession: 'Actress',
+                    image: './Images/2023_speakers/Anuritta.jpg'
                 },
                 {
-                    name: 'Brindali Patel',
-                    profession: 'Dancer',
-                    image: './Images/2022_speakers/brindali.jpg'
-                },
-                {
-                    name: 'Dr. Sanjeev Bagai',
-                    profession: 'Doctor, Padma Bhushan',
-                    image: './Images/2022_speakers/sanjeev.jpg'
-                },
-                {
-                    name: 'Priyanshu Grover',
-                    profession: 'Lawyer',
-                    image: './Images/2022_speakers/priyanshu.jpg'
-                },
-                {
-                    name: 'Nafisa Rachel William',
-                    profession: 'Celebrity designer',
-                    image: './Images/2022_speakers/nafisa.jpg'
-                },
-                {
-                    name: 'Vineet Panchhi',
-                    profession: 'Poet and filmmaker',
-                    image: './Images/2022_speakers/vineet.jpg'
+                    name: 'Anubha Bajaj',
+                    profession: 'Singer',
+                    image: './Images/2023_speakers/anubha_bajaj.jpeg'
                 }
             ],
             images: [
-                {url : '/Images/2022/2022_1.jpg'},
-                {url : '/Images/2022/2022_2.jpg'},
-                {url : '/Images/2022/2022_3.jpg'},
-                {url : '/Images/2022/2022_4.jpg'},
-                {url : '/Images/2022/2022_5.jpg'},
+                {url : '/Images/2023/2023_1.jpg'},
+                {url : '/Images/2023/2023_2.jpg'},
+                {url : '/Images/2023/2023_3.jpg'},
+                {url : '/Images/2023/2023_4.jpg'},
+                {url : '/Images/2023/2023_5.jpg'},
+                {url : '/Images/2023/2023_6.jpg'},
+                {url : '/Images/2023/2023_7.jpg'},
+                {url : '/Images/2023/2023_8.jpg'},
+                {url : '/Images/2023/2023_9.jpg'},
+                {url : '/Images/2023/2023_10.jpg'},
+                {url : '/Images/2023/2023_11.jpg'},
             ]
         },
         {

@@ -204,7 +204,7 @@ export default function QRPayment() {
             <h2>Scan to Pay</h2>
             {qrCode ? (
               <div className="qr-container">
-                <img 
+                <Image 
                   src={qrCode.qr_code_url} 
                   alt="Payment QR Code" 
                   className="qr-image"

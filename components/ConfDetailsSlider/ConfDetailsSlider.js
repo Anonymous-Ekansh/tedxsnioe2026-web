@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './ConfDetailsSlider.scss'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import Image from 'next/image'; 
 
 <Carousel
   swipeable={true}
@@ -28,8 +29,16 @@ function ConfDetailsSlider({images}) {
             <Carousel swipeable={true} emulateTouch={true}>
                 {images.map((item, index) => {
                     return (
-                        <img key={index} src={item.url} />
-                    )
+                        <div key={index}>
+                            <Image
+                                src={item.url}
+                                alt={`Slide ${index + 1}`}
+                                width={800}
+                                height={600} 
+                                priority={index === 0}
+                            />
+                        </div>
+                    );
                 })}
             </Carousel>
         </div>

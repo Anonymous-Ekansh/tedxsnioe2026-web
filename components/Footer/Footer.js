@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import './Footer.scss'
 import { usePathname } from "next/navigation";
+import Image from 'next/image';
+
 export default function Footer() {
   const pathName = usePathname();
   const scrollTo = async (id) => {
@@ -39,27 +41,27 @@ export default function Footer() {
       <div className="Footer__below">
         <div className="Footer__below--sections">
           <Link href='/'><p className="Footer__below--sections__item">Home</p></Link>
-          <img className="Footer__below--sections__divider" src="/Images/Footer/circle.png" />
+          <Image className="Footer__below--sections__divider" src="/Images/Footer/circle.png" alt="Divider" width={20} height={20} />
           <p onClick={() => scrollTo("about")} className="Footer__below--sections__item">About Us</p>
-          <img className="Footer__below--sections__divider" src="/Images/Footer/circle.png" />
-          <Link href='/'><img className="Footer__below--sections__logo" src="/Images/Assets/image 2.png" /></Link>
-          <img className="Footer__below--sections__divider" src="/Images/Footer/circle.png" />
+          <Image className="Footer__below--sections__divider" src="/Images/Footer/circle.png" alt="Divider" width={20} height={20} />
+          <Link href='/'><Image className="Footer__below--sections__logo" src="/Images/Assets/image 2.png" alt="Logo" width={50} height={50} /></Link>
+          <Image className="Footer__below--sections__divider" src="/Images/Footer/circle.png" alt="Divider" width={20} height={20} />
           <Link href='/pastConferences'><p className="Footer__below--sections__item">Past Conferences</p></Link>
-          <img className="Footer__below--sections__divider" src="/Images/Footer/circle.png" />
+          <Image className="Footer__below--sections__divider" src="/Images/Footer/circle.png" alt="Divider" width={20} height={20} />
           <p onClick={() => scrollTo("sponsors")} className="Footer__below--sections__item">Sponsors</p>
         </div>
         <div className="Footer__below--logo">
-          <img src="/Images/TEDx logo - Black.png" />
+          <Image src="/Images/TEDx logo - Black.png" alt="TEDx Logo" width={50} height={50} />
         </div>
         <div className="Footer__below--social">
             <a href={"https://www.linkedin.com/company/tedx-snioe/"}>
-                <img src="/Images/Footer/linkedin.png" />
+                <Image src="/Images/Footer/linkedin.png" alt="LinkedIn" width={30} height={30} />
             </a>
             <a href={"https://www.instagram.com/tedxshivnadaruniversity/"}>
-                <img src="/Images/Footer/insta.png" />
+                <Image src="/Images/Footer/insta.png" alt="Instagram" width={30} height={30} />
             </a>
             <a href={"https://facebook.com/tedxshivnadaruniversity"}>
-                <img src="/Images/Footer/fb.png" />
+                <Image src="/Images/Footer/fb.png" alt="Facebook" width={30} height={30} />
             </a>
         </div>
       </div>

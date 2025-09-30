@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './PastConfSlider.scss'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import Image from 'next/image';
 
 function PastConfSlider() {
     const [checked, setChecked] = React.useState("1");
@@ -20,8 +21,16 @@ function PastConfSlider() {
             <Carousel>
                 {images.map((item, index) => {
                     return (
-                        <img key={index} src={item.url} />
-                    )
+                        <div key={index}>
+                            <Image
+                                src={item.url}
+                                alt={`Slide ${index + 1}`}
+                                width={800} // Replace with actual width
+                                height={600} // Replace with actual height
+                                priority={index === 0} // Prioritize first image
+                            />
+                        </div>
+                    );
                 })}
             </Carousel>
         </div>

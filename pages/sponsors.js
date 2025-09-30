@@ -79,7 +79,7 @@ export default function Sponsors() {
                             key={index}
                         >
                             <div style={{ backgroundColor: "white" }} className='AllSponsors__cards--image'>
-                                <img src={item.url} />
+                                <Image src={item.url} layout="responsive" width={500} height={300} />
                             </div>
                         </motion.div>
                     )

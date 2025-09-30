@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabase';
+import Image from 'next/image';
 import "../styles/routes/admin.scss";
 
 export default function AdminDashboard() {
@@ -476,10 +477,12 @@ export default function AdminDashboard() {
                   <div className="detail-row">
                     <strong>Screenshot:</strong>
                     <div className="screenshot-container">
-                      <img 
+                      <Image 
                         src={selectedPayment.transaction_screenshot_url} 
                         alt="Payment Screenshot"
                         className="payment-screenshot"
+                        width={600} 
+                        height={400} 
                         onError={(e) => {
                           e.target.style.display = 'none';
                           e.target.nextSibling.style.display = 'block';

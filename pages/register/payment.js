@@ -42,7 +42,7 @@ export default function Payment() {
                 <div onClick={() => handleClick('CASH')} className='PaymentContainer__option--mode'>Cash</div>
             </div>
             <div className='PaymentContainer__details'>
-                <img className='PaymentContainer__details--image' src='/Images/Assets/payment.png' />
+                <Image className='PaymentContainer__details--image' src='/Images/Assets/payment.png' />
                 <div className='PaymentContainer__details--priceDetails'>
                     <p>Price Details</p>
                     <div className='PaymentContainer__details--priceDetails__snu'>

@@ -55,6 +55,8 @@ export default function Sponsors() {
                                         src={item.url}
                                         alt={`Sponsor ${index + 1}`}
                                         fill
+                                        quality={95}
+                                        priority={index < 6}
                                         style={{
                                             objectFit: 'contain',
                                             objectPosition: 'center',

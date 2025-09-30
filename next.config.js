@@ -24,7 +24,11 @@ const nextConfig = {
         domains: ['localhost'],
         path: '/_next/image',
         loader: 'default',
-        unoptimized: process.env.NODE_ENV === 'development'
+        quality: 90,
+        formats: ['image/webp', 'image/avif'],
+        minimumCacheTTL: 60,
+        dangerouslyAllowSVG: true,
+        contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
     },
     // Add this to prevent hydration issues
     compiler: {

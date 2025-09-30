@@ -198,7 +198,7 @@ export default function GooglePay() {
                 <div className='GooglePay__qr'>
                     <p className='GooglePay__qr--text'>Scan the QR to Pay</p>
                     <p style={{ fontSize: "1rem", marginTop: "0", marginBottom: ".5rem" }} className='GooglePay__qr--text'>Mithreyi SR</p>
-                    <Image className='GooglePay__qr--image' src='/Images/Assets/google_pay.png' alt='Google Pay QR' width={600} height={400} />
+                    <Image className='GooglePay__qr--image' src='/Images/Assets/google_pay.png' alt='Google Pay QR' width={600} height={400} quality={95} />
                     <div className='GooglePay__qr--TID'>
                         <input
                             onChange={(e) => setTid(e.target.value)}
@@ -238,7 +238,7 @@ export default function GooglePay() {
                     <p onClick={() => handleClick()} className='GooglePay__qr--bottom'>Proceed</p>
                 </div>
                 <div className='GooglePay__details'>
-                    <Image className='GooglePay__details--image' src='/Images/Assets/payment.png' alt='Payment Details' width={600} height={400} />
+                    <Image className='GooglePay__details--image' src='/Images/Assets/payment.png' alt='Payment Details' width={600} height={400} quality={95} />
                     <div className='GooglePay__details--priceDetails'>
                         <p>Price Details</p>
                         <div className='GooglePay__details--priceDetails__snu'>

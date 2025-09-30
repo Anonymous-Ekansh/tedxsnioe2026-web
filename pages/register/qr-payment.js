@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { supabase } from '../../lib/supabase';
 import "../../styles/routes/qr-payment.scss";
+import Image from 'next/image';
 
 export default function QRPayment() {
   const router = useRouter();

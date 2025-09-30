@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { payment } from '../../operations/payment.fetch';
 import { useRouter } from 'next/router';
 import BlurredSpinner from '../../components/BlurredSpinner/BlurredSpinner';
+import Image from 'next/image';
 
 export default function PayTM() {
     const router = useRouter();

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import { useRouter } from "next/router";
 import '../../styles/routes/register.scss'
+import Image from 'next/image';
 
 export default function Payment() {
     const router = useRouter();

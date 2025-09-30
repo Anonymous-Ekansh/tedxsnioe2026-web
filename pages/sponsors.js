@@ -1,5 +1,6 @@
 import '../styles/routes/sponsors.scss'
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Sponsors() {
     const pastSponsors = [

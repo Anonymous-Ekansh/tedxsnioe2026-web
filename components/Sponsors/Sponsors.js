@@ -50,12 +50,16 @@ export default function Sponsors() {
                                 transition={{ duration: .7 }}
                                 key={index}
                             >
-                                <div style={{ backgroundColor: "white" }} className='Sponsors__past--cards__image' >
+                                <div className='Sponsors__past--cards__image'>
                                     <Image
                                         src={item.url}
                                         alt={`Sponsor ${index + 1}`}
-                                        width={150}
-                                        height={150}
+                                        fill
+                                        style={{
+                                            objectFit: 'contain',
+                                            objectPosition: 'center',
+                                            padding: '0.5rem'
+                                        }}
                                     />
                                 </div>
                             </motion.div>

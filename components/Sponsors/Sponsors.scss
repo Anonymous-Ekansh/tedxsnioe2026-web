@@ -24,18 +24,32 @@
         margin-right: 2rem;
         margin-left: 2rem;
         margin-bottom: 1.5rem;
+        width: 200px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+        
         @include respondAt(767px) {
           margin-right: 1.5rem;
           margin-left: 1.5rem;
           margin-bottom: 1rem;
+          width: 150px;
+          height: 90px;
         }
-        img {
-          width: 15rem;
-          height: 8rem;
-          @include respondAt(767px) {
-            width: 12rem;
-            height: 6rem;
-          }
+        
+        @include respondAt(480px) {
+          width: 120px;
+          height: 72px;
         }
       }
     }
@@ -88,18 +102,34 @@
         margin-right: 2rem;
         margin-left: 2rem;
         margin-bottom: 1.5rem;
+        width: 200px;
+        height: 120px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+        
         @include respondAt(767px) {
           margin-right: 1.5rem;
           margin-left: 1.5rem;
           margin-bottom: 1rem;
+          width: 150px;
+          height: 90px;
         }
-        img {
-          width: 15rem;
-          height: 8rem;
-          @include respondAt(767px) {
-            width: 12rem;
-            height: 6rem;
-          }
+        
+        @include respondAt(480px) {
+          width: 120px;
+          height: 72px;
         }
       }
     }

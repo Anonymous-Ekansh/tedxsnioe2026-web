@@ -24,7 +24,6 @@ const nextConfig = {
         domains: ['localhost'],
         path: '/_next/image',
         loader: 'default',
-        quality: 90,
         formats: ['image/webp', 'image/avif'],
         minimumCacheTTL: 60,
         dangerouslyAllowSVG: true,

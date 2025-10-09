@@ -248,52 +248,52 @@ function ConfDetails() {
                 {
                     name: 'Ayushmaan',
                     profession: 'Drag performer, human rights lawyer',
-                    image: '/Images/2021_speakers/ayushmaan.jpg'
+                    image: '/Images/2021_speakers/ayushmaan.JPG'
                 },
                 {
                     name: 'Samriddhi and Japnit',
                     profession: 'Founders of The Girl Code',
-                    image: '/Images/2021_speakers/girlcode.jpg'
+                    image: '/Images/2021_speakers/girlcode.JPG'
                 },
                 {
                     name: 'Aakriti Kumar',
                     profession: 'Founder, differniture',
-                    image: '/Images/2021_speakers/akriti.jpg'
+                    image: '/Images/2021_speakers/akriti.JPG'
                 },
                 {
                     name: 'Shrishti Pandey',
                     profession: 'Disability rights activist',
-                    image: '/Images/2021_speakers/srishti.jpg'
+                    image: '/Images/2021_speakers/srishti.JPG'
                 },
                 {
                     name: 'Radhika Khandelwal',
                     profession: 'Chef',
-                    image: '/Images/2021_speakers/radhika.jpg'
+                    image: '/Images/2021_speakers/radhika.JPG'
                 },
                 {
                     name: 'Vatsala Mamgain',
                     profession: 'Director of Resource Mobilization at Child Rights and You, CRY',
-                    image: '/Images/2021_speakers/vatsala.jpg'
+                    image: '/Images/2021_speakers/vatsala.JPG'
                 },
                 {
                     name: 'Rumi Aijaz',
                     profession: 'Senior fellow, ORF',
-                    image: '/Images/2021_speakers/rumi.jpg'
+                    image: '/Images/2021_speakers/rumi.JPG'
                 },
                 {
                     name: 'Shrutika Vats',
                     profession: 'Cofounder, QLC',
-                    image: '/Images/2021_speakers/shruti.jpg'
+                    image: '/Images/2021_speakers/shruti.JPG'
                 },
                 {
                     name: 'Autoplay',
                     profession: 'Musicians',
-                    image: '/Images/2021_speakers/perf_autoplay.jpg'
+                    image: '/Images/2021_speakers/perf_autoplay.JPG'
                 },
                 {
                     name: 'Anureet',
                     profession: 'Poet',
-                    image: '/Images/2021_speakers/anureet.jpg'
+                    image: '/Images/2021_speakers/anureet.JPG'
                 }
             ],
             images: [
@@ -324,12 +324,12 @@ function ConfDetails() {
                 {
                     name: 'Mahima Gujral Wadhwa',
                     profession: 'Chief Green Bee and Founder of Sui',
-                    image: '/Images/2019_speakers/mahima.jpg'
+                    image: '/Images/2019_speakers/mahima.JPG'
                 },
                 {
                     name: 'Alim Chandani',
                     profession: 'Founder and CEO, Access Mantra',
-                    image: '/Images/2019_speakers/alim.jpg'
+                    image: '/Images/2019_speakers/ALIM.JPG'
                 },
                 {
                     name: 'Farheen Ahmad',
@@ -504,7 +504,7 @@ function ConfDetails() {
                 {
                     name: 'Nikheel Aphale',
                     profession: 'Calligrapher',
-                    image: '/Images/2017_speakers/nikheel.jpg'
+                    image: '/Images/2017_speakers/nikheel.JPG'
                 },
                 {
                     name: 'Stalin. K',
@@ -539,7 +539,7 @@ function ConfDetails() {
                 {
                     name: 'Shreya Soni',
                     profession: 'Delhi Secret Supper Club',
-                    image: '/Images/2017_speakers/shreya.jpg'
+                    image: '/Images/2017_speakers/shreya.JPG'
                 },
                 // {
                 //     name: 'Shaili Chopra',

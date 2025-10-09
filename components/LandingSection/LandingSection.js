@@ -36,12 +36,17 @@ export default function LandingSection() {
         <div className='LandingPageContainer'>
             <div className='LandingPageContainer__logo'>
                 <Image 
-                src='/Images/Assets/image 2.png' 
-                className='LandingPageContainer__logo--image' 
-                width={100}
-                height={100}
+                    src="/Images/Assets/image 2.png" 
+                    className='LandingPageContainer__logo--image' 
+                    width={200}
+                    height={100}
                     alt="TEDx Logo"
-                
+                    priority
+                    quality={95}
+                    style={{
+                        objectFit: 'contain',
+                        objectPosition: 'center'
+                    }}
                 />
             </div>
         

@@ -61,9 +61,14 @@ function Navbar({ isSmall = false }) {
                             <Image
                                 src='/Images/TEDx logo - White.png'
                                 alt="TEDx Logo"
-                                width={isSmall ? 50 : 250}
-                                height={isSmall ? 40 : 40}
+                                width={isSmall ? 80 : 300}
+                                height={isSmall ? 40 : 60}
                                 priority
+                                quality={95}
+                                style={{
+                                    objectFit: 'contain',
+                                    objectPosition: 'center'
+                                }}
                             />
                         </Link>
                     </div>

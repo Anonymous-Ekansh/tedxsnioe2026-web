@@ -60,9 +60,10 @@ export default function Sponsors() {
         { url: "/Images/Sponsors/s55.png" },
         { url: "/Images/Sponsors/s56.png" },
         { url: "/Images/Sponsors/s57.png" },
-        { url: "/Imajllges/Sponsors/s58.png" },
+        { url: "/Images/Sponsors/s58.png" },
         { url: "/Images/Sponsors/s59.png" },
         { url: "/Images/Sponsors/s60.png" },
+        { url: "/Images/Sponsors/s61.png" },
         { url: "/Images/Sponsors/s62.png" },
         { url: "/Images/Sponsors/s63.png" }
     ]
@@ -79,8 +80,19 @@ export default function Sponsors() {
                             transition={{ duration: .7 }}
                             key={index}
                         >
-                            <div style={{ backgroundColor: "white" }} className='AllSponsors__cards--image'>
-                                <Image src={item.url} layout="responsive" width={500} height={300} />
+                            <div className='AllSponsors__cards--image'>
+                                <Image 
+                                    src={item.url} 
+                                    alt={`Sponsor ${index + 1}`}
+                                    fill
+                                    quality={95}
+                                    priority={index < 6}
+                                    style={{
+                                        objectFit: 'contain',
+                                        objectPosition: 'center',
+                                        padding: '0.5rem'
+                                    }}
+                                />
                             </div>
                         </motion.div>
                     )

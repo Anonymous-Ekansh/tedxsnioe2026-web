@@ -60,5 +60,5 @@ Examples:
 
 - Use camelCase for variable and function names (e.g., `userName`, `fetchData()`).
 - Use PascalCase for class and enum names (e.g., `UserModel`, `UserRole`).
-- Use snake_case for file names (e.g., `home.js`, `speakers.js`).
+- Use snake_case for file names (e.g., `home.js`, `speakers.js`). .
 

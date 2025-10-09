@@ -126,15 +126,20 @@
     }
     &--logo {
       margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       @include respondAt(915px) {
         margin-left: 1rem;
+        justify-content: flex-start;
       }
-
+      
       img {
-        width: 25rem;
         cursor: pointer;
-        @include respondAt(915px) {
-          width: 20rem;
+        transition: transform 0.3s ease;
+        
+        &:hover {
+          transform: scale(1.05);
         }
       }
     }

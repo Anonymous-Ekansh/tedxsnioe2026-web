@@ -51,7 +51,18 @@ export default function Footer() {
           <p onClick={() => scrollTo("sponsors")} className="Footer__below--sections__item">Sponsors</p>
         </div>
         <div className="Footer__below--logo">
-          <Image src="/Images/TEDx logo - Black.png" alt="TEDx Logo" width={50} height={50} />
+          <Image 
+            src="/Images/TEDx logo - Black.png" 
+            alt="TEDx Logo" 
+            width={200} 
+            height={100} 
+            quality={95}
+            priority
+            style={{
+              objectFit: 'contain',
+              objectPosition: 'center'
+            }}
+          />
         </div>
         <div className="Footer__below--social">
             <a href={"https://www.linkedin.com/company/tedx-snioe/"}>

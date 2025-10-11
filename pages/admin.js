@@ -107,7 +107,7 @@ export default function AdminDashboard() {
     setStats(stats);
   };
 
-  const updatePaymentStatus = async (paymentId, status, notes = '') => {
+  const updatePaymentStatus = async (paymentId, status, notes = '', paymentObj = null) => {
     try {
       const response = await fetch('/api/admin/payments', {
         method: 'PUT',
@@ -123,11 +123,31 @@ export default function AdminDashboard() {
       });
 
       if (response.ok) {
+        // If approving, send confirmation email
+        if (status === 'approved' && paymentObj) {
+          // Collect emails from participants or fallback to name_one/name_two
+          let email1 = '';
+          let email2 = '';
+          if (paymentObj.participants && paymentObj.participants.length > 0) {
+            email1 = paymentObj.participants[0]?.email || '';
+            email2 = paymentObj.participants[1]?.email || '';
+          } else {
+            email1 = paymentObj.email_one || '';
+            email2 = paymentObj.email_two || '';
+          }
+          // Call the sendEmail API
+          await fetch('/api/sendEmail', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email1, email2 }),
+          });
+        }
         // Refresh payments
         fetchPayments();
         setSelectedPayment(null);
         setReviewNotes('');
-        
         alert(`Payment ${status} successfully!`);
       } else {
         alert('Error updating payment status');
@@ -548,7 +568,7 @@ export default function AdminDashboard() {
                   
                   <div className="review-actions">
                     <button 
-                      onClick={() => updatePaymentStatus(selectedPayment.id, 'approved', reviewNotes)}
+                      onClick={() => updatePaymentStatus(selectedPayment.id, 'approved', reviewNotes, selectedPayment)}
                       className="approve-btn"
                     >
                       Approve Payment

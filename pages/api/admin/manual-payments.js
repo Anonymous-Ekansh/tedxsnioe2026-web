@@ -61,7 +61,7 @@ async function createManualPayment(req, res) {
           total_amount,
           payment_method,
           transaction_id: transaction_id || null,
-          status: status || 'approved', // Manual entries are usually pre-approved
+          status: status || 'pending', // Manual entries are usually pending
           reviewed_by: added_by,
           reviewed_at: new Date().toISOString(),
           review_notes: review_notes || 'Manually added entry',

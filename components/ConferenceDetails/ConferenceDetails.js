@@ -92,7 +92,7 @@ function ConfDetails() {
         },
         {
             title: "Kaleidoscope",
-            desc: "Even for the same scenarios, turning the mirrors of perception yields unique patterns, reminding us to continually adapt our lens and embrace the ever-changing landscape before us. For the 2023 conference ,TEDxShivNadarUniversity brought together 7 speakers and 3 performers all with wonderfully different ideas who conveyed to the audience that life is indeed about perspective!",
+            desc: "Even for the same scenarios, turning the mirrors of perception yields unique patterns, reminding us to continually adapt our lens and embrace the ever-changing landscape before us. For the 2023 conference, TEDxShivNadarUniversity brought together 7 speakers and 3 performers all with wonderfully different ideas who conveyed to the audience that life is indeed about perspective!",
             year: "2023",
             url: "https://www.youtube.com/watch?v=55QuxoQRGc0",
             speakers: [
@@ -387,7 +387,7 @@ function ConfDetails() {
             ]
         },
         {
-            title: "Conference",
+            title: "Out of the Blue",
             desc: "This conference consisted of a star-studded speaker lineup with speakers like the legendary cricketer Kapil Dev, famous entrepreneur and mentor Ankur Warikoo, renowned Business woman Roshni Nadar and so many more renowned names from diverse fields. The conference was an experience of a lifetime for all those who witnessed it.",
             year: "2018",
             url: 'https://youtu.be/vt5byYQlvr0?feature=shared',
@@ -482,7 +482,7 @@ function ConfDetails() {
             ]
         },
         {
-            title: "Conference",
+            title: "Ignite",
             desc: "This conference was as good if not better than its predecessor. Invited as speakers were 15 people and performers who helped open the window to understanding niche areas of business, art, education and much more. The experience was educationally and creatively enriching.",
             year: "2017",
             speakers: [

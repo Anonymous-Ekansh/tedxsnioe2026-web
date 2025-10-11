@@ -50,12 +50,12 @@ export default function LandingSection() {
                 />
             </div>
         
-            <div className='LandingPageContainer__logo__text' style={{ marginTop: '2rem' }}>
+            <div className='LandingPageContainer__logo__text' style={{ marginTop: '1rem' }}>
                 <Image 
                 src='/Images/Assets/simplexity.png' 
                 className='LandingPageContainer__logo--text--image' 
-                width={300}
-                height={50}
+                width={350}
+                height={25}
                 alt="Simplexity Logo"
                 />
             </div>

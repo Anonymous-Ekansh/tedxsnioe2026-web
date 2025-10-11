@@ -101,7 +101,8 @@
         font-size: 1.3rem;
         font-style: normal;
         font-weight: 600;
-        margin-right: 3rem;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
         cursor: pointer;
         @include respondAt(915px) {
           font-size: 1.6rem;
@@ -111,13 +112,15 @@
       }
       &__divider {
         width: 0.5rem;
-        margin-right: 3rem;
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
         @include respondAt(915px) {
           display: none;
         }
       }
       &__logo {
         width: 12rem;
+        align-content: center;
         cursor: pointer;
         @include respondAt(915px) {
           display: none;

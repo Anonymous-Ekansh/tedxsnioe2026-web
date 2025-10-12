@@ -12,7 +12,7 @@ function ConfDetails() {
         {
             title: "Through The Looking Glass",
             // TODO: Update the description and year and the image paths
-            desc: "Step Through The Looking Glass, invert your senses, question your minds, bring what's dark into the light. The Conference forces you to look into the world unknown and find the new you, and change everything.",
+            desc: "Even when gazing into the same reflection, stepping Through the Looking Glass reveals entirely new dimensions - urging us to invert our senses, question our minds, and bring what's dark into the light. For the 2024 conference, TEDxShivNadarUniversity brought together 9 speakers and 2 performers, each inviting the audience to confront the unknown, rediscover themselves, and see the world anew.",
             year: "2024",
             url: "placeholder insert yt link",
             speakers: [

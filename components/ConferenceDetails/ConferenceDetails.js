@@ -17,69 +17,60 @@ function ConfDetails() {
             url: "placeholder insert yt link",
             speakers: [
                 {
-                    name: 'Kavitha Emmanuel',
-                    profession: 'Anti-colourism activist',
-                    image: '/Images/2022_speakers/kavitha.JPG'
+                    name: 'Ashvina Basnet',
+                    profession: 'Human Trafficking Researcher',
+                    image: '/Images/2024_speakers/Ashvina Basnet.png'
                 },
                 {
-                    name: 'Vanika Sangtani',
-                    profession: 'Storyteller',
-                    image: '/Images/2022_speakers/vanika.JPG'
+                    name: 'Humaira Mushtaq',
+                    profession: 'First Female Indian Race Car Driver',
+                    image: '/Images/2024_speakers/Humaira Mushtaq.png'
                 },
                 {
-                    name: 'Chinab',
-                    profession: 'Illustrator, political artist',
-                    image: '/Images/2022_speakers/chinab.JPG'
+                    name: 'Samarth Mahajan',
+                    profession: 'Filmmaker',
+                    image: '/Images/2024_speakers/Samarth Mahajan.png'
+                },
+                
+                {
+                    name: 'Tanu Jain',
+                    profession: 'IAS Officer, Founder of Tathatsu ICS',
+                    image: '/Images/2024_speakers/Tanu Jain.png'
                 },
                 {
-                    name: 'Anurag Vashisht',
-                    profession: 'Singer',
-                    image: '/Images/2022_speakers/anurag123.jpg'
+                    name: 'Imon',
+                    profession: 'Singer-Songwriter',
+                    image: '/Images/2024_speakers/Imon.png'
                 },
                 {
-                    name: 'Prachi Thakur',
-                    profession: 'Diversity strategist',
-                    image: '/Images/2022_speakers/prachi.JPG'
+                    name: 'Outkasts',
+                    profession: 'K-Pop Dance Group',
+                    image: '/Images/2024_speakers/Outkasts.png'
                 },
                 {
-                    name: 'Ritika Khatnani',
-                    profession: 'Miss Supernational Asia 2022',
-                    image: '/Images/2022_speakers/ritika.JPG'
+                    name: 'Deepak Kumar',
+                    profession: 'Shooter, Asian Games Silver Medalist',
+                    image: '/Images/2024_speakers/Deepak Kumar.png'
                 },
                 {
-                    name: 'Himanshu Rai',
-                    profession: 'Author',
-                    image: '/Images/2022_speakers/himanshu.JPG'
+                    name: 'Sudhana Sankar',
+                    profession: 'Classical Dancer',
+                    image: '/Images/2024_speakers/Sudhana Sankar.png'
                 },
                 {
-                    name: 'Sudhir R',
-                    profession: 'Fluteboxer',
-                    image: '/Images/2022_speakers/sudhir.JPG'
+                    name: 'Pranay Lal',
+                    profession: 'Author and Environmentalist',
+                    image: '/Images/2024_speakers/Pranay Lal.png'
                 },
                 {
-                    name: 'Brindali Patel',
-                    profession: 'Dancer',
-                    image: '/Images/2022_speakers/Brindali.JPG'
+                    name: 'Vijaita Singh',
+                    profession: 'Deputy Editor, The Hindu',
+                    image: '/Images/2024_speakers/Vijaita Singh.jpg'
                 },
                 {
-                    name: 'Dr. Sanjeev Bagai',
-                    profession: 'Doctor, Padma Bhushan',
-                    image: '/Images/2022_speakers/sanjeev.JPG'
-                },
-                {
-                    name: 'Priyanshu Grover',
-                    profession: 'Lawyer',
-                    image: '/Images/2022_speakers/priyanshu.JPG'
-                },
-                {
-                    name: 'Nafisa Rachel William',
-                    profession: 'Celebrity designer',
-                    image: '/Images/2022_speakers/Nafisa.JPG'
-                },
-                {
-                    name: 'Vineet Panchhi',
-                    profession: 'Poet and filmmaker',
-                    image: '/Images/2022_speakers/vineet.jpg'
+                    name: 'Khalid Wani',
+                    profession: 'CEO & Founder, KWCG',
+                    image: '/Images/2024_speakers/Khalid Wani.png'
                 }
             ],
             images: [

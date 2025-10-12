@@ -34,6 +34,9 @@ function MyApp({ Component, pageProps, user }) {
                                 name="description"
                                 content="TEDx Shiv Nadar Insitute of Eminence Annual Conference"
                             />
+                            <link rel="icon" href="/favicon.ico" sizes="any" />
+                            <link rel="apple-touch-icon" href="/favicon.ico" />
+                            <meta name="theme-color" content="#A11D21" />
                         </Head>
                         <Navbar />
                         {isMounted ? (

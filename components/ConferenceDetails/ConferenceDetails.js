@@ -156,7 +156,7 @@ function ConfDetails() {
             title: "Misfits",
             desc: "Misfits are people whose ideas and initiatives set them apart from the crowd, and they have the courage to do something different and make a difference. For the 2022 conference, TEDxShivNadarUniversity brought together 13 people who embody this definition.",
             year: "2022",
-            url: "placeholder insert yt link",
+            url: "https://youtu.be/txqzy5Dwtww?si=C_AWV6tUjzGh8372",
             speakers: [{
                 name: 'Kavitha Emmanuel',
                 profession: 'Anti-colourism activist',

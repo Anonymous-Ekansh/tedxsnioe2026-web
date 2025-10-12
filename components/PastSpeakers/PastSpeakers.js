@@ -44,14 +44,19 @@ export default function PastSpeakers() {
             <div className='PastSpeakers'>
                 <div className='PastSpeakers__heading'>OUR SPEAKERS</div>
                 <div className='PastSpeakers__cards'>
-                    {currentSpeakers.map((speaker, idx) => (
-                        <div className="container" key={speaker.name}>
-                            
-                            <div className="Speakers__content">
-                                <div>
-                                    <div className="content-overlay"></div>
+                    <div className="OurSpeakers__content">
+                        {currentSpeakers.map((speaker, idx) => (
+                            <div 
+                                className="OurSpeakers__content--card" 
+                                key={speaker.name}
+                                tabIndex={0}
+                                role="button"
+                                aria-label={`${speaker.name}, ${speaker.profession}`}
+                            >
+                                <div className="OurSpeakers__content--card__image-container">
+                                    <div className="OurSpeakers__content--card__overlay"></div>
                                     <Image 
-                                        className="Speakers__content--card__image" 
+                                        className="OurSpeakers__content--card__image" 
                                         src={speaker.image} 
                                         alt={`${speaker.name} - ${speaker.profession}`} 
                                         width={300} 
@@ -59,14 +64,16 @@ export default function PastSpeakers() {
                                         quality={95} 
                                         priority={idx === 0} 
                                     />
-                                    <div className="Speakers__content--card__details">
-                                        <p className="Speakers__content--card__details__name">{speaker.name}</p>
-                                        {/* <p className="content-text">{speaker.profession}</p> */}
+                                    <div className="OurSpeakers__content--card__hover-details">
+                                        <p className="OurSpeakers__content--card__hover-details--profession">{speaker.profession}</p>
                                     </div>
                                 </div>
+                                <div className="OurSpeakers__content--card__name-container">
+                                    <p className="OurSpeakers__content--card__name">{speaker.name}</p>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
             <div className='PastSpeakers'>

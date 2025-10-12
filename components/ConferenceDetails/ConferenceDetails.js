@@ -563,7 +563,7 @@ function ConfDetails() {
         },
         {
             title: "Conference",
-            desc: "TEDxSNIoE 2016 conference hosted 13 speakers and artists from various professional and social fields. This conference was nothing short of a spectacle of stories and lessons from exceptional people which inspired and captivated everyone who witnessed it.",
+            desc: "TEDxShivNadarUniversity 2016 conference hosted 13 speakers and artists from various professional and social fields. This conference was nothing short of a spectacle of stories and lessons from exceptional people which inspired and captivated everyone who witnessed it.",
             year: "2016",
             speakers: [
                 {

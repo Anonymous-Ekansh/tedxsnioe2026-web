@@ -69,9 +69,9 @@ export default function Register() {
     // return pricePerPerson * numberOfPeople;
 
     if (isSnuStudent) {
-      return numberOfPeople === 1 ? 599 : 1099;
+      return numberOfPeople === 1 ? 699 : 1299;
     } else {
-      return numberOfPeople === 1 ? 649 : 1199;
+      return numberOfPeople === 1 ? 749 : 1399;
     }
 
   };
@@ -361,16 +361,16 @@ export default function Register() {
             <div className="RegisterSection__amount--priceDetails__ticket">
               <p>Ticket Price (per person)</p>
               <p>₹{snu ?
-                (noOfPeople ? '599' : '549.50') :
-                (noOfPeople ? '649' : '599.50')
+                (noOfPeople ? '699' : '649.5') :
+                (noOfPeople ? '749' : '699.5')
               }</p>
             </div>
             <hr />
             <div className="RegisterSection__amount--priceDetails__total">
               <p>Total Amount</p>
               <p>₹{snu ?
-                (noOfPeople ? '599' : '1099') :
-                (noOfPeople ? '649' : '1199')
+                (noOfPeople ? '699' : '1299') :
+                (noOfPeople ? '749' : '1399')
               }</p>
             </div>
           </div>

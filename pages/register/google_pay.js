@@ -34,9 +34,9 @@ export default function GooglePay() {
         }
         // Fallback to old logic
         if (snu) {
-            return noOfPeople ? '599' : '1099';
+            return noOfPeople ? '699' : '1300';
         } else {
-            return noOfPeople ? '649' : '1199';
+            return noOfPeople ? '750' : '1400';
         }
     };
 
@@ -254,8 +254,8 @@ export default function GooglePay() {
                             <p>{paymentData ?
                                 (paymentData.total_amount / paymentData.number_of_people).toString() :
                                 (snu ?
-                                    (noOfPeople ? '599' : '549.50') : // 1099/2 for 2 tickets
-                                    (noOfPeople ? '649' : '599.50')   // 1199/2 for 2 tickets
+                                    (noOfPeople ? '699' : '649.5') : // 1099/2 for 2 tickets
+                                    (noOfPeople ? '749' : '699.5')   // 1199/2 for 2 tickets
                                 )
                             }</p>
                         </div>

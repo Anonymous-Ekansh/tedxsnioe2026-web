@@ -16,16 +16,33 @@ export default function PastSpeakers() {
             profession: 'Creator of a show running on every TV since 2012, Savdhaan India. True Crime aficionado and author of books that range from serial killers to the Indian Money Heist. Through his creative mind, he creates and shows you a world through his words alone instantly.',
             image: '/Images/CurrentSpeakers/anirban.png',
         },
-        // Uncomment and add more speakers as needed
-        // {
-        //     name: 'Rishabh Jain',
-        //     profession: "India's most famous personal finance advisor with over 4 million YouTube subscribers. Having been an IIT-B alum and founding 2 successful startups, meet the phenomenal Rishabh Jain, the labour law advisor.",
-        //     image: '/Images/CurrentSpeakers/rishab.png',
-        // },
+        {
+            name: 'Dr. Saumitra Rawat',
+            profession: "Dr. Saumitra Rawat is the Chairman and Head of Surgical Gastroenterology, GI and HPB Oncology Surgery & Liver Transplant at Sir Ganga Ram Hospital, New Delhi. A Padma Shri awardee and global pioneer in laparoscopic and robotic surgery, he has trained and mentored surgeons worldwide through the Royal College of Surgeons of England.",
+            image: '/Images/CurrentSpeakers/saumitra.png',
+        },
+        {
+            name: 'Chef Vanika Choudhary',
+            profession: "Chef Vanika Choudhary has been at the forefront of the farm-to-table movement in India since she founded Sequel in 2016, and Noon in 2022. She is celebrated for her singular culinary philosophy which blends thoughtfully-sourced indigenous produce and traditional cooking methods to create Indian and global flavours.",
+            image: '/Images/CurrentSpeakers/vanika.jpg',
+        },
     ];
 
     const [isSmall, setIsSmall] = useState(false);
     const [isMedium, setIsMedium] = useState(false);
+    const [activeCardId, setActiveCardId] = useState(null);
+    
+    // Function to handle touch interactions on cards
+    const handleCardClick = (id) => {
+        if (activeCardId === id) {
+            // If clicking on already active card, deactivate it
+            setActiveCardId(null);
+        } else {
+            // Set this card as active
+            setActiveCardId(id);
+        }
+    };
+    
     useEffect(() => {
         if (window.innerWidth <= 768) {
             setIsSmall(true);
@@ -37,6 +54,19 @@ export default function PastSpeakers() {
             setIsSmall(false);
             setIsMedium(false);
         }
+        
+        // Reset active card when clicking outside
+        const handleClickOutside = (e) => {
+            if (!e.target.closest('.OurSpeakers__content--card')) {
+                setActiveCardId(null);
+            }
+        };
+        
+        document.addEventListener('click', handleClickOutside);
+        
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
     }, []);
 
     return (
@@ -47,11 +77,17 @@ export default function PastSpeakers() {
                     <div className="OurSpeakers__content">
                         {currentSpeakers.map((speaker, idx) => (
                             <div 
-                                className="OurSpeakers__content--card" 
+                                className={`OurSpeakers__content--card ${activeCardId === speaker.name ? 'active' : ''}`}
                                 key={speaker.name}
                                 tabIndex={0}
                                 role="button"
                                 aria-label={`${speaker.name}, ${speaker.profession}`}
+                                onClick={() => handleCardClick(speaker.name)}
+                                onKeyPress={(e) => {
+                                    if (e.key === 'Enter' || e.key === ' ') {
+                                        handleCardClick(speaker.name);
+                                    }
+                                }}
                             >
                                 <div className="OurSpeakers__content--card__image-container">
                                     <div className="OurSpeakers__content--card__overlay"></div>

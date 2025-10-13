@@ -74,11 +74,11 @@ function ConfDetails() {
                 }
             ],
             images: [
-                { url: '/Images/2022/2022_1.jpg' },
-                { url: '/Images/2022/2022_2.jpg' },
-                { url: '/Images/2022/2022_3.jpg' },
-                { url: '/Images/2022/2022_4.jpg' },
-                { url: '/Images/2022/2022_5.jpg' },
+                { url: '/Images/2024/2024_1.jpg' },
+                // { url: '/Images/2024/2024_3.jpg' },
+                { url: '/Images/2024/2024_4.jpg' },
+                { url: '/Images/2024/2024_2.jpg' },
+                { url: '/Images/2024/2024_5.jpg' },
             ]
         },
         {

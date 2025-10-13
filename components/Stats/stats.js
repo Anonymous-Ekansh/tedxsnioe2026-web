@@ -20,7 +20,7 @@ export default function Stats() {
           <p className='StatsContainer__card--number'>100+</p>
           <p style={{ color: "#038181" }} className='StatsContainer__card--text'>Attendees</p>
         </div>
-        <div className='StatsContainer__card'>
+        <div className='StatsContainer__card StatsContainer__card--infinity'>
           <p className='StatsContainer__card--number'>∞</p>
           <p style={{ color: "#F26A50" }} className='StatsContainer__card--text'>Experience</p>
         </div>

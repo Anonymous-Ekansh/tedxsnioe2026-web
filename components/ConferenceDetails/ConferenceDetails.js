@@ -74,17 +74,17 @@ function ConfDetails() {
                 }
             ],
             images: [
-                { url: '/Images/2024/2024_6.jpg' },
-                { url: '/Images/2024/2024_7.jpg' },
-                { url: '/Images/2024/2024_8.jpg' },
-                { url: '/Images/2024/2024_9.jpg' },
+                { url: '/Images/2024/2024_6.JPG' },
+                { url: '/Images/2024/2024_7.JPG' },
+                { url: '/Images/2024/2024_8.JPG' },
+                { url: '/Images/2024/2024_9.JPG' },
                 { url: '/Images/2024/2024_1.jpg' },
-                { url: '/Images/2024/2024_11.jpg' },
+                { url: '/Images/2024/2024_11.JPG' },
                 { url: '/Images/2024/2024_4.jpg' },
                 { url: '/Images/2024/2024_2.jpg' },
                 { url: '/Images/2024/2024_5.jpg' },
-                { url: '/Images/2024/2024_12.jpg' },
-                { url: '/Images/2024/2024_13.jpg' },
+                { url: '/Images/2024/2024_12.JPG' },
+                { url: '/Images/2024/2024_13.JPG' },
             ]
         },
         {

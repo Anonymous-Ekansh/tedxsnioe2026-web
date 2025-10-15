@@ -71,7 +71,7 @@ export default function Register() {
     if (isSnuStudent) {
       return numberOfPeople === 1 ? 699 : 1299;
     } else {
-      return numberOfPeople === 1 ? 749 : 1399;
+      return numberOfPeople === 1 ? 699 : 1299;
     }
 
   };
@@ -362,7 +362,7 @@ export default function Register() {
               <p>Ticket Price (per person)</p>
               <p>₹{snu ?
                 (noOfPeople ? '699' : '649.5') :
-                (noOfPeople ? '749' : '699.5')
+                (noOfPeople ? '699' : '649.5')
               }</p>
             </div>
             <hr />
@@ -370,7 +370,7 @@ export default function Register() {
               <p>Total Amount</p>
               <p>₹{snu ?
                 (noOfPeople ? '699' : '1299') :
-                (noOfPeople ? '749' : '1399')
+                (noOfPeople ? '699' : '1299')
               }</p>
             </div>
           </div>

@@ -1,10 +1,14 @@
 .AboutUs {
-  color: white;
+  color: black;
   display: grid;
   place-items: center;
   align-content: center;
+  
+  @include respondAt(767px) {
+    padding: 0 1rem;
+  }
   &__heading {
-    color: #fff;
+    color: #000;
     text-align: center;
     font-family: "Bebas Neue", serif;
     font-size: 4.25rem;
@@ -28,9 +32,10 @@
       border-radius: 0.5rem;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       @include respondAt(767px)  {
-        width: 15rem;
+        width: 100%;
+        max-width: 15rem;
         height: 10rem;
-        margin-bottom: 2rem;
+        margin: 2rem auto;
       }
       @include respondAtLarge(768px,1200px) {
         width: 25rem;
@@ -49,7 +54,7 @@
       }
     }
     &--text {
-      color: #fff;
+      color: #000;
       font-family: "Outfit", sans-serif;
       font-size: 1.3rem;
       font-style: normal;
@@ -58,11 +63,13 @@
       margin-right: 5rem;
       
       @include respondAt(767px) {
-        margin: 0;
-        width: 20rem;
-        font-size: .8rem;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 20rem;
+        font-size: .9rem;
         text-align: center;
         margin-right: 0;
+        padding: 0 1rem;
       }
       @include respondAtLarge(768px,1200px) {
         margin: 0;

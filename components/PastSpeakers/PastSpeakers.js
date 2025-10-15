@@ -23,7 +23,7 @@ export default function PastSpeakers() {
         },
         {
             name: 'Chef Vanika Choudhary',
-            profession: "Chef Vanika Choudhary has been at the forefront of the farm-to-table movement in India since she founded Sequel in 2016, and Noon in 2022. She is celebrated for her singular culinary philosophy which blends thoughtfully-sourced indigenous produce and traditional cooking methods to create Indian and global flavours.",
+            profession: "Chef Vanika Choudhary has been at the forefront of the farm-to-table movement in India since she founded Sequel in 2016, and Noon in 2022. A successful entrepreneur in the culinary field, her culinary philosophy of celebrating diverse indigenous cultures and their thoughtfully-sourced produce is what sets her apart.",
             image: '/Images/CurrentSpeakers/vanika.jpg',
         },
     ];

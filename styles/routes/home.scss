@@ -7,13 +7,49 @@
   background-color: black;
   padding-top: 5rem;
   padding-bottom: 5rem;
+  
+  @include respondAt(767px) {
+    padding-top: 8rem;
+    padding-bottom: 3rem;
+  }
 }
 .StatsSection {
   // background-image: url('/Images/Assets/overallbg.png');
   background-size: cover;
   width: 100vw;
+  padding: 4rem 0;
+  
+  @include respondAt(767px) {
+    padding: 3rem 1rem;
+  }
+  
+  @include respondAtLarge(768px, 1200px) {
+    padding: 5rem 2rem;
+  }
 }
 .AboutSection {
+  // background-image: url('/Images/Assets/overallbg.png');
+  width: 100vw;
+  // height: 100vh;
+  background-size: cover;
+  // background-color: black;
+  padding-top: 10rem;
+  padding-bottom: 8rem;
+  
+  @include respondAt(767px) {
+    padding-top: 5rem;
+    padding-bottom: 4rem;
+  }
+  
+  @include respondAtLarge(768px,1200px) {
+    padding-top: 12rem;
+    padding-bottom: 8rem;
+  }
+}
+.PastSpeakersSection {
+  
+
+
   // background-image: url('/Images/Assets/overallbg.png');
   background-image: url('/Images/Assets/pattern home 5.png');
   width: 100vw;
@@ -22,13 +58,6 @@
   background-color: black;
   padding-top: 5rem;
   padding-bottom: 5rem;
-}
-.PastSpeakersSection {
-  // background-image: url('/Images/Assets/overallbg.png');
-  width: 100vw;
-  // height: 100vh;
-  background-size: cover;
-  // background-color: black;
 }
 .SponsorsSection {
   // background-image: url('/Images/Assets/overallbg.png');

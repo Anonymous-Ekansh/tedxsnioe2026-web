@@ -18,15 +18,16 @@ function Home() {
                 <Stats />
             </section>
             <section
-                id="about"
-                className="AboutSection">
-                <AboutUs />
-            </section>
-            <section
                 id="past-speakers"
                 className="PastSpeakersSection">
                 <PastSpeakers />
             </section>
+            <section
+                id="about"
+                className="AboutSection">
+                <AboutUs />
+            </section>
+            
             <section
                 id="sponsors"
                 className="SponsorsSection">

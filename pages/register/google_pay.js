@@ -34,9 +34,9 @@ export default function GooglePay() {
         }
         // Fallback to old logic
         if (snu) {
-            return noOfPeople ? '699' : '1300';
+            return noOfPeople ? '699' : '1299';
         } else {
-            return noOfPeople ? '750' : '1400';
+            return noOfPeople ? '699' : '1299';
         }
     };
 
@@ -164,10 +164,6 @@ export default function GooglePay() {
             // console.log('Payment record updated with screenshot:', updateData);
             console.log('Complete payment record:', paymentRecord);
 
-            // Skip screenshot upload for now - just save the payment
-            // console.log('Payment submitted successfully, skipping screenshot upload');
-
-            // Clear localStorage
             
             // Redirect to success page with payment details
             const queryParams = new URLSearchParams({
@@ -255,7 +251,7 @@ export default function GooglePay() {
                                 (paymentData.total_amount / paymentData.number_of_people).toString() :
                                 (snu ?
                                     (noOfPeople ? '699' : '649.5') : // 1099/2 for 2 tickets
-                                    (noOfPeople ? '749' : '699.5')   // 1199/2 for 2 tickets
+                                    (noOfPeople ? '699' : '649.5')   // 1199/2 for 2 tickets
                                 )
                             }</p>
                         </div>

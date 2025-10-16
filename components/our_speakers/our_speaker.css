@@ -52,28 +52,39 @@
 .speakers_section-card2{
     align-self: center;
     position: relative;
-    background-color: red;
+    /* red liquid glass effect w/ blur */
+    background: rgba(220, 38, 38, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(220, 38, 38, 0.37);
     top: 15rem;
     width: 100%;
 }
 
 .speakers_section_cards__firstname{
-    color: #000;
+    /* brighter white w/ text shadow for vis */
+    color: #fff;
     font-family: Outfit;
     font-size: 29px;
     font-style: normal;
     font-weight: 600;
     line-height: 40px; /* 137.931% */
     letter-spacing: 0.87px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5), 
+                 0 0 20px rgba(220, 38, 38, 0.3);
 }
 
 .speakers_section_cards__lastname{
-    color: #000;
+    /* brighter white w/ text shadow for vis */
+    color: #fff;
     font-family: Outfit;
     font-size: 28px;
     font-style: normal;
     font-weight: 400;
     line-height: 40px; /* 142.857% */
     letter-spacing: 0.84px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5), 
+                 0 0 15px rgba(220, 38, 38, 0.3);
 }
 

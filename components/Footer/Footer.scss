@@ -9,7 +9,9 @@
     padding-top: 7rem;
     @include respondAt(915px) {
       padding-left: 2rem;
+      padding-right: 2rem;
       padding-top: 3rem;
+      text-align: center;
     }
     &--text {
       color: black;
@@ -39,6 +41,7 @@
       display: flex;
       @include respondAt(915px) {
         flex-direction: column;
+        align-items: center;
       }
       &__register {
         border-radius: 1.1875rem;
@@ -82,7 +85,7 @@
     flex-direction: column;
     align-items: center;
     @include respondAt(915px) {
-      align-items: flex-start;
+      align-items: center;
     }
     &--sections {
       margin-left: 7rem;
@@ -91,8 +94,8 @@
       margin-bottom: 2rem;
       @include respondAt(915px) {
         flex-direction: column;
-        margin-left: 2rem;
-        align-items: flex-start;
+        margin-left: 0;
+        align-items: center;
         margin-bottom: 0rem;
       }
       &__item {
@@ -133,8 +136,8 @@
       align-items: center;
       justify-content: center;
       @include respondAt(915px) {
-        margin-left: 1rem;
-        justify-content: flex-start;
+        margin-left: 0;
+        justify-content: center;
       }
       
       img {
@@ -153,8 +156,8 @@
       gap: 2rem;
             
       @include respondAt(915px) {
-        margin-left: 2rem;
-        justify-content: flex-start;
+        margin-left: 0;
+        justify-content: center;
       }
       img {
         width: 2rem;

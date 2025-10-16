@@ -34,6 +34,21 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         
+        // ctr img within container
+        > div {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+        
+        img {
+          object-fit: contain !important;
+          object-position: center !important;
+          width: 100% !important;
+          height: 100% !important;
+          position: relative !important;
+        }
+        
         &:hover {
           transform: translateY(-5px);
           box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
@@ -113,6 +128,21 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         overflow: hidden;
+        
+        // ctr img within container
+        > div {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+        
+        img {
+          object-fit: contain !important;
+          object-position: center !important;
+          width: 100% !important;
+          height: 100% !important;
+          position: relative !important;
+        }
         
         &:hover {
           transform: translateY(-5px);

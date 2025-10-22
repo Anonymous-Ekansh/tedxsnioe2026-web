@@ -141,7 +141,7 @@ function Navbar({ isSmall = false }) {
                                 }`}
                         >
                             <p style={{ color: "white" }}>
-                            <Link style={{ color: "white" }} href="/pastConferences">Past Conferences</Link>
+                                <Link style={{ color: "white" }} href="/pastConferences">Past Conferences</Link>
                             </p>
                         </li>
 
@@ -152,9 +152,20 @@ function Navbar({ isSmall = false }) {
                                 }`}
                         >
                             <p style={{ color: "white" }}>
-                            <Link style={{ color: "white" }} href="/contact">Contact Us</Link>
+                                <Link style={{ color: "white" }} href="/contact">Contact Us</Link>
                             </p>
                         </li>
+                        <li
+                            className={`${pathName === "/team"
+                                ? "NavbarContainer__Menu--list-activeItem"
+                                : "NavbarContainer__Menu--list-item"
+                                }`}
+                        >
+                            <p style={{ color: "white" }}>
+                                <Link style={{ color: "white" }} href="/team">Meet The Team</Link>
+                            </p>
+                        </li>
+
                         <li
                             className={`${pathName === "/register"
                                 ? "NavbarContainer__Menu--list-activeItem"
@@ -162,7 +173,7 @@ function Navbar({ isSmall = false }) {
                                 }`}
                         >
                             <p style={{ color: "white" }}>
-                            <Link style={{ color: "red", fontWeight: "medium" }} href="/register">Register</Link>
+                                <Link style={{ color: "red", fontWeight: "medium" }} href="/register">Register</Link>
                             </p>
                         </li>
                     </ul>

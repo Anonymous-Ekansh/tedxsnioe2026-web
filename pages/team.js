@@ -23,7 +23,6 @@ const teamData = [
     members: [
       { name: "Viraaj Vashisht", image: "Images/team/Viraaj Vashisht, content lead.jpg" },
       { name: "Swara Mishra", image: "Images/team/Content Lead-Swara Mishra.jpg" },
-      { name: "Varuna", image: "Images/team/Varuna Content.jpg"},
     ],
   },
   {
@@ -38,7 +37,6 @@ const teamData = [
     members: [
       { name: "Aditya Kumar", image: "Images/team/Aditya Kumar Marketing.jpg" },
       { name: "Swaraj", image: "Images/team/SwarajMarketingLead.jpg" },
-      { name: "Sharya", image: "Images/team/Sharya Marketing.jpg" },
     ],
   },
   {
@@ -74,7 +72,6 @@ const teamData = [
     members: [
       { name: "Shreyaash Thakur", image: "Images/team/Shreyaash_DesLead.jpg" },
       { name: "Perinbapriyan", image: "Images/team/Perinbapriyan.jpg" },
-      { name: "Nandika", image: "Images/team/Nandika.jpg" },
     ],
   },
   {

@@ -29,7 +29,6 @@ const teamData = [
     title: "Sponsorship",
     members: [
       { name: "Rhea Vohra", image: "Images/team/Rhea Vohra photo.jpg" },
-      { name: "Aditya", image: "Images/team/Aaditya Sponsorship.jpg" },
     ],
   },
   {

@@ -34,7 +34,7 @@ function ConfDetails() {
                 
                 {
                     name: 'Tanu Jain',
-                    profession: 'IAS Officer, Founder of Tathatsu ICS',
+                    profession: 'Founder of Tathatsu ICS',
                     image: '/Images/2024_speakers/Tanu Jain.png'
                 },
                 {

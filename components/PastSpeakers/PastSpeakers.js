@@ -26,6 +26,22 @@ export default function PastSpeakers() {
             profession: "Chef Vanika Choudhary has been at the forefront of the farm-to-table movement in India since she founded Sequel in 2016, and Noon in 2022. A successful entrepreneur in the culinary field, her culinary philosophy of celebrating diverse indigenous cultures and their thoughtfully-sourced produce is what sets her apart.",
             image: '/Images/CurrentSpeakers/vanika.jpg',
         },
+        {
+            name: 'Tanmaya jain',
+            profession: " Tanmaya Jain, CEO of InFeedo AI and Shiv Nadar University alumnus, is a Forbes Asia 30 Under 30 entrepreneur who raised $16M by age 18 and impacted 2M+ employees globally.Backed by top VCs and Y-Combinator, he exemplifies the innovation nurtured at our own campus.His talk highlights how India’s growing college startup culture shapes the nation’s future mindset and workplace culture. ",
+            image: '/Images/CurrentSpeakers/tanmaya_jain.jpeg',
+        },
+        {
+            name: 'Madhav Raman',
+            profession: " Founder of Anagram Architects, he works at the intersection of cultural history, urban economics, and sustainable design. A leading green architect, his work explores transit systems, urban ecologies, and multidisciplinary city projects. His talk will emphasize the need for sustainable, community-centered approaches in architecture and urban development. ",
+            image: '/Images/CurrentSpeakers/madhav_raman.png',
+        },
+        {
+            name: 'Dr. Rupamanjari Ghosh',
+            profession: " Extremely decorated professor in the field of quantum mechanics, also former Vice-Chancellor of Shiv Nadar University. She aims to bring the field of quantum sciences to the layman in the audience. How the intricacies of the universe, its motion, its stillness does impact our lives, as humans and our place in the universe.  ",
+            image: '/Images/CurrentSpeakers/sumitra.png',
+        },
+
     ];
 
     const [isSmall, setIsSmall] = useState(false);

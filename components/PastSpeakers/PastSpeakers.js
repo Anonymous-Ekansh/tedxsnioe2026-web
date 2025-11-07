@@ -129,7 +129,7 @@ export default function PastSpeakers() {
                 </div>
             </div>
             <div className='PastSpeakers'>
-                <div className='PastSpeakers__heading'>..stay tuned</div>
+                <div className='PastSpeakers__heading'>...stay tuned</div>
                 {/* Keep your custom hover cards or other sections here as needed */}
             </div>
         </>

@@ -8,12 +8,12 @@ const teamData = [
     members: [
       { name: "Dipro Mukherjee (Lead Organiser)", image: "/Images/team/Dipro - Lead Organizer.jpg", adjust: "up" },
       { name: "Aanya Anand (Co-Lead Organiser)", image: "/Images/team/Aanya.jpg" },
-      { name: "Anindya Rastogi (Curator and Licensee)" },
+      { name: "Anindya Rastogi (Curator and Licensee)", image: "/Images/team/anindya.jpeg" },
       { name: "Vedant Dubey (Managing Director)", image: "/Images/team/Vedant Dubey.JPG" },
       { name: "Mithreyi SR (Creative Director)", image: "/Images/team/mithreyi cd.jpg" },
       { name: "Samiya Singh (Communications Director)", image: "/Images/team/Samiya Singh.jpg" },
       { name: "Anshika Gupta (Head of Finance)", image: "/Images/team/Anshika.jpg" },
-      { name: "Arnav Prabhakar (Head of Production)" },
+      { name: "Arnav Prabhakar (Head of Production)" , image: "Images/team/arnav_prabhakar_tedx.jpeg"},
       { name: "Darpin Mevcha (Treasurer)", image: "Images/team/Darpin 1.jpg" },
       { name: "Sahas Suri (Fresher Coordinator)", image: "Images/team/Freshman Coordinator - Sahas Suri - 1.jpg", adjust: "up" },
     ],
@@ -54,7 +54,7 @@ const teamData = [
   {
     title: "Videography",
     members: [
-      { name: "Nithin" },
+      { name: "Nithin", image: "/Images/team/nitin_tedx.jpeg"},
       { name: "Shubh", image: "Images/team/Videography Lead - Shubh Choubey - 2.jpg" },
     ],
   },

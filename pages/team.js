@@ -8,7 +8,7 @@ const teamData = [
     members: [
       { name: "Dipro Mukherjee (Lead Organiser)", image: "/Images/team/Dipro - Lead Organizer.jpg", adjust: "up" },
       { name: "Aanya Anand (Co-Lead Organiser)", image: "/Images/team/Aanya.jpg" },
-      { name: "Anindya Rastogi (Curator and Licensee)", image: "/Images/team/anindya.jpeg" },
+      { name: "Anindya Rastogi (Curator and Licensee)", image: "/Images/team/anindya.jpeg" , adjust: "up"},
       { name: "Vedant Dubey (Managing Director)", image: "/Images/team/Vedant Dubey.JPG" },
       { name: "Mithreyi SR (Creative Director)", image: "/Images/team/mithreyi cd.jpg" },
       { name: "Samiya Singh (Communications Director)", image: "/Images/team/Samiya Singh.jpg" },

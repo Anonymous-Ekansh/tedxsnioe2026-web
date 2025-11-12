@@ -41,6 +41,22 @@ export default function PastSpeakers() {
             profession: " Extremely decorated professor in the field of quantum mechanics, also former Vice-Chancellor of Shiv Nadar University. She aims to bring the field of quantum sciences to the layman in the audience. How the intricacies of the universe, its motion, its stillness does impact our lives, as humans and our place in the universe.  ",
             image: '/Images/CurrentSpeakers/sumitra.png',
         },
+        {
+            name: 'Arshad Ali',
+            profession: " A renowned classical vocalist, Arshad Ali is celebrated for his soulful renditions and deep command of Hindustani music. His performances bridge tradition and emotion, drawing listeners into the timeless beauty of raag and rhythm ",
+            image: '/Images/CurrentSpeakers/singer1.jpg',
+        },
+        {
+            name: 'Kamal Kalra',
+            profession: " A celebrated choreographer and performer, Kamal Kalra is known for blending classical technique with contemporary creativity. His work bridges tradition and innovation, captivating audiences with storytelling through movement and rhythm. ",
+            image: '/Images/CurrentSpeakers/singer2.jpg',
+        },
+        // {
+        //     name: 'Bhangra Queens',
+        //     profession: "An award-winning all-women bhangra troupe redefining Punjabi folk dance with power and grace. The Bhangra Queens blend tradition and modernity, inspiring audiences through rhythm, energy, and the spirit of sisterhood.",
+        //     image: '/Images/CurrentSpeakers/bhangra_queens_tedx.jpeg',
+        //     objectPosition: 'bottom',
+        // },
 
     ];
 
@@ -114,7 +130,8 @@ export default function PastSpeakers() {
                                         width={300} 
                                         height={300} 
                                         quality={95} 
-                                        priority={idx === 0} 
+                                        priority={idx === 0}
+                                        style={speaker.objectPosition ? { objectPosition: speaker.objectPosition } : {}}
                                     />
                                     <div className="OurSpeakers__content--card__hover-details">
                                         <p className="OurSpeakers__content--card__hover-details--profession">{speaker.profession}</p>

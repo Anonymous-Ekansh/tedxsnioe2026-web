@@ -11,6 +11,7 @@ export default function AdminDashboard() {
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [reviewNotes, setReviewNotes] = useState('');
   const [adminEmail, setAdminEmail] = useState('');
+  const [adminPassword, setAdminPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showManualEntry, setShowManualEntry] = useState(false);
   const [manualEntry, setManualEntry] = useState({
@@ -43,18 +44,34 @@ export default function AdminDashboard() {
     }
   }, []);
 
-  const handleLogin = (e) => {
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Simple authentication - in production, use proper authentication
-    // const validAdmins = ['admin@tedxsnioe.com', 'tedx@snu.edu.in'];
-    const validAdmins = ['dorupayeki@pepsidiprobhaiya.sexy'];
-    
-    if (validAdmins.includes(adminEmail)) {
-      localStorage.setItem('adminEmail', adminEmail);
-      setIsAuthenticated(true);
-      fetchPayments();
-    } else {
-      alert('Invalid admin email');
+
+    try {
+      const response = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: adminEmail,
+          password: adminPassword
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        localStorage.setItem('adminEmail', adminEmail);
+        setIsAuthenticated(true);
+        fetchPayments();
+      } else {
+        alert(data.error || 'Invalid admin credentials');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('Login failed. Please try again.');
     }
   };
 
@@ -68,7 +85,7 @@ export default function AdminDashboard() {
   const fetchPayments = async () => {
     try {
       setLoading(true);
-      
+
       // Use regular supabase client for now to test
       const { data, error } = await supabase
         .from('payments')
@@ -188,7 +205,7 @@ export default function AdminDashboard() {
 
   const submitManualEntry = async (e) => {
     e.preventDefault();
-    
+
     // Validate all participants have required fields
     const isValid = manualEntry.participants.every(p => p.name && p.email && p.phone);
     if (!isValid) {
@@ -236,10 +253,10 @@ export default function AdminDashboard() {
   const filteredPayments = payments.filter(payment => {
     // Status filter
     if (filter !== 'all' && payment.status !== filter) return false;
-    
+
     // People filter
     if (peopleFilter !== 'all' && payment.number_of_people !== parseInt(peopleFilter)) return false;
-    
+
     return true;
   });
 
@@ -260,6 +277,14 @@ export default function AdminDashboard() {
                 value={adminEmail}
                 onChange={(e) => setAdminEmail(e.target.value)}
                 placeholder="Enter admin email"
+                required
+              />
+              <label>Password:</label>
+              <input
+                type="password"
+                value={adminPassword}
+                onChange={(e) => setAdminPassword(e.target.value)}
+                placeholder="Enter password"
                 required
               />
             </div>
@@ -310,57 +335,57 @@ export default function AdminDashboard() {
 
       {/* Filters */}
       <div className="filters">
-        <button 
+        <button
           className={filter === 'all' ? 'active' : ''}
           onClick={() => setFilter('all')}
         >
           All ({stats.total})
         </button>
-        <button 
+        <button
           className={filter === 'pending' ? 'active' : ''}
           onClick={() => setFilter('pending')}
         >
           Pending ({stats.pending})
         </button>
-        <button 
+        <button
           className={filter === 'approved' ? 'active' : ''}
           onClick={() => setFilter('approved')}
         >
           Approved ({stats.approved})
         </button>
-        <button 
+        <button
           className={filter === 'declined' ? 'active' : ''}
           onClick={() => setFilter('declined')}
         >
           Declined ({stats.declined})
         </button>
-        
+
         {/* People Filter */}
         <div style={{ display: 'inline-block', marginLeft: '20px', borderLeft: '1px solid #ccc', paddingLeft: '20px' }}>
-          <button 
+          <button
             className={peopleFilter === 'all' ? 'active' : ''}
             onClick={() => setPeopleFilter('all')}
           >
             All People
           </button>
-          <button 
+          <button
             className={peopleFilter === '1' ? 'active' : ''}
             onClick={() => setPeopleFilter('1')}
           >
             1 Person ({stats.onePerson})
           </button>
-          <button 
+          <button
             className={peopleFilter === '2' ? 'active' : ''}
             onClick={() => setPeopleFilter('2')}
           >
             2 People ({stats.twoPerson})
           </button>
         </div>
-        
+
         <button onClick={fetchPayments} className="refresh-btn">
           Refresh
         </button>
-        <button 
+        <button
           className="manual-entry-btn"
           onClick={() => setShowManualEntry(true)}
           style={{ marginLeft: '10px', background: '#28a745', color: 'white' }}
@@ -395,12 +420,12 @@ export default function AdminDashboard() {
                 <tr key={payment.id} className={payment.status}>
                   <td>{formatDate(payment.created_at)}</td>
                   <td>
-                    {payment.participants?.map(p => p.name).join(', ') || 
-                     `${payment.name_one}${payment.name_two ? `, ${payment.name_two}` : ''}`}
+                    {payment.participants?.map(p => p.name).join(', ') ||
+                      `${payment.name_one}${payment.name_two ? `, ${payment.name_two}` : ''}`}
                     <br />
                     <small>
-                      {payment.participants?.map(p => p.email).join(', ') || 
-                       `${payment.email_one}${payment.email_two ? `, ${payment.email_two}` : ''}`}
+                      {payment.participants?.map(p => p.email).join(', ') ||
+                        `${payment.email_one}${payment.email_two ? `, ${payment.email_two}` : ''}`}
                     </small>
                   </td>
                   <td>{payment.payment_method?.toUpperCase() || 'UPI'}</td>
@@ -414,7 +439,7 @@ export default function AdminDashboard() {
                     </span>
                   </td>
                   <td>
-                    <button 
+                    <button
                       onClick={() => setSelectedPayment(payment)}
                       className="view-btn"
                     >
@@ -434,14 +459,14 @@ export default function AdminDashboard() {
           <div className="modal">
             <div className="modal-header">
               <h2>Payment Details</h2>
-              <button 
+              <button
                 onClick={() => setSelectedPayment(null)}
                 className="close-btn"
               >
                 ×
               </button>
             </div>
-            
+
             <div className="modal-content">
               <div className="payment-details">
                 <div className="detail-row">
@@ -455,13 +480,13 @@ export default function AdminDashboard() {
                         <strong>{p.name}</strong> - {p.email} - {p.phone}
                       </div>
                     )) || (
-                      <div>
-                        <div><strong>{selectedPayment.name_one}</strong> - {selectedPayment.email_one} - {selectedPayment.phone_one}</div>
-                        {selectedPayment.name_two && (
-                          <div><strong>{selectedPayment.name_two}</strong> - {selectedPayment.email_two} - {selectedPayment.phone_two}</div>
-                        )}
-                      </div>
-                    )}
+                        <div>
+                          <div><strong>{selectedPayment.name_one}</strong> - {selectedPayment.email_one} - {selectedPayment.phone_one}</div>
+                          {selectedPayment.name_two && (
+                            <div><strong>{selectedPayment.name_two}</strong> - {selectedPayment.email_two} - {selectedPayment.phone_two}</div>
+                          )}
+                        </div>
+                      )}
                   </div>
                 </div>
                 <div className="detail-row">
@@ -480,29 +505,29 @@ export default function AdminDashboard() {
                   <strong>Transaction ID:</strong> {selectedPayment.transaction_id || 'N/A'}
                 </div>
                 <div className="detail-row">
-                  <strong>Current Status:</strong> 
+                  <strong>Current Status:</strong>
                   <span className={`status ${selectedPayment.status}`}>
                     {selectedPayment.status.toUpperCase()}
                   </span>
                 </div>
-                
+
                 {/* Debug info to see what screenshot data we have */}
                 <div className="detail-row" style={{ fontSize: '0.8rem', color: '#666' }}>
                   <strong>Debug Info:</strong>
                   <div>Screenshot URL: {selectedPayment.transaction_screenshot_url || 'No screenshot URL'}</div>
                   <div>Payment ID: {selectedPayment.id}</div>
                 </div>
-                
+
                 {selectedPayment.transaction_screenshot_url ? (
                   <div className="detail-row">
                     <strong>Screenshot:</strong>
                     <div className="screenshot-container">
-                      <Image 
-                        src={selectedPayment.transaction_screenshot_url} 
+                      <Image
+                        src={selectedPayment.transaction_screenshot_url}
                         alt="Payment Screenshot"
                         className="payment-screenshot"
-                        width={600} 
-                        height={400} 
+                        width={600}
+                        height={400}
                         onError={(e) => {
                           e.target.style.display = 'none';
                           e.target.nextSibling.style.display = 'block';
@@ -512,9 +537,9 @@ export default function AdminDashboard() {
                         Image failed to load
                       </div>
                       <div className="screenshot-links">
-                        <a 
-                          href={selectedPayment.transaction_screenshot_url} 
-                          target="_blank" 
+                        <a
+                          href={selectedPayment.transaction_screenshot_url}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="screenshot-link"
                         >
@@ -565,15 +590,15 @@ export default function AdminDashboard() {
                       rows="3"
                     />
                   </div>
-                  
+
                   <div className="review-actions">
-                    <button 
+                    <button
                       onClick={() => updatePaymentStatus(selectedPayment.id, 'approved', reviewNotes, selectedPayment)}
                       className="approve-btn"
                     >
                       Approve Payment
                     </button>
-                    <button 
+                    <button
                       onClick={() => updatePaymentStatus(selectedPayment.id, 'declined', reviewNotes)}
                       className="decline-btn"
                     >
@@ -593,7 +618,7 @@ export default function AdminDashboard() {
           <div className="modal">
             <div className="modal-header">
               <h2>Add Manual Payment Entry</h2>
-              <button 
+              <button
                 className="close-btn"
                 onClick={() => setShowManualEntry(false)}
               >
@@ -720,8 +745,8 @@ export default function AdminDashboard() {
                   <button type="submit" className="submit-btn">
                     Add Entry
                   </button>
-                  <button 
-                    type="button" 
+                  <button
+                    type="button"
                     onClick={() => setShowManualEntry(false)}
                     className="cancel-btn"
                   >

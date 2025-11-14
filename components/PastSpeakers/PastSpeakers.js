@@ -53,12 +53,12 @@ export default function PastSpeakers() {
             profession: " A celebrated choreographer and performer, Kamal Kalra is known for blending classical technique with contemporary creativity. His work bridges tradition and innovation, captivating audiences with storytelling through movement and rhythm. ",
             image: '/Images/CurrentSpeakers/singer2.jpg',
         },
-        // {
-        //     name: 'Bhangra Queens',
-        //     profession: "An award-winning all-women bhangra troupe redefining Punjabi folk dance with power and grace. The Bhangra Queens blend tradition and modernity, inspiring audiences through rhythm, energy, and the spirit of sisterhood.",
-        //     image: '/Images/CurrentSpeakers/bhangra_queens_tedx.jpeg',
-        //     objectPosition: 'bottom',
-        // },
+        {
+            name: 'Bhangra Queens',
+            profession: "An award-winning all-women bhangra troupe redefining Punjabi folk dance with power and grace. The Bhangra Queens blend tradition and modernity, inspiring audiences through rhythm, energy, and the spirit of sisterhood.",
+            image: '/Images/CurrentSpeakers/bhangra_queens_tedx.jpeg',
+            objectPosition: 'bottom',
+        },
 
     ];
 

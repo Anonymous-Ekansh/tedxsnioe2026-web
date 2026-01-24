@@ -145,7 +145,7 @@ export default function AboutQissa() {
                     </ul>
                 </section>
 
-                {/* CTA Section */}
+                {/* CTA Section or sm*/}
                 <section className="AboutQissa__CTA">
                     <h2>Ready to Share Your Story?</h2>
                     <p>Join us and become a "human book" at TEDxShivNadarUniversity's Qissa event.</p>

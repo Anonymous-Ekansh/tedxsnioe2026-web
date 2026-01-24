@@ -14,7 +14,7 @@
     "@vercel/speed-insights": "^1.2.0",
     "framer-motion": "^10.14.0",
     "keen-slider": "^6.8.6",
-    "next": "^15.5.3",
+    "next": "15.5.9",
     "next-images": "^1.8.5",
     "next-transpile-modules": "^10.0.1",
     "nodemailer": "^6.9.4",

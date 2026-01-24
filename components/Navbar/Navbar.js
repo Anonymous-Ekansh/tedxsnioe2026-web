@@ -135,13 +135,24 @@ function Navbar({ isSmall = false }) {
                             >Sponsors</p>
                         </li>
                         <li
-                            className={`${pathName === "/events"
+                            className={`${pathName === "/pastConferences"
                                 ? "NavbarContainer__Menu--list-activeItem"
                                 : "NavbarContainer__Menu--list-item"
                                 }`}
                         >
                             <p style={{ color: "white" }}>
                                 <Link style={{ color: "white" }} href="/pastConferences">Past Conferences</Link>
+                            </p>
+                        </li>
+
+                        <li
+                            className={`${pathName === "/aboutqissa"
+                                ? "NavbarContainer__Menu--list-activeItem"
+                                : "NavbarContainer__Menu--list-item"
+                                }`}
+                        >
+                            <p style={{ color: "white" }}>
+                                <Link style={{ color: "white" }} href="/aboutqissa">About Qissa</Link>
                             </p>
                         </li>
 

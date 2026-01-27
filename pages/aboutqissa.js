@@ -106,7 +106,7 @@ export default function AboutQissa() {
                 </section>
 
                 {/* How It Works */}
-                <section className="AboutQissa__Section">
+                {/* <section className="AboutQissa__Section">
                     <h2 className="AboutQissa__Section--title">How It Works</h2>
                     <div className="AboutQissa__Steps">
                         {steps.map((step, index) => (
@@ -118,10 +118,10 @@ export default function AboutQissa() {
                             </div>
                         ))}
                     </div>
-                </section>
+                </section> */}
 
                 {/* Story Themes */}
-                <section className="AboutQissa__Section">
+                {/* <section className="AboutQissa__Section">
                     <h2 className="AboutQissa__Section--title">Story Themes We're Looking For</h2>
                     <p className="AboutQissa__Section--text">
                         Every story has a place at Qissa. Some themes we particularly welcome include:
@@ -131,10 +131,10 @@ export default function AboutQissa() {
                             <div key={index} className="AboutQissa__Theme">{theme}</div>
                         ))}
                     </div>
-                </section>
+                </section> */}
 
                 {/* Eligibility */}
-                <section className="AboutQissa__Section">
+                {/* <section className="AboutQissa__Section">
                     <h2 className="AboutQissa__Section--title">Eligibility</h2>
                     <ul className="AboutQissa__List">
                         <li>Must be a student or faculty member of Shiv Nadar University</li>
@@ -143,7 +143,7 @@ export default function AboutQissa() {
                         <li>Willingness to share vulnerable and meaningful experiences</li>
                         <li>Commitment to attend rehearsals and the event</li>
                     </ul>
-                </section>
+                </section> */}
 
                 {/* CTA Section or sm*/}
                 <section className="AboutQissa__CTA">

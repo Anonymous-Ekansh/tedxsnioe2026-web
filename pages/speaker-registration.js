@@ -52,16 +52,7 @@ export default function SpeakerRegistration() {
                     </div>
                 </div>
 
-                <div className="SpeakerRegistration__Info">
-                    {/* <h3>Tips for Your Application</h3> */}
-                    <ul>
-                        <li><strong>Be Authentic:</strong> Share your genuine experiences and emotions</li>
-                        {/* <li><strong>Be Specific:</strong> Use vivid details and personal anecdotes</li> */}
-                        <li><strong>Be Clear:</strong> Explain what your story means to you and why it matters</li>
-                        {/* <li><strong>Be Respectful:</strong> Consider your audience and any sensitive topics</li> */}
-                        {/* <li><strong>Be Concise:</strong> Your story should fit within the 10-15 minute timeframe</li> */}
-                    </ul>
-                </div>
+                
             </div>
         </div>
     );

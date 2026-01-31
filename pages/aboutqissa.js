@@ -62,12 +62,14 @@ export default function AboutQissa() {
                 <div className="QissaPage__Hero--ornament QissaPage__Hero--ornament-3">❦</div>
                 <div className="QissaPage__Hero--ornament QissaPage__Hero--ornament-4">❦</div>
                 
-                <h1 className="QissaPage__Hero--title">About Qissa</h1>
-                <p className="QissaPage__Hero--subtitle">
-                    Stories have a way of making us <br /> feel less alone.
-                    <br />
-                    Because sometimes, hearing someone else’s story helps us understand our own.
-                </p>
+                <div className="QissaPage__Hero--content">
+                    <h1 className="QissaPage__Hero--title">About Qissa</h1>
+                    <p className="QissaPage__Hero--subtitle">
+                        Stories have a way of making us <br /> feel less alone.
+                        <br />
+                        Because sometimes, hearing someone else's story helps us understand our own.
+                    </p>
+                </div>
                 
                 
                 <div className="QissaPage__Hero--scroll">↓</div>

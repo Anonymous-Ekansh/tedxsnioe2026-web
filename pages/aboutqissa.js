@@ -64,8 +64,11 @@ export default function AboutQissa() {
                 
                 <h1 className="QissaPage__Hero--title">About Qissa</h1>
                 <p className="QissaPage__Hero--subtitle">
-                    Discover what makes Qissa unique and learn how you can share your story with the world.
+                    Stories have a way of making us <br /> feel less alone.
+                    <br />
+                    Because sometimes, hearing someone else’s story helps us understand our own.
                 </p>
+                
                 
                 <div className="QissaPage__Hero--scroll">↓</div>
             </div>
@@ -88,17 +91,17 @@ export default function AboutQissa() {
                     <h2 className="AboutQissa__Section--title">Why Your Story Matters</h2>
                     <div className="AboutQissa__Cards">
                         <div className="AboutQissa__Card">
-                            <div className="AboutQissa__Card--icon">🤝</div>
+                            {/* <div className="AboutQissa__Card--icon">🤝</div> */}
                             <h3>Connection</h3>
                             <p>Your story creates meaningful connections with others who have similar experiences or challenges.</p>
                         </div>
                         <div className="AboutQissa__Card">
-                            <div className="AboutQissa__Card--icon">💡</div>
+                            {/* <div className="AboutQissa__Card--icon">💡</div> */}
                             <h3>Inspiration</h3>
                             <p>Real stories inspire. Your journey might be the catalyst someone needs for their own transformation.</p>
                         </div>
                         <div className="AboutQissa__Card">
-                            <div className="AboutQissa__Card--icon">🌟</div>
+                            {/* <div className="AboutQissa__Card--icon">🌟</div> */}
                             <h3>Impact</h3>
                             <p>When you share authentically, you create ripples of change in your community and beyond.</p>
                         </div>

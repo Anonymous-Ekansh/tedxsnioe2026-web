@@ -34,7 +34,7 @@ export default function SpeakerRegistration() {
                 <div className="SpeakerRegistration__FormContainer">
                     <div className="SpeakerRegistration__FormHeader">
                         <h2>Apply to be a Speaker</h2>
-                        <p>Fill out the form below to submit your speaker application for Qissa. We're excited to hear your story!</p>
+                        <p>Fill out the form below to submit your speaker application for Qissa.</p>
                     </div>
                     
                     <div className="SpeakerRegistration__FormWrapper">

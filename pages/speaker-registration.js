@@ -21,10 +21,12 @@ export default function SpeakerRegistration() {
                 <div className="SpeakerRegistration__Hero--ornament SpeakerRegistration__Hero--ornament-3">❦</div>
                 <div className="SpeakerRegistration__Hero--ornament SpeakerRegistration__Hero--ornament-4">❦</div>
                 
-                <h1 className="SpeakerRegistration__Hero--title">Share Your Story</h1>
-                <p className="SpeakerRegistration__Hero--subtitle">
-                    Step into the role of a "human book" and apply to be a speaker at Qissa.
-                </p>
+                <div className="SpeakerRegistration__Hero--content">
+                    <h1 className="SpeakerRegistration__Hero--title">Share Your Story</h1>
+                    <p className="SpeakerRegistration__Hero--subtitle">
+                        Step into the role of a "human book" and apply to be a speaker at Qissa.
+                    </p>
+                </div>
                 
                 <div className="SpeakerRegistration__Hero--scroll">↓</div>
             </div>

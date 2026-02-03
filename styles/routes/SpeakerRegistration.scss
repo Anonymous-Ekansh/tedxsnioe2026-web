@@ -36,21 +36,32 @@ $page-shadow: rgba(0, 0, 0, 0.08);
     }
 
     &__Hero {
-        min-height: 60vh;
+        min-height: 80vh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
-        padding: 4rem 2rem;
-        background: linear-gradient(135deg, #5D4037 0%, #4E342E 50%, #3E2723 100%);
+        padding: 6rem 2rem;
+        background: 
+            linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+            url('/Images/quissa_bg/image1.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         color: $page-white;
         position: relative;
         overflow: hidden;
 
         @include respondAt(768px) {
-            min-height: 50vh;
-            padding: 3rem 2rem;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            justify-content: center;
+        }
+
+        @include respondAt(480px) {
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
         }
 
         &::before {
@@ -80,7 +91,7 @@ $page-shadow: rgba(0, 0, 0, 0.08);
             left: 0;
             right: 0;
             height: 100px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
             z-index: 0;
         }
 
@@ -148,13 +159,33 @@ $page-shadow: rgba(0, 0, 0, 0.08);
             box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
         }
 
+        &--content {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 3rem 4rem 4rem 4rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            @include respondAt(768px) {
+                padding: 2rem 2.5rem 3rem 2.5rem;
+                border-radius: 15px;
+            }
+
+            @include respondAt(480px) {
+                padding: 1.5rem 2rem 2.5rem 2rem;
+                border-radius: 12px;
+            }
+        }
+
         &--title {
             font-family: 'Playfair Display', serif;
-            font-size: 5rem;
+            font-size: 6rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: $page-white;
-            z-index: 2;
             text-shadow: 
                 3px 3px 6px rgba(0, 0, 0, 0.4),
                 0 0 20px rgba($coffee-light, 0.1);
@@ -162,38 +193,59 @@ $page-shadow: rgba(0, 0, 0, 0.08);
             position: relative;
 
             @include respondAt(768px) {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
 
             @include respondAt(480px) {
-                font-size: 2rem;
+                font-size: 2.5rem;
                 margin-bottom: 1rem;
+            }
+
+            &::before {
+                content: '"';
+                position: absolute;
+                left: -40px;
+                top: -30px;
+                font-size: 5rem;
+                opacity: 0.2;
+                font-style: italic;
+
+                @include respondAt(768px) {
+                    left: -30px;
+                    top: -20px;
+                    font-size: 3rem;
+                }
             }
         }
 
         &--subtitle {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             max-width: 800px;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            z-index: 2;
-            color: rgba($page-white, 0.95);
+            line-height: 1.9;
+            margin-bottom: 0;
+            color: rgba($page-white, 0.98);
             font-weight: 300;
             letter-spacing: 0.8px;
             position: relative;
 
             @include respondAt(768px) {
-                font-size: 1.1rem;
-                line-height: 1.6;
+                font-size: 1.2rem;
+                line-height: 1.7;
                 margin-bottom: 1.5rem;
             }
 
             @include respondAt(480px) {
-                font-size: 0.95rem;
-                line-height: 1.5;
+                font-size: 1rem;
+                line-height: 1.6;
                 margin-bottom: 1rem;
             }
+        }
+
+        &--cta {
+            position: relative;
+            z-index: 2;
+            margin-top: 1rem;
         }
 
         &--scroll {
@@ -203,13 +255,34 @@ $page-shadow: rgba(0, 0, 0, 0.08);
             transform: translateX(-50%);
             z-index: 2;
             animation: bounce 2s infinite;
-            font-size: 1.5rem;
-            color: rgba($page-white, 0.7);
 
             @include respondAt(768px) {
-                bottom: 1rem;
-                font-size: 1.2rem;
+                bottom: 3rem;
             }
+
+            @include respondAt(480px) {
+                bottom: 2.5rem;
+            }
+        }
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(20px);
+        }
+    }
+
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateX(-50%) translateY(0);
+            opacity: 0.5;
+        }
+        50% {
+            transform: translateX(-50%) translateY(10px);
+            opacity: 1;
         }
     }
 

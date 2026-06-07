@@ -10,6 +10,16 @@ function ConfDetails() {
 
     const details = [
         {
+            title: "Simplexity",
+            desc: "What appears simple from a distance unravels into intricate layers when examined more closely and what seems overwhelmingly complex can reveal an elegant logic with just a slight change in view. Simple and complex are not rigid boundaries; they are perspectives, shifting with depth, distance, and context. For the 2025 conference, TEDxShivNadarUniversity brought together a constellation of voices to explore this overlooked middle ground, the spectrum between order and chaos. Welcome to Simplexity: where opposites meet continuity.",
+            year: "2025",
+            url: "insert yt link",
+            speakers: [],
+            images: [
+                { url: '/Images/simplexity.jpeg' }
+            ]
+        },
+        {
             title: "Through The Looking Glass",
             // TODO: Update the description and year and the image paths
             desc: "Even when gazing into the same reflection, stepping Through the Looking Glass reveals entirely new dimensions - urging us to invert our senses, question our minds, and bring what's dark into the light. For the 2024 conference, TEDxShivNadarUniversity brought together 9 speakers and 2 performers, each inviting the audience to confront the unknown, rediscover themselves, and see the world anew.",

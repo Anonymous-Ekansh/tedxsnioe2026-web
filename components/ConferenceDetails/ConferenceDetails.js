@@ -13,8 +13,60 @@ function ConfDetails() {
             title: "Simplexity",
             desc: "What appears simple from a distance unravels into intricate layers when examined more closely and what seems overwhelmingly complex can reveal an elegant logic with just a slight change in view. Simple and complex are not rigid boundaries; they are perspectives, shifting with depth, distance, and context. For the 2025 conference, TEDxShivNadarUniversity brought together a constellation of voices to explore this overlooked middle ground, the spectrum between order and chaos. Welcome to Simplexity: where opposites meet continuity.",
             year: "2025",
-            url: "insert yt link",
-            speakers: [],
+            url: "#",
+            speakers: [
+                {
+                    name: 'Dr. Rupamanjari Ghosh',
+                    profession: "Professor of Quantum Mechanics",
+                    image: '/Images/CurrentSpeakers/sumitra.png',
+                },
+                {
+                    name: 'Tanmaya jain',
+                    profession: "CEO of InFeedo AI",
+                    image: '/Images/CurrentSpeakers/tanmaya_jain.jpeg',
+                },
+                {
+                    name: 'Prayag Shukla',
+                    profession: 'Poet, Author, Art Curator',
+                    image: '/Images/CurrentSpeakers/prayag.png',
+                },
+                {
+                    name: 'Anirban Bhattacharya',
+                    profession: 'Creator of Savdhaan India, Author',
+                    image: '/Images/CurrentSpeakers/anirban.png',
+                },
+                {
+                    name: 'Dr. Saumitra Rawat',
+                    profession: "Chairman of Surgical Gastroenterology, Sir Ganga Ram Hospital",
+                    image: '/Images/CurrentSpeakers/saumitra.png',
+                },
+                {
+                    name: 'Chef Vanika Choudhary',
+                    profession: "Chef and Entrepreneur",
+                    image: '/Images/CurrentSpeakers/vanika.jpg',
+                },
+                {
+                    name: 'Madhav Raman',
+                    profession: "Founder of Anagram Architects",
+                    image: '/Images/CurrentSpeakers/madhav_raman.png',
+                },
+                {
+                    name: 'Arshad Ali',
+                    profession: "Classical Vocalist",
+                    image: '/Images/CurrentSpeakers/singer1.jpg',
+                },
+                {
+                    name: 'Kamal Kalra',
+                    profession: "Choreographer and Performer",
+                    image: '/Images/CurrentSpeakers/singer2.jpg',
+                },
+                {
+                    name: 'Bhangra Queens',
+                    profession: "All-Women Bhangra Troupe",
+                    image: '/Images/CurrentSpeakers/bhangra_queens_tedx.jpeg',
+                    objectPosition: 'bottom',
+                }
+            ],
             images: [
                 { url: '/Images/simplexity.jpeg' }
             ]

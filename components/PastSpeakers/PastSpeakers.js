@@ -7,7 +7,7 @@ export default function PastSpeakers() {
     const currentSpeakers = [
         {
             name: 'Maniesh Paul',
-            image: '/Images/2019_speakers/manish.png',
+            image: '/Images/maniesh.jpeg',
         },
         {
             name: 'Kapil Dev',

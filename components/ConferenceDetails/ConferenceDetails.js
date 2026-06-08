@@ -64,7 +64,7 @@ function ConfDetails() {
                     name: 'Bhangra Queens',
                     profession: "All-Women Bhangra Troupe",
                     image: '/Images/CurrentSpeakers/bhangra_queens_tedx.jpeg',
-                    objectPosition: 'center 20%',
+                    objectPosition: 'center 30%',
                 }
             ],
             images: [

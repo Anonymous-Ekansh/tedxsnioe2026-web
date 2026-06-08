@@ -25,6 +25,10 @@ function Speakers({ speakers }) {
                                     alt={`${item.name} - ${item.profession}`}
                                     width={300}
                                     height={300} 
+                                    style={{
+                                        ...(item.objectPosition && { objectPosition: item.objectPosition }),
+                                        ...(item.objectFit && { objectFit: item.objectFit })
+                                    }}
                                 />
                                 <div className='Speakers__content--card__details'>
                                     <p className='Speakers__content--card__details__name'>{item.name}</p>

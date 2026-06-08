@@ -68,7 +68,7 @@ function ConfDetails() {
                 }
             ],
             images: [
-                { url: '/Images/2025/2025_1.jpg' }
+                { url: '/Images/simplexity.jpeg' }
             ]
         },
         {

@@ -55,14 +55,17 @@
         border-bottom-left-radius: 0.7rem;
         border-bottom-right-radius: 0.7rem;
         width: 20rem;
+        height: 8.5rem;
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 0.7rem 0 0.7rem 0;
+        padding: 0.7rem 0.5rem;
         @include respondAt(915px)
         {
           width: 15rem;
+          height: 6.5rem;
         }
         &__name {
           color: #fff;

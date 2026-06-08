@@ -64,11 +64,11 @@ function ConfDetails() {
                     name: 'Bhangra Queens',
                     profession: "All-Women Bhangra Troupe",
                     image: '/Images/CurrentSpeakers/bhangra_queens_tedx.jpeg',
-                    objectPosition: 'bottom',
+                    objectPosition: 'center 20%',
                 }
             ],
             images: [
-                { url: '/Images/simplexity.jpeg' }
+                { url: '/Images/2025/2025_1.jpg' }
             ]
         },
         {

@@ -192,8 +192,8 @@ function Navbar({ isSmall = false }) {
                 <div className="NavbarContainer__topRightLogo">
                     <Link href="/" aria-label="Go to Home Page">
                         <Image
-                            src='/Images/sSmall.png'
-                            alt="sSmall Logo"
+                            src='/Images/Assets/mosaic-logo.svg'
+                            alt="Mosaic Logo"
                             width={isSmall ? 20 : 40}
                             height={isSmall ? 20 : 40}
                             priority

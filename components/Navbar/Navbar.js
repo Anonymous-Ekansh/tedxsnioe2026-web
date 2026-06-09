@@ -166,16 +166,6 @@ function Navbar({ isSmall = false }) {
                                 <Link style={{ color: "white" }} href="/contact">Contact Us</Link>
                             </p>
                         </li>
-                        <li
-                            className={`${pathName === "/team"
-                                ? "NavbarContainer__Menu--list-activeItem"
-                                : "NavbarContainer__Menu--list-item"
-                                }`}
-                        >
-                            <p style={{ color: "white" }}>
-                                <Link style={{ color: "white" }} href="/team">Meet The Team</Link>
-                            </p>
-                        </li>
 
                         <li
                             className={`${pathName === "/register"

@@ -77,19 +77,6 @@ function fragVariant(i) {
     };
 }
 
-const buttonFadeUp = {
-    hidden: { opacity: 0, y: 18 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            delay: 1.9,
-            duration: 1,
-            ease: [0.2, 0.7, 0.2, 1]
-        }
-    }
-};
-
 export default function LandingSection() {
     const prefersReducedMotion = useReducedMotion();
     const [assembled, setAssembled] = useState(false);
@@ -109,12 +96,69 @@ export default function LandingSection() {
         document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
     };
 
+    const renderFragment = (frag, i) => {
+        const v = prefersReducedMotion
+            ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
+            : fragVariant(i);
+
+        if (frag.tag === 'polygon') {
+            return (
+                <motion.polygon
+                    key={i}
+                    className="frag"
+                    points={frag.points}
+                    fill={frag.fill}
+                    variants={v}
+                    custom={i}
+                />
+            );
+        } else if (frag.tag === 'polyline') {
+            return (
+                <motion.polyline
+                    key={i}
+                    className="frag"
+                    points={frag.points}
+                    fill={frag.fill}
+                    variants={v}
+                    custom={i}
+                />
+            );
+        }
+        return (
+            <motion.path
+                key={i}
+                className="frag"
+                d={frag.d}
+                fill={frag.fill}
+                variants={v}
+                custom={i}
+            />
+        );
+    };
+
+    const LogoSVG = () => (
+        <motion.svg
+            viewBox="285 95 270 305"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            preserveAspectRatio="xMidYMid meet"
+            variants={containerVariants}
+            initial={prefersReducedMotion ? 'visible' : 'hidden'}
+            animate="visible"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+        >
+            <g>
+                {logoFragments.map((frag, i) => renderFragment(frag, i))}
+            </g>
+        </motion.svg>
+    );
+
     return (
         <section className="hero">
             <div className="hero-bg" />
             <div className="hero-grain" />
 
-            {/* Mosaic mark: exactly one instance, absolutely positioned on the right */}
+            {/* Mosaic mark: absolutely positioned on the right */}
             <div className="mosaic-art">
                 <motion.div
                     animate={
@@ -129,59 +173,7 @@ export default function LandingSection() {
                     }
                     style={{ width: '100%', height: '100%' }}
                 >
-                    <motion.svg
-                        viewBox="285 95 270 305"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        preserveAspectRatio="xMidYMid meet"
-                        variants={containerVariants}
-                        initial={prefersReducedMotion ? 'visible' : 'hidden'}
-                        animate="visible"
-                        style={{ width: '100%', height: 'auto', display: 'block' }}
-                    >
-                        <g>
-                            {logoFragments.map((frag, i) => {
-                                const v = prefersReducedMotion
-                                    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
-                                    : fragVariant(i);
-
-                                if (frag.tag === 'polygon') {
-                                    return (
-                                        <motion.polygon
-                                            key={i}
-                                            className="frag"
-                                            points={frag.points}
-                                            fill={frag.fill}
-                                            variants={v}
-                                            custom={i}
-                                        />
-                                    );
-                                } else if (frag.tag === 'polyline') {
-                                    return (
-                                        <motion.polyline
-                                            key={i}
-                                            className="frag"
-                                            points={frag.points}
-                                            fill={frag.fill}
-                                            variants={v}
-                                            custom={i}
-                                        />
-                                    );
-                                }
-
-                                return (
-                                    <motion.path
-                                        key={i}
-                                        className="frag"
-                                        d={frag.d}
-                                        fill={frag.fill}
-                                        variants={v}
-                                        custom={i}
-                                    />
-                                );
-                            })}
-                        </g>
-                    </motion.svg>
+                    <LogoSVG />
                 </motion.div>
             </div>
 
@@ -194,69 +186,17 @@ export default function LandingSection() {
                 <div className="hero-top-right">Shiv Nadar Institute of Eminence</div>
             </div>
 
-            {/* Main content - Left side aligned */}
+            {/* Main content */}
             <div className="hero-main">
-                <div className="hero-glow" aria-hidden="true"></div>
+                <div className="hero-glow" aria-hidden="true" />
 
-                {/* Mobile-only logo (same animation as desktop right-side logo) */}
+                {/* Mobile-only logo */}
                 <motion.div
                     className="mobile-logo-wrapper"
                     animate={{ y: [0, -7, 0] }}
                     transition={{ repeat: Infinity, repeatType: 'loop', duration: 9, delay: 2.4, ease: 'easeInOut' }}
                 >
-                    <motion.svg
-                        viewBox="285 95 270 305"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                        preserveAspectRatio="xMidYMid meet"
-                        variants={containerVariants}
-                        initial={prefersReducedMotion ? 'visible' : 'hidden'}
-                        animate="visible"
-                        style={{ width: '100%', height: 'auto', display: 'block' }}
-                    >
-                        <g>
-                            {logoFragments.map((frag, i) => {
-                                const v = prefersReducedMotion
-                                    ? { hidden: { opacity: 1 }, visible: { opacity: 1 } }
-                                    : fragVariant(i);
-
-                                if (frag.tag === 'polygon') {
-                                    return (
-                                        <motion.polygon
-                                            key={i}
-                                            className="frag"
-                                            points={frag.points}
-                                            fill={frag.fill}
-                                            variants={v}
-                                            custom={i}
-                                        />
-                                    );
-                                } else if (frag.tag === 'polyline') {
-                                    return (
-                                        <motion.polyline
-                                            key={i}
-                                            className="frag"
-                                            points={frag.points}
-                                            fill={frag.fill}
-                                            variants={v}
-                                            custom={i}
-                                        />
-                                    );
-                                }
-
-                                return (
-                                    <motion.path
-                                        key={i}
-                                        className="frag"
-                                        d={frag.d}
-                                        fill={frag.fill}
-                                        variants={v}
-                                        custom={i}
-                                    />
-                                );
-                            })}
-                        </g>
-                    </motion.svg>
+                    <LogoSVG />
                 </motion.div>
 
                 <img
@@ -270,25 +210,19 @@ export default function LandingSection() {
                 </p>
             </div>
 
-            {/* Bottom info strip */}
+            {/* Bottom strip */}
             <div className="hero-bottom">
-                <div className="hero-details">
-                    <div className="detail-block">
-                        <div className="label">Date</div>
-                        <div className="value">To Be Announced</div>
-                        <div className="sub">Save the moment</div>
-                    </div>
-                    <div className="detail-block">
-                        <div className="label">Time</div>
-                        <div className="value">To Be Announced</div>
-                        <div className="sub">Full-day program</div>
-                    </div>
-                    <div className="detail-block">
-                        <div className="label">Venue</div>
-                        <div className="value">Shiv Nadar IoE</div>
-                        <div className="sub">Delhi NCR</div>
+                {/* Coming soon block */}
+                <div className="coming-soon-block">
+                    <span className="cs-mask"><span className="cs-coming">Coming</span></span>
+                    <span className="cs-mask"><span className="cs-soon">soon.</span></span>
+                    <span className="cs-underline" aria-hidden="true" />
+                    <div className="cs-dot-wrap">
+                        <div className="cs-dot" aria-hidden="true" />
+                        <span className="cs-dot-label">Stay tuned</span>
                     </div>
                 </div>
+
                 <div className="hero-actions">
                     <button className="btn-secondary" onClick={handleExploreClick}>
                         EXPLORE THEME &rarr;

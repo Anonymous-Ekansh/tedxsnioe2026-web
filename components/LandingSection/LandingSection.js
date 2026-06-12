@@ -181,9 +181,9 @@ export default function LandingSection() {
             <div className="hero-top">
                 <div className="meta-line">
                     <span className="dot" />
-                    <span>TEDx Conference 2026</span>
+                    <span>TEDx Conference 2026 </span>
                 </div>
-                <div className="hero-top-right">Shiv Nadar Institute of Eminence</div>
+                <div className="hero-top-right">SHIV NADAR UNIVERSITY</div>
             </div>
 
             {/* Main content */}

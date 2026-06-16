@@ -1,68 +1,66 @@
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useMotionVariants } from '../shared/motionVariants';
+import MosaicGame from '../shared/MosaicGame';
 import './AboutUs.scss';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
 
 function AboutUs() {
-  const [isSmall, setIsSmall] = useState(false);
+  const mv = useMotionVariants();
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmall(window.innerWidth <= 768);
-    };
-
-    handleResize(); // Initial check
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []); // Empty dependency array as we only want to set up the listener once
-  const images = [
-    { url: "/Images/Assets/792A2473.JPG" },
-    { url: "/Images/Assets/IMG_0743.JPG" },
-    { url: "/Images/Assets/DSC_0128.jpg" },
-    { url: "/Images/Assets/DSC_0210.jpg" },
-    { url: "/Images/Assets/IMG_0930.JPG" },
-    { url: "/Images/Assets/IMG_0879.JPG" },
-    { url: "/Images/Assets/792A2544.JPG" },
-  ];
   return (
-    <div className='AboutUs'>
-      <div className='AboutUs__heading'>
-        ABOUT US
-      </div>
-      <div className='AboutUs__content'>
-        <div className='AboutUs__content--text'>
-          <p>
-            Join us at TEDxShivNadarUniversity as we explore Mosaic — a celebration of the ideas, experiences, people, and moments that shape who we are.
-          </p>
-          <p>
-            Like the pieces of a mosaic, the journeys that define us are built from countless experiences. Individually, these pieces may seem unrelated, but together they create something far greater than the sum of their parts.
-          </p>
-          <p>
-            Through inspiring talks and meaningful conversations, we bring together thinkers, creators, innovators, and changemakers from diverse fields, each sharing a unique part of their story and the lessons they&apos;ve learned along the way.
-          </p>
-          <p>
-            At TEDxShivNadarUniversity, we believe that Ideas Change Everything. Mosaic is an invitation to discover connections, celebrate individuality, and explore how different pieces can come together to create something meaningful. Because every piece has a place, and every story contributes to a larger picture.
-          </p>
-        </div>
-        <div className='AboutUs__content--carousel'>
-          <Carousel>
-            {images.map((item, index) => (
-              <div key={index}>
-                <Image
-                  src={item.url}
-                  alt={`TEDx event image ${index + 1}`}
-                  width={800}
-                  height={600}
-                  className="AboutUs__content--carousel__image"
-                />
-              </div>
-            ))}
-          </Carousel>
+    <div className="AboutUs" id="about-content">
+      <div className="AboutUs__inner">
+        {/* Mobile: mosaic above text */}
+        <motion.div
+          className="AboutUs__mosaic AboutUs__mosaic--mobile"
+          variants={mv.fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <MosaicGame />
+        </motion.div>
+
+        {/* Text column — 55% */}
+        <motion.div
+          className="AboutUs__text"
+          variants={mv.staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+        >
+          <motion.span className="AboutUs__eyebrow" variants={mv.fadeUp}>
+            THE MOSAIC IDEA
+          </motion.span>
+
+          <motion.h2 className="AboutUs__heading" variants={mv.fadeUp}>
+            Every piece has a place.
+          </motion.h2>
+
+          <motion.p className="AboutUs__body" variants={mv.fadeUp}>
+            A mosaic only reveals its image when every fragment finds its position. That is what
+            Mosaic is about — the recognition that ideas, people, and moments gain meaning not in
+            isolation, but through connection. Each piece carries its own color and shape; together,
+            they compose something none could form alone.
+          </motion.p>
+
+          <motion.p className="AboutUs__body" variants={mv.fadeUp}>
+            TEDxShivNadarUniversity brings those fragments into one room. Speakers from vastly
+            different worlds share the insights that shaped their thinking, and the audience
+            discovers how those perspectives interlock. One day of talks becomes a living mosaic —
+            assembled in real time, unrepeatable, and bigger than the sum of its parts.
+          </motion.p>
+
+          <motion.div className="AboutUs__divider" variants={mv.fadeIn} />
+        </motion.div>
+
+        {/* Mosaic column — 45% (desktop only) */}
+        <div className="AboutUs__mosaic AboutUs__mosaic--desktop">
+          <MosaicGame />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default AboutUs;

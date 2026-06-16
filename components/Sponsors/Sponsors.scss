@@ -1,167 +1,135 @@
-.Sponsors {
-  display: grid;
-  place-items: center;
-  align-content: center;
-  &__our {
-    &--heading {
-      color: white;
-      font-family: "Bebas Neue", serif;
-      font-size: 4rem;
-      font-style: normal;
-      font-weight: 400;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
+.SponsorsRedesign {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+
+  /* ─── Header ─────────────────────────────────────────── */
+  &__header {
+    margin-bottom: 64px;
+
+    @media (max-width: 780px) {
       text-align: center;
-      @include respondAt(767px) {
-        font-size: 4rem;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(48px, 6vw, 72px);
+    color: #fff;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  &__subline {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--mint);
+    margin: 8px 0 0;
+  }
+
+  /* ─── Logo field — staggered flex ────────────────────── */
+  &__logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px 56px;
+
+    @media (max-width: 780px) {
+      gap: 24px 20px;
+    }
+  }
+
+  &__logo-item {
+    flex: 0 0 auto;
+    transition: transform 0.3s ease;
+
+    /* Stagger offset on desktop */
+    &--offset {
+      transform: translateY(16px);
+
+      @media (max-width: 780px) {
+        transform: none; /* Remove stagger on mobile */
       }
     }
-    &--cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      &__image {
-        margin-right: 2rem;
-        margin-left: 2rem;
-        margin-bottom: 1.5rem;
-        width: 200px;
-        height: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: white;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        
-        // ctr img within container
-        > div {
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-        }
-        
-        img {
-          object-fit: contain !important;
-          object-position: center !important;
-          width: 100% !important;
-          height: 100% !important;
-          position: relative !important;
-        }
-        
-        &:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-        }
-        
-        @include respondAt(767px) {
-          margin-right: 1.5rem;
-          margin-left: 1.5rem;
-          margin-bottom: 1rem;
-          width: 150px;
-          height: 90px;
-        }
-        
-        @include respondAt(480px) {
-          width: 120px;
-          height: 72px;
+
+    &:hover {
+      transform: scale(1.05);
+
+      &.SponsorsRedesign__logo-item--offset {
+        transform: translateY(16px) scale(1.05);
+
+        @media (max-width: 780px) {
+          transform: scale(1.05);
         }
       }
     }
   }
-  &__past {
-    &--heading {
-      color: white;
-      font-family: "Bebas Neue", serif;
-      font-size: 4rem;
-      font-style: normal;
-      font-weight: 400;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
+
+  &__logo-image {
+    position: relative;
+    width: 160px;
+    height: 96px;
+    transition: filter 0.3s ease, transform 0.3s ease;
+
+    img {
+      object-fit: contain !important;
+      object-position: center !important;
+    }
+
+    @media (max-width: 780px) {
+      width: 100px;
+      height: 64px;
+    }
+
+    @media (max-width: 480px) {
+      width: 80px;
+      height: 52px;
+    }
+  }
+
+  /* ─── Footer: separator + View All ───────────────────── */
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 64px;
+    gap: 32px;
+  }
+
+  &__separator {
+    width: 80px;
+    height: 1px;
+    background: rgba(169, 172, 214, 0.3);
+  }
+
+  &__view-all {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--lavender);
+    text-decoration: none;
+    border: 1px solid var(--lavender);
+    border-radius: 24px;
+    padding: 10px 32px;
+    letter-spacing: 0.04em;
+    transition: background 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background: rgba(169, 172, 214, 0.12);
+      color: #fff;
+    }
+
+    @media (max-width: 780px) {
+      width: 100%;
+      max-width: 320px;
       text-align: center;
-      @include respondAt(767px) {
-        font-size: 4rem;
-      }
-    }
-    &--button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 1rem;
-      &__content {
-        border-radius: 1.1875rem;
-        border: 2px solid #c7751e;
-        background: #212223;
-        width: 9rem;
-        padding: 0.5625rem 1.1875rem;
-        color: #fff;
-        text-align: center;
-        font-family: "Outfit", sans-serif;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        margin-right: 2rem;
-        cursor: pointer;
-        @include respondAt(915px) {
-          width: 10rem;
-          margin-right: 0;
-          margin-bottom: 1rem;
-        }
-      }
-    }
-    &--cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      &__image {
-        margin-right: 2rem;
-        margin-left: 2rem;
-        margin-bottom: 1.5rem;
-        width: 200px;
-        height: 120px;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: white;
-        border-radius: 0.5rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        overflow: hidden;
-        
-        // ctr img within container
-        > div {
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-        }
-        
-        img {
-          object-fit: contain !important;
-          object-position: center !important;
-          width: 100% !important;
-          height: 100% !important;
-          position: relative !important;
-        }
-        
-        &:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-        }
-        
-        @include respondAt(767px) {
-          margin-right: 1.5rem;
-          margin-left: 1.5rem;
-          margin-bottom: 1rem;
-          width: 150px;
-          height: 90px;
-        }
-        
-        @include respondAt(480px) {
-          width: 120px;
-          height: 72px;
-        }
-      }
+      padding: 14px 32px;
     }
   }
 }

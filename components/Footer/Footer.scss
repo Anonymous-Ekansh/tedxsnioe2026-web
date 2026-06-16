@@ -1,168 +1,182 @@
-.Footer {
-  // padding: 7rem 7rem 0 7rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  // height: 100vh;
-  &__header {
-    padding-left: 7rem;
-    padding-top: 7rem;
-    @include respondAt(915px) {
-      padding-left: 2rem;
-      padding-right: 2rem;
-      padding-top: 3rem;
+.FooterNew {
+  width: 100%;
+  max-width: 100vw;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  color: #fff;
+
+  /* ─── Hairline rules ─────────────────────────────────── */
+  &__hairline {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  /* ─── Three-column layout ────────────────────────────── */
+  &__columns {
+    max-width: var(--max-content);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--col-gap);
+    padding: 72px 0;
+
+    @media (max-width: 780px) {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      padding: 48px 0;
       text-align: center;
     }
-    &--text {
-      color: black;
-      font-family: "Bebas Neue", serif;
-      font-size: 4rem;
-      font-style: normal;
-      font-weight: 400;
-      margin-top: 0;
-      margin-bottom: 0;
-      @include respondAt(915px) {
-        font-size: 3rem;
-      }
-    }
-    &--desc {
-      color: black;
-      font-family: "Outfit", sans-serif;
-      font-size: 3rem;
-      font-style: normal;
-      font-weight: 400;
-      margin-top: 0;
-      margin-bottom: 1rem;
-      @include respondAt(915px) {
-        font-size: 2rem;
-      }
-    }
-    &--buttons {
-      display: flex;
-      @include respondAt(915px) {
-        flex-direction: column;
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+
+    &--left {
+      gap: 16px;
+
+      @media (max-width: 780px) {
+        order: 2;
         align-items: center;
       }
-      &__register {
-        border-radius: 1.1875rem;
-        border: 2px solid #c7751e;
-        background: #212223;
-        width: 9rem;
-        padding: 0.5625rem 1.1875rem;
-        color: white;
-        text-align: center;
-        font-family: "Outfit", sans-serif;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        margin-right: 2rem;
-        cursor: pointer;
-        @include respondAt(915px) {
-          width: 10rem;
-          margin-right: 0;
-          margin-bottom: 1rem;
-        }
+    }
+
+    &--center {
+      align-items: center;
+      gap: 24px;
+
+      @media (max-width: 780px) {
+        order: 1;
       }
-      &__contact {
-        border-radius: 1.1875rem;
-        border: 2px solid #c7751e;
-        background: #212223;
-        width: 10rem;
-        padding: 0.5625rem 1.1875rem;
-        color: white;
-        text-align: center;
-        font-family: "Outfit", sans-serif;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        cursor: pointer;
+    }
+
+    &--right {
+      align-items: flex-end;
+      gap: 12px;
+
+      @media (max-width: 780px) {
+        order: 3;
+        align-items: center;
       }
     }
   }
-  &__below {
-    padding-bottom: 2rem;
+
+  /* ─── Left: Brand ────────────────────────────────────── */
+  &__brand {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 18px;
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+  }
+
+  &__brand-tedx {
+    color: red;
+    font-weight: 500;
+  }
+
+  &__brand-name {
+    color: #fff;
+  }
+
+  &__tagline {
+    font-family: var(--font-body-light);
+    font-weight: 300;
+    font-size: 14px;
+    color: var(--lavender);
+    font-style: italic;
+    margin: 0;
+    opacity: 0.85;
+  }
+
+  /* ─── Left: Social ───────────────────────────────────── */
+  &__social {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  &__social-link {
+    color: rgba(255, 255, 255, 0.55);
+    transition: color 0.2s ease;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: rgba(255, 255, 255, 1);
+    }
+  }
+
+  /* ─── Center: Nav ────────────────────────────────────── */
+  &__nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    @include respondAt(915px) {
-      align-items: center;
+    gap: 12px;
+  }
+
+  &__nav-link {
+    font-family: var(--font-body-light);
+    font-weight: 300;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    padding: 4px 0;
+
+    &:hover {
+      color: rgba(255, 255, 255, 1);
+      transform: translateX(4px);
     }
-    &--sections {
-      margin-left: 7rem;
+
+    @media (max-width: 780px) {
+      padding: 12px 0;
+      min-height: 48px;
       display: flex;
       align-items: center;
-      margin-bottom: 2rem;
-      @include respondAt(915px) {
-        flex-direction: column;
-        margin-left: 0;
-        align-items: center;
-        margin-bottom: 0rem;
-      }
-      &__item {
-        color: black;
-        font-family: "Outfit", sans-serif;
-        font-size: 1.3rem;
-        font-style: normal;
-        font-weight: 600;
-        margin-left: 1.5rem;
-        margin-right: 1.5rem;
-        cursor: pointer;
-        @include respondAt(915px) {
-          font-size: 1.6rem;
-          margin-bottom: 1rem;
-          margin-top: 1rem;
-        }
-      }
-      &__divider {
-        width: 0.5rem;
-        margin-left: 1.5rem;
-        margin-right: 1.5rem;
-        @include respondAt(915px) {
-          display: none;
-        }
-      }
-      &__logo {
-        width: 12rem;
-        align-content: center;
-        cursor: pointer;
-        @include respondAt(915px) {
-          display: none;
-        }
-      }
     }
-    &--logo {
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      @include respondAt(915px) {
-        margin-left: 0;
-        justify-content: center;
-      }
-      
-      img {
-        cursor: pointer;
-        transition: transform 0.3s ease;
-        
-        &:hover {
-          transform: scale(1.05);
-        }
-      }
+  }
+
+  /* ─── Right: Event context ───────────────────────────── */
+  &__event-label {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--lavender);
+  }
+
+  &__event-tagline {
+    font-family: var(--font-body-light);
+    font-weight: 300;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+    line-height: 1.6;
+    text-align: right;
+
+    @media (max-width: 780px) {
+      text-align: center;
     }
-    &--social {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-            
-      @include respondAt(915px) {
-        margin-left: 0;
-        justify-content: center;
-      }
-      img {
-        width: 2rem;
-        cursor: pointer;
-      }
+  }
+
+  /* ─── Copyright strip ────────────────────────────────── */
+  &__copyright {
+    max-width: var(--max-content);
+    margin: 0 auto;
+    padding: 24px 0;
+    text-align: center;
+
+    p {
+      font-family: var(--font-body-light);
+      font-weight: 300;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.3);
+      margin: 0;
     }
   }
 }

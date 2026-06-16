@@ -1,77 +1,100 @@
 import Link from 'next/link';
-import './Sponsors.scss'
+import './Sponsors.scss';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useMotionVariants } from '../shared/motionVariants';
 
 export default function Sponsors() {
-    const ourSponsors = [
-        { url: "/Images/Assets/dummy.png" },
-        { url: "/Images/Assets/dummy.png" },
-        { url: "/Images/Assets/dummy.png" },
-        { url: "/Images/Assets/dummy.png" },
-        { url: "/Images/Assets/dummy.png" },
-        { url: "/Images/Assets/dummy.png" },
-        { url: "/Images/Assets/dummy.png" },
-    ];
+    const mv = useMotionVariants();
+
     const pastSponsors = [
-        { url: "/Images/Sponsors/s1.png" },
-        { url: "/Images/Sponsors/s2.png" },
-        { url: "/Images/Sponsors/s3.png" },
-        { url: "/Images/Sponsors/s4.png" },
-        { url: "/Images/Sponsors/s5.png" },
-        { url: "/Images/Sponsors/s6.png" },
-        { url: "/Images/Sponsors/s7.png" },
-        { url: "/Images/Sponsors/s8.png" },
-        { url: "/Images/Sponsors/s9.png" },
-        { url: "/Images/Sponsors/s10.png" },
-    ]
+        { url: "/Images/Sponsors/s1.png", name: "Cornitos" },
+        { url: "/Images/Sponsors/s2.png", name: "Brew House" },
+        { url: "/Images/Sponsors/s3.png", name: "Popman" },
+        { url: "/Images/Sponsors/s4.png", name: "Oddity" },
+        { url: "/Images/Sponsors/s5.png", name: "Shunya" },
+        { url: "/Images/Sponsors/s6.png", name: "Pepsi" },
+        { url: "/Images/Sponsors/s7.png", name: "Peppy" },
+        { url: "/Images/Sponsors/s8.png", name: "Arthi Dances" },
+        { url: "/Images/Sponsors/s9.png", name: "ED Times" },
+        { url: "/Images/Sponsors/s10.png", name: "Social Rush" },
+    ];
+
     return (
-        <div className='Sponsors'>
-            {/* <div className='Sponsors__our'>
-                <p className='Sponsors__our--heading'>OUR SPONSORS</p>
-                <div className='Sponsors__our--cards'>
-                    {ourSponsors.map((item, index) => {
-                        return (
-                            <div className='Sponsors__our--cards__image' key={index}>
-                                <img src={item.url} />
-                            </div>
-                        )
-                    })}
-                </div>
-            </div> */}
-            <div className='Sponsors__past'>
-                <p className='Sponsors__past--heading'>PAST SPONSORS</p>
-                <div className='Sponsors__past--cards'>
-                    {pastSponsors.map((item, index) => {
-                        return (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                transition={{ duration: .7 }}
-                                key={index}
-                            >
-                                <div className='Sponsors__past--cards__image'>
-                                    <Image
-                                        src={item.url}
-                                        alt={`Sponsor ${index + 1}`}
-                                        fill
-                                        quality={95}
-                                        priority={index < 6}
-                                        style={{
-                                            objectFit: 'contain',
-                                            objectPosition: 'center',
-                                            padding: '0.5rem'
-                                        }}
-                                    />
-                                </div>
-                            </motion.div>
-                        )
-                    })}
-                </div>
-                <div className='Sponsors__past--button'>
-                    <Link href='/sponsors'><p className='Sponsors__past--button__content'>View All</p></Link>
-                </div>
-            </div>
+        <div className="SponsorsRedesign">
+            {/* Heading */}
+            <motion.div
+                className="SponsorsRedesign__header"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-60px' }}
+                variants={{
+                    hidden: {},
+                    visible: { transition: { staggerChildren: 0.15 } },
+                }}
+            >
+                <motion.h2 className="SponsorsRedesign__title" variants={mv.fadeUp}>
+                    BUILT WITH
+                </motion.h2>
+                <motion.p className="SponsorsRedesign__subline" variants={mv.fadeUp}>
+                    our partners
+                </motion.p>
+            </motion.div>
+
+            {/* Logo field — staggered flex */}
+            <motion.div
+                className="SponsorsRedesign__logos"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-40px' }}
+                variants={{
+                    hidden: {},
+                    visible: { transition: { staggerChildren: 0.08 } },
+                }}
+            >
+                {pastSponsors.map((item, index) => (
+                    <motion.div
+                        className={`SponsorsRedesign__logo-item ${index % 2 !== 0 ? 'SponsorsRedesign__logo-item--offset' : ''}`}
+                        key={index}
+                        variants={mv.shouldAnimate ? {
+                            hidden: { opacity: 0, y: 20 },
+                            visible: {
+                                opacity: 1,
+                                y: 0,
+                                transition: { duration: 0.7, ease: 'easeOut' },
+                            },
+                        } : { hidden: { opacity: 1 }, visible: { opacity: 1 } }}
+                    >
+                        <div className="SponsorsRedesign__logo-image">
+                            <Image
+                                src={item.url}
+                                alt={item.name}
+                                fill
+                                quality={95}
+                                priority={index < 5}
+                                style={{
+                                    objectFit: 'contain',
+                                    objectPosition: 'center',
+                                }}
+                            />
+                        </div>
+                    </motion.div>
+                ))}
+            </motion.div>
+
+            {/* Separator + View All */}
+            <motion.div
+                className="SponsorsRedesign__footer"
+                variants={mv.fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+            >
+                <div className="SponsorsRedesign__separator" />
+                <Link href="/sponsors" className="SponsorsRedesign__view-all">
+                    View All
+                </Link>
+            </motion.div>
         </div>
-    )
+    );
 }

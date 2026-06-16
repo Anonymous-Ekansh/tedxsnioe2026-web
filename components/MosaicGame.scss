@@ -1,0 +1,144 @@
+/* ═══════════════════════════════════════════════════════════════
+   MosaicGame — interactive drag-and-drop fragment puzzle
+   ═══════════════════════════════════════════════════════════════ */
+
+.mosaic-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+
+  /* ─── Wrapper: fluid container that determines field size ── */
+  &__wrapper {
+    width: 100%;
+    max-width: 380px;
+  }
+
+  /* ─── Game field ────────────────────────────────────────── */
+  &__field {
+    position: relative;
+    touch-action: none;     /* prevent scroll during drag */
+    -webkit-touch-callout: none;
+    user-select: none;
+    overflow: visible;
+  }
+
+  /* ─── Ghost target outlines ─────────────────────────────── */
+  &__ghost {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+  }
+
+  /* ─── Draggable fragment ────────────────────────────────── */
+  &__fragment {
+    will-change: transform;
+    cursor: grab;
+    -webkit-tap-highlight-color: transparent;
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    &--snapped {
+      cursor: default;
+      pointer-events: none;   /* can't re-drag after snap */
+
+      &:active {
+        cursor: default;
+      }
+    }
+  }
+
+  /* ─── Completion glow ───────────────────────────────────── */
+  &__glow {
+    position: absolute;
+    inset: -30px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at center,
+      rgba(230, 90, 154, 0.25) 0%,
+      rgba(230, 90, 154, 0.08) 40%,
+      transparent 70%
+    );
+    animation: game-glow 1.6s ease-out forwards;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── Complete state ────────────────────────────────────── */
+  &--complete {
+    .mosaic-game__ghost {
+      opacity: 0;
+    }
+  }
+
+  /* ─── Bottom label ──────────────────────────────────────── */
+  &__label {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-top: 8px;
+
+    &--done {
+      .mosaic-game__label-title {
+        color: var(--pink);
+        letter-spacing: 0.06em;
+        font-size: 16px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  &__label-cursor {
+    color: var(--lavender);
+    opacity: 0.55;
+    animation: cursor-bob 2s ease-in-out infinite;
+    margin-bottom: 2px;
+  }
+
+  &__label-title {
+    font-family: var(--font-body-light);
+    font-weight: 300;
+    font-size: 13px;
+    color: var(--lavender);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  &__label-sub {
+    font-family: var(--font-body-light);
+    font-weight: 300;
+    font-size: 12px;
+    color: rgba(169, 172, 214, 0.5);
+    margin: 0;
+    letter-spacing: 0.02em;
+  }
+
+  &__label-scroll-nudge {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 22px;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+  }
+}
+
+/* ─── Keyframes ───────────────────────────────────────────── */
+
+@keyframes game-glow {
+  0%   { opacity: 0; transform: scale(0.75); }
+  40%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.15); }
+}
+
+@keyframes cursor-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}

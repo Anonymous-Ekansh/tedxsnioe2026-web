@@ -1,0 +1,396 @@
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { motion, useMotionValue, animate, useInView, useReducedMotion, useDragControls } from 'framer-motion';
+import './MosaicGame.scss';
+
+/* ═══════════════════════════════════════════════════════════════
+   Base coordinate space matches Butterfly viewBox: 270 × 305
+   ═══════════════════════════════════════════════════════════════ */
+
+const BASE_WIDTH = 270;
+const BASE_HEIGHT = 305;
+const SNAP_BASE = 40;
+const BACK_OUT = [0.34, 1.56, 0.64, 1];
+
+const FRAGMENTS = [
+  {
+    id: 0,
+    initial: { x: -40, y: -40, r: -15 },
+    elements: [
+      { tag: 'path', fill: '#491733', d: 'M407.45,244.94l-67.84-121.52c-8.64-15.48-32.22-9.34-32.22,8.38v127.94c0,2.65,1.43,5.09,3.74,6.4l51.8,29.2c10.62,5.99,24.09,1.6,29.15-9.49l15.63-34.28c.97-2.12.87-4.58-.27-6.62Z' },
+      { tag: 'path', fill: '#a9acd6', d: 'M339.9,123.95l-13.72,29.5-18.79-12.75v-8.89c0-17.73,23.58-23.86,32.22-8.38l.29.52Z' },
+      { tag: 'polygon', fill: '#e65a9a', points: '360.53 160.9 345.75 166.73 329.7 155.84 342.42 128.46 360.53 160.9' },
+      { tag: 'polygon', fill: '#f4c9da', points: '383.72 202.43 362.59 164.58 334.37 175.73 344.49 189.1 383.72 202.43' },
+      { tag: 'polygon', fill: '#e65a9a', points: '341.03 168.59 307.4 181.88 307.4 145.77 341.03 168.59' },
+      { tag: 'polygon', fill: '#e65a9a', points: '340.9 191.31 331.88 226.41 307.4 210.65 307.4 186.38 330.33 177.32 340.9 191.31' },
+      { tag: 'polygon', fill: '#f4c9da', points: '378.72 206.01 341.52 232.62 340.24 231.8 340.23 231.79 340.21 231.78 340.21 231.78 335.59 228.8 344.64 193.62 378.72 206.01' },
+      { tag: 'path', fill: '#f4c9da', d: 'M383.05,208.06l-23.22,16.61,13.26,21.17,30.62-7.6-16.66-29.85-3.03-.55c-.34-.06-.69.02-.97.22Z' },
+      { tag: 'polygon', fill: '#f4c9da', points: '368.07 245.71 365.95 255.08 344.49 235.64 356.42 227.11 368.07 245.71' },
+      { tag: 'path', fill: '#a9acd6', d: 'M365.66,262.16l-21.1,22.81-28.06-15.81,21.65-33.6,26.95,24.41c.12.11.21.26.24.43l.32,1.76Z' },
+      { tag: 'path', fill: '#a9acd6', d: 'M334.69,233.21l-21.85,33.89-3.41-1.93c-1.26-.71-2.03-2.04-2.03-3.49v-46.05s27.29,17.57,27.29,17.57Z' },
+    ]
+  },
+  {
+    id: 1,
+    initial: { x: 40, y: -40, r: 15 },
+    elements: [
+      { tag: 'path', fill: '#491733', d: 'M434.44,244.94l67.67-121.21c8.69-15.56,32.39-9.39,32.39,8.43v127.59c0,2.65-1.43,5.09-3.74,6.4l-51.8,29.19c-10.62,5.99-24.1,1.6-29.16-9.5l-15.63-34.27c-.97-2.12-.87-4.58.27-6.62Z' },
+      { tag: 'path', fill: '#e65a9a', d: 'M534.49,220.68v38.44s0,.75,0,.75c0,1.51-1.79,2.3-2.91,1.29l-30.38-27.28,33.3-13.2Z' },
+      { tag: 'polygon', fill: '#a9acd6', points: '497.49 235.99 449.64 254.96 486.62 274.72 497.49 235.99' },
+      { tag: 'polygon', fill: '#a9acd6', points: '530.37 266.35 486.37 291.16 500.78 239.77 530.37 266.35' },
+      { tag: 'path', fill: '#e65a9a', d: 'M534.49,132.16v46.74s-22.55-20.83-22.55-20.83l21.81-31.12c.48,1.6.74,3.34.74,5.21Z' },
+      { tag: 'path', fill: '#a9acd6', d: 'M531.71,122.57l-22.88,32.64-16.03-14.81,9.3-16.66c6.86-12.29,23.09-11.03,29.61-1.17Z' },
+      { tag: 'polygon', fill: '#f4c9da', points: '505.44 157.77 492.99 168.37 478.6 165.85 490.7 144.16 505.44 157.77' },
+      { tag: 'polygon', fill: '#e65a9a', points: '532.5 182.75 491.21 196.58 495.53 171.71 508.53 160.63 532.5 182.75' },
+      { tag: 'polygon', fill: '#e65a9a', points: '524.36 220.68 507.71 195.47 534.49 186.51 534.49 216.81 524.36 220.68' },
+      { tag: 'polygon', fill: '#f4c9da', points: '520.46 222.37 484.23 236.74 490.4 201.27 503.6 196.85 520.46 222.37' },
+      { tag: 'polygon', fill: '#f4c9da', points: '491.18 172.32 480.31 234.86 457.45 203.74 476.44 169.72 491.18 172.32' },
+      { tag: 'path', fill: '#e65a9a', d: 'M478.24,239.12l-33.44,13.26-10.87-5.81c-.08-.04-.12-.14-.09-.23l.28-.82s.01-.03.02-.04l21.06-37.72,23.04,31.36Z' },
+    ]
+  },
+  {
+    id: 2,
+    initial: { x: 0, y: 15, r: 0 },
+    elements: [
+      { tag: 'path', fill: '#491733', d: 'M428.97,271.92c-2.75-6.15-11.48-6.15-14.23,0l-16.64,37.15c-1.73,3.87-.55,8.42,2.84,10.96l16.14,12.09c2.77,2.07,6.57,2.08,9.35.02l16.3-12.12c3.41-2.53,4.6-7.1,2.87-10.98l-16.63-37.12Z' },
+      { tag: 'path', fill: '#a9acd6', d: 'M444.13,305.77l-21.46,4.33c-.63.13-1.28-.04-1.77-.46l-16.68-14.23,10.52-23.49c2.75-6.15,11.48-6.15,14.23,0l15.16,33.85Z' },
+      { tag: 'path', fill: '#e65a9a', d: 'M420.98,315.21l-6.62,14.87-13.42-10.06c-3.39-2.54-4.57-7.09-2.84-10.95l4.33-9.68,18.54,15.82Z' },
+      { tag: 'path', fill: '#e65a9a', d: 'M442.73,320.02l-16.3,12.12c-2.54,1.88-5.93,2.04-8.61.47l8.44-18.95,19.6-3.96c1.34,3.73.1,7.93-3.12,10.32Z' },
+    ]
+  },
+  {
+    id: 3,
+    initial: { x: -30, y: 50, r: -20 },
+    elements: [
+      { tag: 'path', fill: '#491733', d: 'M367.95,315.14l-51.07-28.43c-4.25-2.37-9.48.71-9.48,5.57v45.96c0,6.07,2.38,11.9,6.63,16.24l25.68,26.19c4.05,4.13,10.97,2.91,13.38-2.34l20.72-45.31c3.01-6.58.45-14.36-5.86-17.87Z' },
+      { tag: 'path', fill: '#a9acd6', d: 'M373.46,298.01c-3.55.06-7.18-.8-10.52-2.68l-14.63-8.25s0,0,0,0l18.48-19.98,6.66,30.91Z' },
+      { tag: 'path', fill: '#a9acd6', d: 'M340.81,300.03l-33.41,21.34v-29.08c0-4.87,5.23-7.94,9.49-5.58l23.92,13.32Z' },
+      { tag: 'polygon', fill: '#f4c9da', points: '334.03 338.82 309.13 325.24 333.97 309.36 348.21 346.56' },
+      { tag: 'polygon', fill: '#e65a9a', points: '368.46 344.73 359.5 364.32 354.54 351.36 368.46 344.73' },
+      { tag: 'path', fill: '#e65a9a', d: 'M357.06,369.67l-3.96,8.66c-2.41,5.25-9.33,6.47-13.38,2.34l-16.47-16.8,12.23-19.48,15.04,8.21,6.54,17.08Z' },
+      { tag: 'path', fill: '#e65a9a', d: 'M331.79,342.38l-11.56,18.42-6.19-6.31c-4.26-4.33-6.64-10.16-6.64-16.24v-9.18s24.4,13.32,24.4,13.32Z' },
+      { tag: 'path', fill: '#a9acd6', d: 'M373.82,333.02l-2.65,5.79-18.13,8.64-15.45-40.39,7.38-4.72,22.99,12.8c6.31,3.52,8.87,11.3,5.86,17.88Z' },
+    ]
+  },
+  {
+    id: 4,
+    initial: { x: 30, y: 50, r: 20 },
+    elements: [
+      { tag: 'path', fill: '#491733', d: 'M522.52,288.1l-46.94,26.13c-7.24,4.03-10.17,12.96-6.72,20.5l18.93,41.39c2.89,6.32,11.23,7.78,16.09,2.82l23.5-23.96c4.56-4.65,7.11-10.9,7.11-17.41v-42.43c0-6.14-6.6-10.02-11.97-7.04Z' },
+      { tag: 'path', fill: '#a9acd6', d: 'M407.72,251.56l-15.63,34.28c-2.84,6.22-8.31,10.33-14.45,11.69l-7.94-36.84c-.23-1.08-.23-2.2.02-3.28l1.31-5.8c.14-.62.62-1.11,1.23-1.26l33.57-8.32,1.62,2.91c1.14,2.03,1.24,4.49.27,6.62Z' },
+      { tag: 'path', fill: '#a9acd6', d: 'M485.47,278.85l-4.27,15.22-2.24,1.26c-10.62,5.99-24.1,1.6-29.15-9.5l-15.71-34.44,51.37,27.45Z' },
+      { tag: 'path', fill: '#a9acd6', d: 'M509.58,328.43l-21.28,14.32-19.61-8.39c-3.2-7.46-.25-16.17,6.88-20.13l12.54-6.98,21.47,21.18Z' },
+      { tag: 'path', fill: '#a9acd6', d: 'M534.49,295.13v16.53s-21.37,14.38-21.37,14.38l-21.19-20.92,30.6-17.03c5.36-2.99,11.97.89,11.97,7.03Z' },
+      { tag: 'path', fill: '#f4c9da', d: 'M534.49,316.71v20.85c0,6.51-2.56,12.76-7.12,17.41l-3.11,3.17-31.37-13.42,41.6-28Z' },
+      { tag: 'path', fill: '#e65a9a', d: 'M521.12,361.34l-17.24,17.59c-4.67,4.76-12.54,3.61-15.72-2.08l14.74-23.3,18.22,7.79Z' },
+      { tag: 'polygon', fill: '#e65a9a', points: '499 351.88 486.06 372.34 471.28 340.02 499 351.88' },
+    ]
+  },
+];
+
+
+
+
+function MosaicFragment({
+  fragment,
+  scale,
+  containerRef,
+  onSnap,
+  shouldAnimate,
+  entryDelay,
+  reducedMotion,
+}) {
+  const ix = fragment.initial.x * scale;
+  const iy = fragment.initial.y * scale;
+  
+  // All fragments target 0,0 since their SVGs are drawn in the exact 285 95 270 305 space
+  const tx = 0;
+  const ty = 0;
+
+  const [snapped, setSnapped]     = useState(reducedMotion);
+  const [entered, setEntered]     = useState(reducedMotion);
+  const [dragging, setDragging]   = useState(false);
+
+  const mx       = useMotionValue(reducedMotion ? tx : ix);
+  const my       = useMotionValue(reducedMotion ? ty : iy);
+  const mRotate  = useMotionValue(reducedMotion ? 0 : fragment.initial.r);
+  const mScale   = useMotionValue(reducedMotion ? 1 : 0);
+  const mOpacity = useMotionValue(reducedMotion ? 1 : 0);
+  
+  const dragControls = useDragControls();
+
+  useEffect(() => {
+    if (reducedMotion || !shouldAnimate || entered) return;
+    const timer = setTimeout(() => {
+      animate(mOpacity, 1,  { duration: 0.35 });
+      animate(mScale,   1,  { duration: 0.5, ease: BACK_OUT });
+      setEntered(true);
+    }, entryDelay);
+    return () => clearTimeout(timer);
+  }, [shouldAnimate, entryDelay, entered, mOpacity, mScale, reducedMotion]);
+
+  const onDragStart = useCallback(() => {
+    setDragging(true);
+    animate(mScale, 1.05, { duration: 0.15 });
+  }, [mScale]);
+
+  const onDragEnd = useCallback(() => {
+    setDragging(false);
+    if (snapped) return;
+
+    const cx   = mx.get();
+    const cy   = my.get();
+    const dist = Math.sqrt((cx - tx) ** 2 + (cy - ty) ** 2);
+
+    if (dist < SNAP_BASE * scale) {
+      animate(mx,      tx, { type: 'spring', stiffness: 420, damping: 26 });
+      animate(my,      ty, { type: 'spring', stiffness: 420, damping: 26 });
+      animate(mRotate, 0,  { type: 'spring', stiffness: 320, damping: 22 });
+      animate(mScale,  [1.05, 1.1, 1], { duration: 0.32, ease: 'easeOut' });
+      setSnapped(true);
+      onSnap(fragment.id);
+    } else {
+      animate(mScale, 1,  { duration: 0.15 });
+    }
+  }, [snapped, tx, ty, ix, iy, scale, fragment.id, onSnap, mx, my, mRotate, mScale]);
+
+  const startDrag = (event) => {
+    if (!snapped && entered) {
+      dragControls.start(event, { snapToCursor: false });
+    }
+  };
+
+  return (
+    <motion.div
+      className={`mosaic-game__fragment${snapped ? ' mosaic-game__fragment--snapped' : ''}`}
+      style={{
+        x: mx,
+        y: my,
+        rotate: mRotate,
+        scale: mScale,
+        opacity: mOpacity,
+        width: BASE_WIDTH * scale,
+        height: BASE_HEIGHT * scale,
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        zIndex: dragging ? 10 : snapped ? 1 : 2,
+        pointerEvents: 'none',
+        filter: dragging
+          ? 'drop-shadow(0 8px 24px rgba(0,0,0,0.35))'
+          : 'drop-shadow(0 2px 6px rgba(0,0,0,0.15))',
+      }}
+      drag={!snapped && entered}
+      dragControls={dragControls}
+      dragListener={false}
+      dragConstraints={{ left: -800, right: 800, top: -800, bottom: 800 }}
+      dragElastic={0.1}
+      dragMomentum={false}
+      onDragStart={onDragStart}
+      onDragEnd={onDragEnd}
+    >
+      <svg
+        viewBox="285 95 270 305"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ width: '100%', height: '100%', display: 'block', overflow: 'visible' }}
+      >
+        <g 
+          style={{ 
+            pointerEvents: snapped ? 'none' : 'auto',
+            cursor: (!snapped && entered) ? 'grab' : 'default',
+            touchAction: 'none'
+          }}
+          onPointerDown={startDrag}
+        >
+          {fragment.elements.map((el, i) => {
+            if (el.tag === 'polygon') {
+              return (
+                <polygon
+                  key={i}
+                  points={el.points}
+                  fill={el.fill}
+                  stroke="#491733"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                />
+              );
+            }
+            return (
+              <path
+                key={i}
+                d={el.d}
+                fill={el.fill}
+                stroke="#491733"
+                strokeWidth="2"
+                strokeLinejoin="round"
+              />
+            );
+          })}
+        </g>
+      </svg>
+    </motion.div>
+  );
+}
+
+export default function MosaicGame({ className = '' }) {
+  const wrapperRef   = useRef(null);
+  const containerRef = useRef(null);
+  const isInView     = useInView(wrapperRef, { once: true, margin: '-60px' });
+  const reducedMotion = useReducedMotion();
+
+  const [fieldSize,  setFieldSize]  = useState({ w: 0, h: 0 });
+  const [snappedIds, setSnappedIds] = useState(new Set());
+  const [showLabel,  setShowLabel]  = useState(false);
+  const [isMobile,   setIsMobile]   = useState(false);
+
+  const isComplete    = snappedIds.size === FRAGMENTS.length;
+  const shouldAnimate = isInView && fieldSize.w > 0;
+  const scale         = fieldSize.w > 0 ? fieldSize.w / BASE_WIDTH : 1;
+
+  useEffect(() => {
+    if (isComplete) {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) {
+          const ctx = new AudioCtx();
+          const playNote = (freq, startTime, duration) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, ctx.currentTime + startTime);
+            gain.gain.setValueAtTime(0, ctx.currentTime + startTime);
+            gain.gain.linearRampToValueAtTime(0.08, ctx.currentTime + startTime + 0.1);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + startTime + duration);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(ctx.currentTime + startTime);
+            osc.stop(ctx.currentTime + startTime + duration);
+          };
+          // Soft Ethereal Maj7 Chord
+          playNote(523.25, 0.0, 2.0); // C5
+          playNote(659.25, 0.1, 2.0); // E5
+          playNote(783.99, 0.2, 2.0); // G5
+          playNote(987.77, 0.3, 2.5); // B5
+        }
+      } catch (err) {
+        console.error("Audio playback failed", err);
+      }
+    }
+  }, [isComplete]);
+
+  useEffect(() => {
+    if (wrapperRef.current) {
+      const w = Math.min(380, wrapperRef.current.offsetWidth);
+      const h = (BASE_HEIGHT / BASE_WIDTH) * w;
+      setFieldSize({ w, h });
+    }
+  }, []);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 780);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  useEffect(() => {
+    if (reducedMotion || !shouldAnimate) return;
+    const timer = setTimeout(
+      () => setShowLabel(true),
+      FRAGMENTS.length * 80 + 900,
+    );
+    return () => clearTimeout(timer);
+  }, [shouldAnimate, reducedMotion]);
+
+  const handleSnap = useCallback((id) => {
+    setSnappedIds((prev) => {
+      const next = new Set(prev);
+      next.add(id);
+      return next;
+    });
+  }, []);
+
+  return (
+    <div className={`mosaic-game ${className}${isComplete ? ' mosaic-game--complete' : ''}`}>
+      <div ref={wrapperRef} className="mosaic-game__wrapper">
+        {fieldSize.w > 0 && (
+          <div
+            ref={containerRef}
+            className="mosaic-game__field"
+            style={{ width: fieldSize.w, height: fieldSize.h }}
+          >
+            {/* Ghost outlines */}
+            {!isComplete && FRAGMENTS.map((f) => (
+              <div
+                key={`g-${f.id}`}
+                className="mosaic-game__ghost"
+                style={{
+                  position: 'absolute', top: 0, left: 0,
+                  width: fieldSize.w, height: fieldSize.h,
+                  pointerEvents: 'none',
+                }}
+              >
+                <svg viewBox="285 95 270 305" style={{ width: '100%', height: '100%', overflow: 'visible' }}>
+                  {f.elements.map((el, i) => {
+                    const props = {
+                      key: i,
+                      fill: "none",
+                      stroke: "rgba(169,172,214,0.2)",
+                      strokeWidth: "1.5",
+                      strokeDasharray: "5 4",
+                      strokeLinejoin: "round"
+                    };
+                    return el.tag === 'polygon' 
+                      ? <polygon points={el.points} {...props} />
+                      : <path d={el.d} {...props} />;
+                  })}
+                </svg>
+              </div>
+            ))}
+
+            {/* Draggables */}
+            {FRAGMENTS.map((f, i) => (
+              <MosaicFragment
+                key={f.id}
+                fragment={f}
+                scale={scale}
+                containerRef={containerRef}
+                onSnap={handleSnap}
+                shouldAnimate={shouldAnimate}
+                entryDelay={i * 80}
+                reducedMotion={reducedMotion}
+              />
+            ))}
+
+            {isComplete && <div className="mosaic-game__glow" style={{ borderRadius: '40px' }} />}
+          </div>
+        )}
+      </div>
+
+      {showLabel && !isComplete && !reducedMotion && (
+        <motion.div
+          className="mosaic-game__label"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
+          <svg className="mosaic-game__label-cursor" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 1v14M1 8h14M5 3l3-2 3 2M5 13l3 2 3-2M3 5L1 8l2 3M13 5l2 3-2 3" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <p className="mosaic-game__label-title">CONNECT THE FRAGMENTS</p>
+          <p className="mosaic-game__label-sub">{isMobile ? 'Touch and drag to assemble' : 'Drag to assemble'}</p>
+        </motion.div>
+      )}
+
+      {isComplete && (
+        <motion.div
+          className="mosaic-game__label mosaic-game__label--done"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, delay: 1.2, ease: "easeOut" }}
+        >
+          <p className="mosaic-game__label-scroll-nudge">Every piece found its place</p>
+        </motion.div>
+      )}
+    </div>
+  );
+}

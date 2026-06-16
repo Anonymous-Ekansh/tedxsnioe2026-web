@@ -2,8 +2,79 @@
   width: 100%;
   overflow: hidden;
 }
+
+/* ─── About Us — seamless plum continuation from hero ────────── */
+.AboutSection {
+  width: 100vw;
+  background-color: var(--plum);
+  padding: var(--section-pad-desktop) 0;
+  position: relative;
+  
+  @include respondAt(1024px) {
+    padding: var(--section-pad-tablet) 0;
+  }
+  
+  @include respondAt(780px) {
+    padding: var(--section-pad-mobile) 0;
+  }
+}
+
+/* ─── Speakers — gradient plum → navy ────────────────────────── */
+.PastSpeakersSection {
+  width: 100vw;
+  background: linear-gradient(180deg, var(--plum) 0%, var(--navy) 100%);
+  padding: var(--section-pad-desktop) 0;
+  position: relative;
+  
+  /* Grain texture overlay */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.25;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+  }
+  
+  @include respondAt(1024px) {
+    padding: var(--section-pad-tablet) 0;
+  }
+  
+  @include respondAt(780px) {
+    padding: var(--section-pad-mobile) 0;
+  }
+}
+
+/* ─── Sponsors — dark navy → near-black ──────────────────────── */
+.SponsorsSection {
+  width: 100vw;
+  background: linear-gradient(180deg, var(--navy) 0%, var(--near-black) 100%);
+  padding: var(--section-pad-desktop) 0;
+  position: relative;
+  
+  @include respondAt(1024px) {
+    padding: var(--section-pad-tablet) 0;
+  }
+  
+  @include respondAt(780px) {
+    padding: var(--section-pad-mobile) 0;
+  }
+}
+
+/* ─── Registration CTA — near-black, full viewport ──────────── */
+.CTASection {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--near-black);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .StatsSection {
-  // background-image: url('/Images/Assets/overallbg.png');
   background-size: cover;
   width: 100vw;
   padding: 4rem 0;
@@ -15,44 +86,4 @@
   @include respondAtLarge(768px, 1200px) {
     padding: 5rem 2rem;
   }
-}
-.AboutSection {
-  // background-image: url('/Images/Assets/overallbg.png');
-  width: 100vw;
-  // height: 100vh;
-  background-size: cover;
-  // background-color: black;
-  padding-top: 10rem;
-  padding-bottom: 8rem;
-  
-  @include respondAt(767px) {
-    padding-top: 5rem;
-    padding-bottom: 4rem;
-  }
-  
-  @include respondAtLarge(768px,1200px) {
-    padding-top: 12rem;
-    padding-bottom: 8rem;
-  }
-}
-.PastSpeakersSection {
-  
-
-
-  // background-image: url('/Images/Assets/overallbg.png');
-  background-image: url('/Images/Assets/pattern home 5.png');
-  width: 100vw;
-  // height: 100vh;
-  background-size: cover;
-  background-color: black;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-.SponsorsSection {
-  // background-image: url('/Images/Assets/overallbg.png');
-  background-image: url('/Images/Assets/pattern home 5.png');
-  width: 100vw;
-  height: 100%;
-  background-size: cover;
-  background-color: black;
 }

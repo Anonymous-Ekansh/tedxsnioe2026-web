@@ -1,84 +1,122 @@
 .AboutUs {
-  color: black;
-  display: grid;
-  place-items: center;
-  align-content: center;
-  
-  @include respondAt(767px) {
-    padding: 0 1rem;
-  }
-  &__heading {
-    color: #000;
-    text-align: center;
-    font-family: "Bebas Neue", serif;
-    font-size: 4.25rem;
-    font-style: normal;
-    font-weight: 400;
-    @include respondAtLarge(768px,1200px) {
-      font-size: 3rem;
-    }
-  }
-  &__content {
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+
+  &__inner {
     display: flex;
-    align-items: center;
-    margin-top: 3rem;
-    @include respondAt(1200px) {
-      flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: var(--col-gap);
+
+    @media (max-width: 780px) {
+      flex-direction: column;
+      gap: 40px;
     }
-    &--carousel {
-      width: 30rem;
-      height: 20rem;
-      overflow: hidden;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      @include respondAt(767px)  {
-        width: 100%;
-        max-width: 15rem;
-        height: 10rem;
-        margin: 2rem auto;
-      }
-      @include respondAtLarge(768px,1200px) {
-        width: 25rem;
-        height: 16rem;
-      }
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center 30%;
-        border-radius: 0.5rem;
-        transition: transform 0.3s ease;
-        &:hover {
-          transform: scale(1.02);
-        }
+  }
+
+  /* ─── Text column ──────────────────────────────────────── */
+  &__text {
+    flex: 0 0 55%;
+    max-width: 55%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    @media (max-width: 780px) {
+      flex: 1;
+      max-width: 100%;
+      order: 2;
+    }
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--lavender);
+    margin-bottom: 20px;
+  }
+
+  &__heading {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(48px, 6vw, 72px);
+    color: #fff;
+    line-height: 1.05;
+    margin: 0 0 32px 0;
+    letter-spacing: -0.02em;
+  }
+
+  &__body {
+    font-family: var(--font-body-light);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.8;
+    color: rgba(244, 201, 218, 0.8); /* blush at 80% */
+    margin: 0 0 20px 0;
+    max-width: 540px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--pink), transparent);
+    margin-top: 48px;
+    opacity: 0.5;
+  }
+
+  /* ─── Mosaic column ────────────────────────────────────── */
+  &__mosaic {
+    &--desktop {
+      flex: 0 0 45%;
+      max-width: 45%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 30px;
+
+      @media (max-width: 780px) {
+        display: none;
       }
     }
-    &--text {
-      color: #000;
-      font-family: "Outfit", sans-serif;
-      font-size: 1.3rem;
-      font-style: normal;
-      font-weight: 400;
-      width: 40rem;
-      margin-right: 5rem;
-      
-      @include respondAt(767px) {
-        margin: 0 auto;
-        width: 100%;
-        max-width: 20rem;
-        font-size: .9rem;
-        text-align: center;
-        margin-right: 0;
-        padding: 0 1rem;
+
+    &--mobile {
+      display: none;
+      width: 100%;
+
+      @media (max-width: 780px) {
+        display: block;
+        order: 1;
+        max-width: 320px;
+        margin: 0 auto 10px;
       }
-      @include respondAtLarge(768px,1200px) {
-        margin: 0;
-        width: 40rem;
-        font-size: 1.3rem;
-        text-align: center;
-        margin-top: 3rem;
-        margin-right: 0;
-      }
+    }
+  }
+}
+
+/* ─── Responsive heading ─────────────────────────────────── */
+@media (max-width: 780px) {
+  .AboutUs {
+    &__heading {
+      font-size: clamp(36px, 8vw, 48px);
+    }
+
+    &__body {
+      font-size: 15px;
+      max-width: 100%;
+    }
+
+    &__divider {
+      margin-top: 32px;
     }
   }
 }

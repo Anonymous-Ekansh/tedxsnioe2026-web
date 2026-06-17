@@ -215,7 +215,7 @@ export default function LandingSection() {
                 {/* Coming soon block */}
                 <div className="coming-soon-block">
                     <span className="cs-mask"><span className="cs-coming">Coming</span></span>
-                    <span className="cs-mask"><span className="cs-soon">soon</span></span>
+                    <span className="cs-mask"><span className="cs-soon">soon.</span></span>
                     <span className="cs-underline" aria-hidden="true" />
                     <div className="cs-dot-wrap">
                         <div className="cs-dot" aria-hidden="true" />

@@ -50,9 +50,7 @@ export default function Footer() {
             <span className="FooterNew__brand-tedx">TEDx</span>
             <span className="FooterNew__brand-name">ShivNadarUniversity</span>
           </div>
-          <p className="FooterNew__tagline">
-            <em>Ideas Change Everything.</em>
-          </p>
+
           <div className="FooterNew__social">
             <a
               href="https://www.linkedin.com/company/tedx-snioe/"

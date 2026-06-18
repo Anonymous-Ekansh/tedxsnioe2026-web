@@ -120,10 +120,6 @@ export default function PastSpeakers() {
                         <div className="Speakers__card-info">
                             <p className="Speakers__card-name">{speaker.name}</p>
                         </div>
-                        {/* Hover name overlay — appears over mosaic polygon */}
-                        <div className="Speakers__card-name-hover">
-                            <p>{speaker.name}</p>
-                        </div>
                     </motion.div>
                 ))}
             </motion.div>

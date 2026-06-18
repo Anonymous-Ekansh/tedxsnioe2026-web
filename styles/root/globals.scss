@@ -131,3 +131,30 @@ img {
   pointer-events: none;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
 }
+
+/* ─── Mosaic background texture (faint polygon outlines) ─────── */
+.mosaic-bg-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'><path d='M0 80 L60 0 L140 20 L120 100 Z' fill='none' stroke='%23a9acd6' stroke-width='0.5'/><path d='M140 20 L260 0 L240 90 L120 100 Z' fill='none' stroke='%23a9acd6' stroke-width='0.5'/><path d='M260 0 L400 30 L380 120 L240 90 Z' fill='none' stroke='%23a9acd6' stroke-width='0.5'/><path d='M0 80 L120 100 L100 200 L0 180 Z' fill='none' stroke='%23a9acd6' stroke-width='0.5'/><path d='M120 100 L240 90 L260 190 L100 200 Z' fill='none' stroke='%23a9acd6' stroke-width='0.5'/><path d='M240 90 L380 120 L400 200 L260 190 Z' fill='none' stroke='%23a9acd6' stroke-width='0.5'/><path d='M0 180 L100 200 L80 300 L0 280 Z' fill='none' stroke='%23a9acd6' stroke-width='0.5'/><path d='M100 200 L260 190 L240 300 L80 300 Z' fill='none' stroke='%23a9acd6' stroke-width='0.5'/><path d='M260 190 L400 200 L380 310 L240 300 Z' fill='none' stroke='%23a9acd6' stroke-width='0.5'/><path d='M0 280 L80 300 L60 400 L0 400 Z' fill='none' stroke='%23a9acd6' stroke-width='0.5'/><path d='M80 300 L240 300 L200 400 L60 400 Z' fill='none' stroke='%23a9acd6' stroke-width='0.5'/><path d='M240 300 L380 310 L400 400 L200 400 Z' fill='none' stroke='%23a9acd6' stroke-width='0.5'/></svg>");
+  background-size: 400px 400px;
+  background-repeat: repeat;
+}
+
+/* ─── Carousel dot override (Mosaic lavender/pink) ───────────── */
+.carousel .control-dots .dot {
+  background: var(--lavender) !important;
+  box-shadow: none !important;
+  opacity: 0.4 !important;
+  width: 8px !important;
+  height: 8px !important;
+  transition: opacity 0.3s ease, background 0.3s ease !important;
+}
+.carousel .control-dots .dot.selected {
+  opacity: 1 !important;
+  background: var(--pink) !important;
+}

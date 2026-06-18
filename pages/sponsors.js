@@ -1,8 +1,11 @@
 import '../styles/routes/sponsors.scss'
 import { motion } from 'framer-motion';
+import { useMotionVariants } from '../components/shared/motionVariants';
 import Image from 'next/image';
 
 export default function Sponsors() {
+    const mv = useMotionVariants();
+
     const pastSponsors = [
         { url: "/Images/Sponsors/s1.png" },
         { url: "/Images/Sponsors/s2.png" },
@@ -70,15 +73,49 @@ export default function Sponsors() {
     return (
 
         <div className="AllSponsors">
-            <p className='AllSponsors__heading'>PAST SPONSORS</p>
-            <div className='AllSponsors__cards'>
+            {/* Header */}
+            <motion.div
+                className="AllSponsors__header"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-60px' }}
+                variants={{
+                    hidden: {},
+                    visible: { transition: { staggerChildren: 0.15 } },
+                }}
+            >
+                <motion.p className='AllSponsors__eyebrow' variants={mv.fadeUp}>
+                    BUILT WITH
+                </motion.p>
+                <motion.p className='AllSponsors__heading' variants={mv.fadeUp}>
+                    PAST SPONSORS
+                </motion.p>
+            </motion.div>
+
+            {/* Logo field — staggered flex, monochrome with hover color */}
+            <motion.div
+                className='AllSponsors__cards'
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-40px' }}
+                variants={{
+                    hidden: {},
+                    visible: { transition: { staggerChildren: 0.05 } },
+                }}
+            >
                 {pastSponsors.map((item, index) => {
                     return (
                         <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ duration: .7 }}
+                            className={`AllSponsors__cards--item ${index % 2 !== 0 ? 'AllSponsors__cards--item-offset' : ''}`}
                             key={index}
+                            variants={mv.shouldAnimate ? {
+                                hidden: { opacity: 0, y: 20 },
+                                visible: {
+                                    opacity: 1,
+                                    y: 0,
+                                    transition: { duration: 0.7, ease: 'easeOut' },
+                                },
+                            } : { hidden: { opacity: 1 }, visible: { opacity: 1 } }}
                         >
                             <div className='AllSponsors__cards--image'>
                                 <Image 
@@ -97,7 +134,7 @@ export default function Sponsors() {
                         </motion.div>
                     )
                 })}
-            </div>
+            </motion.div>
         </div>
     )
 }

@@ -1,51 +1,105 @@
+/* ═══════════════════════════════════════════════════════════════
+   All Sponsors — Mosaic dark navy system
+   Monochrome logos, staggered flex, color on hover
+   No white cards — logos float directly on the dark background
+   ═══════════════════════════════════════════════════════════════ */
+
 .AllSponsors {
   @include box(100vw, 100%);
-  background: url("/Images/Assets/overallbg.png"), lightgray 50%;
-  background-size: cover;
-  background-position: bottom;
-  //   background-repeat: no-repeat;
-  background-color: white;
-  padding-top: 5rem;
-  &__heading {
-    font-size: 4.375rem;
-    font-family: "Bebas Neue", serif;
-    font-weight: 500;
+  background: linear-gradient(180deg, #253040 0%, #161620 100%);
+  padding: 7rem 2rem 5rem;
+  min-height: 100vh;
+
+  /* ─── Header ─────────────────────────────────────────── */
+  &__header {
+    max-width: var(--max-content);
+    margin: 0 auto 64px;
     text-align: center;
-    margin-left: 4.5rem;
-    @include respondAt(915px) {
-      width: 100vw;
-      text-align: center;
-      font-size: 2.5rem;
-      margin-left: 0;
+
+    @media (max-width: 780px) {
+      margin-bottom: 40px;
     }
   }
+
+  &__eyebrow {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--lavender);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0 0 0.75rem;
+  }
+
+  &__heading {
+    font-size: clamp(2.5rem, 6vw, 4.375rem);
+    font-family: var(--font-display);
+    font-weight: 900;
+    color: #fff;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* ─── Logo field — staggered flex ────────────────────── */
   &__cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: var(--max-content);
+    margin: 0 auto;
+    gap: 40px 56px;
+
+    @media (max-width: 780px) {
+      gap: 24px 20px;
+    }
+
+    /* ─── Each logo item ─────────────────────────────── */
+    &--item {
+      flex: 0 0 auto;
+      transition: transform 0.3s ease;
+
+      /* Stagger offset on desktop */
+      &-offset {
+        transform: translateY(16px);
+
+        @media (max-width: 780px) {
+          transform: none;
+        }
+      }
+
+      &:hover {
+        transform: scale(1.08);
+
+        &.AllSponsors__cards--item-offset {
+          transform: translateY(16px) scale(1.08);
+
+          @media (max-width: 780px) {
+            transform: scale(1.08);
+          }
+        }
+      }
+    }
+
+    /* ─── Logo image container ───────────────────────── */
     &--image {
-      margin-right: 2rem;
-      margin-left: 2rem;
-      margin-bottom: 1.5rem;
-      width: 200px;
-      height: 120px;
+      width: 160px;
+      height: 96px;
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: white;
-      border-radius: 0.5rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      transition: transform 0.3s ease, background 0.3s ease;
       overflow: hidden;
-      
-      // ctr img within container
+
+      /* Center img within container */
       > div {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
       }
-      
+
       img {
         object-fit: contain !important;
         object-position: center !important;
@@ -53,23 +107,15 @@
         height: 100% !important;
         position: relative !important;
       }
-      
-      &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+      @media (max-width: 780px) {
+        width: 100px;
+        height: 64px;
       }
-      
-      @include respondAt(767px) {
-        margin-right: 1.5rem;
-        margin-left: 1.5rem;
-        margin-bottom: 1rem;
-        width: 150px;
-        height: 90px;
-      }
-      
-      @include respondAt(480px) {
-        width: 120px;
-        height: 72px;
+
+      @media (max-width: 480px) {
+        width: 80px;
+        height: 52px;
       }
     }
   }

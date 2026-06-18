@@ -1,3 +1,8 @@
+/* ═══════════════════════════════════════════════════════════════
+   ConfDetailsHeader — Individual conference detail view
+   Mosaic gradient title, white text, lavender accents
+   ═══════════════════════════════════════════════════════════════ */
+
 .ConfHeader {
   &__heading {
     @include respondAt(915px) {
@@ -6,20 +11,22 @@
         place-items: center;
     }
     p {
-      background: linear-gradient(rgba(200, 105, 4, 1), rgba(138, 55, 203, 1));
+      background: linear-gradient(135deg, #e65a9a, #a9acd6);
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
       background-clip: text;
       font-size: 2.3rem;
-      font-family: "Outfit", sans-serif;
+      font-family: var(--font-body);
       font-weight: 400;
       margin-bottom: 0;
       margin-top: 0;
       margin-left: 5rem;
-      // width: 15rem;
+
       span {
         font-size: 4rem;
         font-weight: 600;
+        font-family: var(--font-display);
+
         @include respondAt(915px) {
           font-size: 2.5rem;
         }
@@ -32,12 +39,14 @@
       }
     }
   }
+
   &__details {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-left: 5rem;
     padding-right: 5rem;
+
     @include respondAt(915px) {
         flex-direction: column;
         padding-left: 1rem;
@@ -45,16 +54,17 @@
         align-items: center;
         justify-content: center;
     }
+
     &--divider {
         @include respondAt(915px) {
             display: none;
         }
     }
+
     &--slider {
-      // width: 60%;
-      // margin-right: 3rem;
       width: 60%;
       margin-right: 3rem;
+
       @include respondAt(915px) {
         width: 100%;
         margin-right: 0;
@@ -63,53 +73,68 @@
         margin-bottom: 2rem;
       }
     }
+
     &--content {
-      color: black;
+      color: #fff;
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       width: 50%;
       padding: 0 4rem 4rem 0rem;
+
       @include respondAt(915px) {
         padding: 0 1rem;
         align-items: center;
         width: 100%;
         text-align: center;
       }
+
       &__title {
-        color: black;
+        color: #fff;
         font-size: 2.5rem;
-        font-family: "Outfit", sans-serif;
-        font-weight: 600;
+        font-family: var(--font-display);
+        font-weight: 900;
         margin-bottom: 1rem;
+
         @include respondAt(915px) {
             font-size: 2rem;
             margin-top: 3rem;
             margin-bottom: 0;
         }
       }
+
       &__desc {
-        color: black;
+        color: rgba(255, 255, 255, 0.8);
         text-align: right;
         font-size: 1.5rem;
         width: 34.8125rem;
-        font-family: "Poppins", sans-serif;
+        font-family: var(--font-body);
+        font-weight: 300;
+
         @include respondAt(915px) {
             font-size: 1rem;
             text-align: center;
             width: 15rem;
         }
       }
+
       &__aftermovie {
         padding: 0.7rem 1rem 0.7rem 1rem;
         border-radius: 30px;
-        border: 2px solid #c7751e;
-        background: #212223;
+        border: 1px solid var(--lavender);
+        background: rgba(169, 172, 214, 0.1);
         color: #fff;
         text-align: center;
         font-size: 1.3rem;
-        font-family: "Outfit", sans-serif;
-        font-weight: 700;
+        font-family: var(--font-body);
+        font-weight: 400;
+        letter-spacing: 0.02em;
+        transition: background 0.3s ease, color 0.3s ease;
+
+        &:hover {
+          background: rgba(169, 172, 214, 0.2);
+        }
+
         @include respondAt(915px) {
             font-size: 1rem;
         }

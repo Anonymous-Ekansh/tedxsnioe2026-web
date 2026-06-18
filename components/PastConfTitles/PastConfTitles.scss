@@ -1,77 +1,125 @@
+/* ═══════════════════════════════════════════════════════════════
+   PastConfTitles — Mosaic tile chips timeline
+   Each year is an irregular polygon tile with palette color
+   ═══════════════════════════════════════════════════════════════ */
+
 .PastConfTitlesContainer {
-  color: black;
+  color: #fff;
   display: flex;
   align-items: center;
   overflow: hidden;
   width: 100%;
+
   &::-webkit-scrollbar {
     display: none;
   }
   -ms-overflow-style: none;
   scrollbar-width: none;
+
   @include respondAt(915px) {
-    border-radius: 20px;
-    border: 2px solid #c7751e;
+    border-radius: 16px;
+    border: 1px solid rgba(169, 172, 214, 0.25);
     padding: 1rem;
     margin-left: 1rem;
     margin-right: 1rem;
   }
+
   &__track {
     display: flex;
     align-items: center;
     flex-shrink: 0;
     will-change: transform;
   }
+
   &__card {
     flex-shrink: 0;
     cursor: pointer;
+    margin: 0 1.5rem;
+    padding: 1rem 1.5rem;
+    border-radius: 14px;
+    border: 1px solid rgba(169, 172, 214, 0.2);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.35s ease,
+                filter 0.35s ease,
+                box-shadow 0.35s ease;
+
     &::after {
       content: "";
       display: block;
       width: 0;
       height: 2px;
-      background-color: #c7751e;
+      background: linear-gradient(90deg, var(--pink), var(--lavender));
       transition: width 0.3s;
+      margin-top: 4px;
+      border-radius: 1px;
     }
 
     &:hover::after {
       width: 100%;
     }
-    margin: 0 3rem 0 3rem;
-    @include respondAt(915px) {
-      margin: 0 2rem 0 2rem;
+
+    &:hover {
+      filter: brightness(1.15);
+      transform: scale(1.05);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.12);
     }
+
+    /* Active state */
+    &--active {
+      transform: scale(1.08);
+      filter: brightness(1.1);
+      box-shadow: 0 6px 28px rgba(0, 0, 0, 0.4),
+                  0 0 0 2px rgba(169, 172, 214, 0.3);
+    }
+
+    @include respondAt(915px) {
+      margin: 0 1rem;
+      padding: 0.75rem 1.2rem;
+    }
+
     &--year {
-      color: black;
+      color: var(--plum);
       text-align: center;
-      font-size: 3.25rem;
-      font-family: "Outfit", sans-serif;
-      font-weight: 500;
+      font-size: 2.5rem;
+      font-family: var(--font-display);
+      font-weight: 900;
       margin-bottom: 0;
       margin-top: 0;
       white-space: nowrap;
+      line-height: 1.1;
+
       @include respondAt(915px) {
-        font-size: 2rem;
+        font-size: 1.75rem;
       }
     }
+
     &--title {
-      color: black;
+      color: rgba(73, 23, 51, 0.8);
       text-align: center;
-      font-size: 1rem;
-      font-family: "Outfit", sans-serif;
-      font-weight: 200;
-      margin-top: 0;
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+      font-weight: 300;
+      margin-top: 0.25rem;
+      margin-bottom: 0;
       white-space: nowrap;
+
       @include respondAt(915px) {
-        font-size: 1rem;
+        font-size: 0.75rem;
         margin-bottom: 0;
       }
     }
   }
+
+  /* ─── Lavender dot divider ────────────────────────────── */
   &__divider {
     flex-shrink: 0;
-    width: 1.25rem;
-    height: 1.25rem;
+    color: var(--lavender);
+    opacity: 0.4;
+    font-size: 0.5rem;
+    line-height: 1;
+    margin: 0 0.25rem;
   }
 }
-

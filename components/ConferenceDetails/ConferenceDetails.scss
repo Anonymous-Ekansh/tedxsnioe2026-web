@@ -1,6 +1,19 @@
+/* ═══════════════════════════════════════════════════════════════
+   ConferenceDetails — Container for all individual conferences
+   Dark background, Mosaic-native spacing
+   ═══════════════════════════════════════════════════════════════ */
+
 .ConfDetailsSection {
     margin-bottom: 7rem;
+    padding-top: 2rem;
+
     &__conference {
         margin-top: 1rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgba(169, 172, 214, 0.12);
+
+        &:last-child {
+            border-bottom: none;
+        }
     }
 }

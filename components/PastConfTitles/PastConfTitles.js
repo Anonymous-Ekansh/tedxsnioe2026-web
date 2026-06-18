@@ -1,7 +1,19 @@
 import './PastConfTitles.scss'
 import useConf from '../../hooks/useConf';
-import Image from 'next/image';
 import React, { useRef, useEffect, useState, useCallback } from 'react';
+
+// Mosaic palette colors — one per conference tile
+const TILE_COLORS = [
+    '#e65a9a', // pink
+    '#a9acd6', // lavender
+    '#97d5cf', // mint
+    '#f4c9da', // blush
+    '#f6d56f', // yellow
+    '#405f3f', // forest
+    '#e65a9a', // pink
+    '#a9acd6', // lavender
+    '#97d5cf', // mint
+];
 
 const conferences = [
     { id: 'conf0', year: '2025', title: 'Simplexity' },
@@ -16,7 +28,7 @@ const conferences = [
 ];
 
 function PastConfTitles() {
-    const { setConference } = useConf();
+    const { conference, setConference } = useConf();
     const scrollRef = useRef(null);
     const [isPaused, setIsPaused] = useState(false);
     const animationRef = useRef(null);
@@ -75,17 +87,30 @@ function PastConfTitles() {
             onMouseLeave={handleMouseLeave}
         >
             <div className='PastConfTitlesContainer__track'>
-                {items.map((conf, index) => (
-                    <React.Fragment key={`${conf.id}-${index}`}>
-                        <div onClick={() => handleClick(conf.id)} className='PastConfTitlesContainer__card'>
-                            <p className='PastConfTitlesContainer__card--year'>{conf.year}</p>
-                            <p className='PastConfTitlesContainer__card--title'>{conf.title}</p>
-                        </div>
-                        {index < items.length - 1 && (
-                            <Image className='PastConfTitlesContainer__divider' src='/Images/divider.png' alt='Divider' width={20} height={20} />
-                        )}
-                    </React.Fragment>
-                ))}
+                {items.map((conf, index) => {
+                    const colorIndex = index % conferences.length;
+                    const tileColor = TILE_COLORS[colorIndex];
+                    const isActive = conference === conf.id;
+
+                    return (
+                        <React.Fragment key={`${conf.id}-${index}`}>
+                            <div
+                                onClick={() => handleClick(conf.id)}
+                                className={`PastConfTitlesContainer__card ${isActive ? 'PastConfTitlesContainer__card--active' : ''}`}
+                                style={{
+                                    backgroundColor: tileColor,
+                                    opacity: isActive ? 1 : 0.7,
+                                }}
+                            >
+                                <p className='PastConfTitlesContainer__card--year'>{conf.year}</p>
+                                <p className='PastConfTitlesContainer__card--title'>{conf.title}</p>
+                            </div>
+                            {index < items.length - 1 && (
+                                <span className='PastConfTitlesContainer__divider'>●</span>
+                            )}
+                        </React.Fragment>
+                    );
+                })}
             </div>
         </div>
     )

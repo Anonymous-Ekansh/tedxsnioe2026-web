@@ -33,19 +33,26 @@ function Navbar({ isSmall = false }) {
     const scrollTo = async (id) => {
         if (pathName !== '/') {
             await router.push('/');
-            const element = document.getElementById(id);
-            element.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-                inline: "nearest",
-            });
+            // Wait for the page to render before scrolling
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                        inline: "nearest",
+                    });
+                }
+            }, 500);
         } else {
             const element = document.getElementById(id);
-            element.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-                inline: "nearest",
-            });
+            if (element) {
+                element.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                    inline: "nearest",
+                });
+            }
         }
 
     };

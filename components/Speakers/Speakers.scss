@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
    SpeakersStrip — Infinite auto-scrolling horizontal marquee
-   Capsule cards, same size, same line, never-ending loop.
+   Capsule cards, Mosaic palette colors, white text on dark bg
    Pure CSS keyframe animation for max performance.
    ═══════════════════════════════════════════════════════════════ */
 
@@ -11,10 +11,10 @@
 
   /* ─── Section Title ──────────────────────────────────── */
   &__title {
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
+    font-family: var(--font-display);
+    font-weight: 900;
     font-size: clamp(2rem, 5vw, 3.5rem);
-    color: #000;
+    color: #fff;
     margin: 0 0 1.5rem;
     padding-left: 2rem;
     letter-spacing: 0.04em;
@@ -112,10 +112,10 @@
   }
 
   &__name {
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 400;
+    font-family: var(--font-display);
+    font-weight: 900;
     font-size: 1.25rem;
-    color: #000;
+    color: #fff;
     margin: 0;
     line-height: 1.15;
     letter-spacing: 0.02em;
@@ -126,10 +126,10 @@
   }
 
   &__role {
-    font-family: "Outfit", sans-serif;
-    font-weight: 400;
+    font-family: var(--font-body);
+    font-weight: 300;
     font-size: 0.85rem;
-    color: #555;
+    color: var(--muted);
     margin: 3px 0 0;
     line-height: 1.3;
 

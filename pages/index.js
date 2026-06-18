@@ -2,6 +2,7 @@ import AboutUs from "../components/AboutUs/AboutUs";
 import LandingSection from "../components/LandingSection/LandingSection";
 import PastSpeakers from "../components/PastSpeakers/PastSpeakers";
 import Sponsors from "../components/Sponsors/Sponsors";
+import RegistrationCTA from "../components/RegistrationCTA/RegistrationCTA";
 
 import '../styles/routes/home.scss'
 function Home() {
@@ -28,6 +29,12 @@ function Home() {
                 id="sponsors"
                 className="SponsorsSection">
                 <Sponsors />
+            </section>
+
+            <section
+                id="register-cta"
+                className="CTASection">
+                <RegistrationCTA />
             </section>
         </>
     )

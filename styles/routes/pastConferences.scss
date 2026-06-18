@@ -46,13 +46,9 @@
     }
 
     &--slider {
-      display: flex;
-      justify-content: center;
-      padding: 3rem 6rem 1rem 6rem;
-
-      @include respondAt(915px) {
-        padding: 3rem 0 4rem 0;
-      }
+      width: 100%;
+      overflow: visible;
+      padding: 1.5rem 0 0.5rem;
     }
 
     &--divider {

@@ -2,19 +2,6 @@ import './PastConfTitles.scss'
 import useConf from '../../hooks/useConf';
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 
-// Mosaic palette colors — one per conference tile
-const TILE_COLORS = [
-    '#e65a9a', // pink
-    '#a9acd6', // lavender
-    '#97d5cf', // mint
-    '#f4c9da', // blush
-    '#f6d56f', // yellow
-    '#405f3f', // forest
-    '#e65a9a', // pink
-    '#a9acd6', // lavender
-    '#97d5cf', // mint
-];
-
 const conferences = [
     { id: 'conf0', year: '2025', title: 'Simplexity' },
     { id: 'conf1', year: '2024', title: 'Through The Looking Glass' },
@@ -89,7 +76,9 @@ function PastConfTitles() {
             <div className='PastConfTitlesContainer__track'>
                 {items.map((conf, index) => {
                     const colorIndex = index % conferences.length;
-                    const tileColor = TILE_COLORS[colorIndex];
+                    // Deterministically generate pseudo-random pleasing bright pastel colors using golden ratio angles
+                    const hue = (colorIndex * 137.5) % 360;
+                    const tileColor = `hsl(${hue}, 86%, 74%)`;
                     const isActive = conference === conf.id;
 
                     return (

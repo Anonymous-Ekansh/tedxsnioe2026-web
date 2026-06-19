@@ -1,36 +1,68 @@
+import React, { useEffect, useRef } from 'react';
 import './PastSpeakers.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { useMotionVariants } from '../shared/motionVariants';
 
 export default function PastSpeakers() {
-    const mv = useMotionVariants();
+    const gridRef = useRef(null);
 
-    // Current speakers data (preserved)
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px 0px -50px 0px',
+            threshold: 0.15,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target); // Animate once, then unobserve
+                }
+            });
+        }, observerOptions);
+
+        const cards = gridRef.current?.querySelectorAll('.Speakers__card');
+        if (cards) {
+            cards.forEach((card) => observer.observe(card));
+        }
+
+        return () => {
+            if (cards) {
+                cards.forEach((card) => observer.unobserve(card));
+            }
+        };
+    }, []);
+
     const currentSpeakers = [
         {
             name: 'Maniesh Paul',
+            role: 'Actor & Television Presenter',
             image: '/Images/maniesh.jpeg',
         },
         {
             name: 'Kapil Dev',
+            role: 'Former Indian Cricketer',
             image: '/Images/2018_speakers/kapildev.jpg',
         },
         {
             name: 'Nandita Das',
+            role: 'Actor & Filmmaker',
             image: '/Images/2018_speakers/nandita.jpg',
         },
         {
             name: 'Roshni Nadar',
+            role: 'Chairperson of HCL Technologies',
             image: '/Images/2018_speakers/roshni.jpg',
         },
         {
             name: 'Ankur Warikoo',
+            role: 'Entrepreneur & Author',
             image: '/Images/2018_speakers/ankur.jpg',
         },
         {
             name: 'Tanu Jain',
+            role: 'Educator & Former IAS Officer',
             image: '/Images/2024_speakers/Tanu Jain.png',
         }
     ];
@@ -38,104 +70,48 @@ export default function PastSpeakers() {
     return (
         <div className="Speakers" style={{ position: 'relative', zIndex: 2 }}>
             {/* Section heading */}
-            <motion.div
-                className="Speakers__header"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-60px' }}
-                variants={{
-                    hidden: {},
-                    visible: { transition: { staggerChildren: 0.15 } },
-                }}
-            >
-                <motion.h2
-                    className="Speakers__title"
-                    variants={mv.shouldAnimate ? {
-                        hidden: { opacity: 0, scale: 0.97, y: 20 },
-                        visible: {
-                            opacity: 1,
-                            scale: 1,
-                            y: 0,
-                            transition: { duration: 0.85, ease: 'easeOut' },
-                        },
-                    } : { hidden: { opacity: 1 }, visible: { opacity: 1 } }}
-                >
-                    VOICES
-                </motion.h2>
-                <motion.p
-                    className="Speakers__subline"
-                    variants={mv.fadeUp}
-                >
-                    that shaped the stage
-                </motion.p>
-            </motion.div>
+            <div className="Speakers__header">
+                <h2 className="Speakers__title">VOICES</h2>
+                <p className="Speakers__subline">that shaped the stage</p>
+            </div>
 
-            {/* Speaker cards grid */}
-            <motion.div
-                className="Speakers__grid"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-40px' }}
-                variants={{
-                    hidden: {},
-                    visible: { transition: { staggerChildren: 0.15 } },
-                }}
-            >
+            {/* Speaker cards 2x3 grid */}
+            <div className="Speakers__grid" ref={gridRef}>
                 {currentSpeakers.map((speaker, idx) => (
-                    <motion.div
+                    <Link
+                        href="/pastConferences"
                         className="Speakers__card"
                         key={speaker.name}
-                        variants={mv.shouldAnimate ? {
-                            hidden: { opacity: 0, y: 50 },
-                            visible: {
-                                opacity: 1,
-                                y: 0,
-                                transition: { duration: 0.85, ease: 'easeOut' },
-                            },
-                        } : { hidden: { opacity: 1 }, visible: { opacity: 1 } }}
+                        style={{ '--delay': `${idx * 80}ms` }}
+                        aria-label={`Learn more about speaker ${speaker.name}, ${speaker.role}`}
                     >
                         <div className="Speakers__card-image">
                             <Image
                                 src={speaker.image}
-                                alt={speaker.name}
+                                alt={`${speaker.name} - ${speaker.role}`}
                                 fill
-                                quality={95}
-                                priority={idx < 3}
-                                sizes="(max-width: 780px) 100vw, 33vw"
+                                sizes="(max-width: 500px) 100vw, (max-width: 915px) 50vw, 33vw"
+                                loading="lazy"
                                 style={{
                                     objectFit: 'cover',
                                     objectPosition: 'center top',
                                 }}
                             />
-                            {/* Mosaic polygon overlay */}
-                            <div className="Speakers__card-mosaic" aria-hidden="true">
-                                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                    <polygon
-                                        points="0,0 200,0 200,120 140,200 0,160"
-                                        fill="currentColor"
-                                    />
-                                </svg>
-                            </div>
                         </div>
                         <div className="Speakers__card-info">
                             <p className="Speakers__card-name">{speaker.name}</p>
+                            <p className="Speakers__card-role">{speaker.role}</p>
                         </div>
-                    </motion.div>
+                    </Link>
                 ))}
-            </motion.div>
+            </div>
 
             {/* Know more link */}
-            <motion.div
-                className="Speakers__link-wrap"
-                variants={mv.fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-            >
+            <div className="Speakers__link-wrap">
                 <Link href="/pastConferences" className="Speakers__link">
                     Know more <span className="Speakers__link-arrow">&rarr;</span>
                 </Link>
-            </motion.div>
+            </div>
         </div>
     );
 }

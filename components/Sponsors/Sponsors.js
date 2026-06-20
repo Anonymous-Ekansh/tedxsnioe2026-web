@@ -37,7 +37,7 @@ export default function Sponsors() {
                     BUILT WITH
                 </motion.h2>
                 <motion.p className="SponsorsRedesign__subline" variants={mv.fadeUp}>
-                    our partners
+                    Our Past Sponsors
                 </motion.p>
             </motion.div>
 

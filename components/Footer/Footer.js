@@ -47,7 +47,9 @@ export default function Footer() {
         {/* Left column: Brand + social */}
         <motion.div className="FooterNew__col FooterNew__col--left" variants={mv.fadeIn}>
           <div className="FooterNew__brand">
-            <span className="FooterNew__brand-tedx">TEDx</span>
+            <span className="FooterNew__brand-tedx">
+              TED<span className="FooterNew__brand-x">X</span>
+            </span>
             <span className="FooterNew__brand-name">ShivNadarUniversity</span>
           </div>
 
@@ -101,7 +103,7 @@ export default function Footer() {
         {/* Right column: Event context */}
         <motion.div className="FooterNew__col FooterNew__col--right" variants={mv.fadeIn}>
           <span className="FooterNew__event-label">
-            TED<span style={{ textTransform: 'none' }}>x</span> CONFERENCE 2026
+            TED<span className="inline-tedx-x">X</span> CONFERENCE 2026
           </span>
           <p className="FooterNew__event-tagline">
             One day. Many perspectives.<br />Countless connections.

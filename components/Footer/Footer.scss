@@ -73,8 +73,22 @@
   }
 
   &__brand-tedx {
-    color: red;
-    font-weight: 500;
+    color: #ff2b00;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.02em;
+    display: inline-flex;
+    align-items: flex-start;
+    line-height: 1;
+  }
+
+  &__brand-x {
+    color: #ff2b00;
+    font-size: 0.55em;
+    font-weight: 800;
+    margin-left: 1.5px;
+    line-height: 1;
+    display: inline-block;
   }
 
   &__brand-name {

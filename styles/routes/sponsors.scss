@@ -5,10 +5,15 @@
    ═══════════════════════════════════════════════════════════════ */
 
 .AllSponsors {
-  @include box(100vw, 100%);
+  @include box(100%, 100%);
   background: linear-gradient(180deg, #253040 0%, #161620 100%);
   padding: 7rem 2rem 5rem;
   min-height: 100vh;
+  box-sizing: border-box;
+
+  @media (max-width: 780px) {
+    padding: 6rem 1.25rem 4rem;
+  }
 
   /* ─── Header ─────────────────────────────────────────── */
   &__header {

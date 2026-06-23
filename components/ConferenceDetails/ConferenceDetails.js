@@ -17,12 +17,12 @@ function ConfDetails() {
             speakers: [
                 {
                     name: 'Dr. Rupamanjari Ghosh',
-                    profession: "Professor of Quantum Mechanics",
+                    profession: "Former Vice Chancellor, Shiv Nadar University & Professor of Quantum Mechanics",
                     image: '/Images/CurrentSpeakers/sumitra.png',
                 },
                 {
-                    name: 'Tanmaya jain',
-                    profession: "CEO of InFeedo AI",
+                    name: 'Tanmaya Jain',
+                    profession: "CEO of inFeedo, Forbes Asia 30 Under 30",
                     image: '/Images/CurrentSpeakers/tanmaya_jain.jpeg',
                 },
                 {
@@ -32,12 +32,12 @@ function ConfDetails() {
                 },
                 {
                     name: 'Anirban Bhattacharya',
-                    profession: 'Creator of Savdhaan India, Author',
+                    profession: 'Television Producer, Author & Creator of Savdhaan India',
                     image: '/Images/CurrentSpeakers/anirban.png',
                 },
                 {
                     name: 'Dr. Saumitra Rawat',
-                    profession: "Chairman of Surgical Gastroenterology, Sir Ganga Ram Hospital",
+                    profession: "Padma Shri Awardee & Chairman of Surgical Gastroenterology, Sir Ganga Ram Hospital",
                     image: '/Images/CurrentSpeakers/saumitra.png',
                 },
                 {
@@ -47,7 +47,7 @@ function ConfDetails() {
                 },
                 {
                     name: 'Madhav Raman',
-                    profession: "Founder of Anagram Architects",
+                    profession: "Architect, Urban Economist & Founder of Anagram Architects",
                     image: '/Images/CurrentSpeakers/madhav_raman.png',
                 },
                 {
@@ -57,12 +57,12 @@ function ConfDetails() {
                 },
                 {
                     name: 'Kamal Kalra',
-                    profession: "Choreographer and Performer",
+                    profession: "Singer & Performer",
                     image: '/Images/CurrentSpeakers/singer2.jpg',
                 },
                 {
                     name: 'Bhangra Queens',
-                    profession: "All-Women Bhangra Troupe",
+                    profession: "India’s First All-Women Bhangra Troupe",
                     image: '/Images/CurrentSpeakers/bhangra_queens_tedx.jpeg',
                     objectPosition: 'center 30%',
                 }

@@ -17,7 +17,7 @@ function ConfDetails() {
             speakers: [
                 {
                     name: 'Dr. Rupamanjari Ghosh',
-                    profession: "Former Vice Chancellor, Shiv Nadar University & Professor of Quantum Mechanics",
+                    profession: "Former Vice Chancellor, Shiv Nadar University, Professor of Quantum Mechanics",
                     image: '/Images/CurrentSpeakers/sumitra.png',
                 },
                 {
@@ -32,12 +32,12 @@ function ConfDetails() {
                 },
                 {
                     name: 'Anirban Bhattacharya',
-                    profession: 'Television Producer, Author & Creator of Savdhaan India',
+                    profession: 'Television Producer, Author, Creator of Savdhaan India',
                     image: '/Images/CurrentSpeakers/anirban.png',
                 },
                 {
                     name: 'Dr. Saumitra Rawat',
-                    profession: "Padma Shri Awardee & Chairman of Surgical Gastroenterology, Sir Ganga Ram Hospital",
+                    profession: "Padma Shri Awardee, Chairman of Surgical Gastroenterology, Sir Ganga Ram Hospital",
                     image: '/Images/CurrentSpeakers/saumitra.png',
                 },
                 {
@@ -47,7 +47,7 @@ function ConfDetails() {
                 },
                 {
                     name: 'Madhav Raman',
-                    profession: "Architect, Urban Economist & Founder of Anagram Architects",
+                    profession: "Architect, Urban Economist, Founder of Anagram Architects",
                     image: '/Images/CurrentSpeakers/madhav_raman.png',
                 },
                 {

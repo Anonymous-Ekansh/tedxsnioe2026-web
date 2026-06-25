@@ -78,8 +78,11 @@ function PastConfTitles() {
                     const colorIndex = index % conferences.length;
                     // Deterministically generate pseudo-random pleasing bright pastel colors using golden ratio angles
                     const hue = (colorIndex * 137.5) % 360;
-                    const tileColor = `hsl(${hue}, 86%, 74%)`;
+                    const isSimplexity = conf.title.toLowerCase() === 'simplexity';
+                    const tileColor = isSimplexity ? '#e62b1e' : `hsl(${hue}, 86%, 74%)`;
                     const isActive = conference === conf.id;
+                    const textStyle = isSimplexity ? { color: '#ffffff' } : {};
+                    const titleTextStyle = isSimplexity ? { color: 'rgba(255, 255, 255, 0.85)' } : {};
 
                     return (
                         <React.Fragment key={`${conf.id}-${index}`}>
@@ -91,8 +94,8 @@ function PastConfTitles() {
                                     opacity: isActive ? 1 : 0.7,
                                 }}
                             >
-                                <p className='PastConfTitlesContainer__card--year'>{conf.year}</p>
-                                <p className='PastConfTitlesContainer__card--title'>{conf.title}</p>
+                                <p className='PastConfTitlesContainer__card--year' style={textStyle}>{conf.year}</p>
+                                <p className='PastConfTitlesContainer__card--title' style={titleTextStyle}>{conf.title}</p>
                             </div>
                             {index < items.length - 1 && (
                                 <span className='PastConfTitlesContainer__divider'>●</span>

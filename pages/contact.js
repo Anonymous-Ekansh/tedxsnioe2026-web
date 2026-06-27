@@ -46,6 +46,11 @@ function Contact() {
                         <p className='ContactUsSection__container--details__card--phone'>+91-8328251153</p>
                     </motion.div>
                     <motion.div className='ContactUsSection__container--details__card' variants={mv.fadeUp}>
+                        <p className='ContactUsSection__container--details__card--name'>Sanyukta Agarwal</p>
+                        <p className='ContactUsSection__container--details__card--designation'>Curator & License</p>
+                        <p className='ContactUsSection__container--details__card--phone'>+91-6396944195</p>
+                    </motion.div>
+                    <motion.div className='ContactUsSection__container--details__card' variants={mv.fadeUp}>
                         <p className='ContactUsSection__container--details__card--name'>Shreyaa Venkataraman</p>
                         <p className='ContactUsSection__container--details__card--designation'>Managing Director</p>
                         <p className='ContactUsSection__container--details__card--phone'>+91-9791185259</p>

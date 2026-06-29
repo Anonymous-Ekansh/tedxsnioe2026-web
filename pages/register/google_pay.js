@@ -234,7 +234,18 @@ export default function GooglePay() {
                     <p onClick={() => handleClick()} className='GooglePay__qr--bottom'>Proceed</p>
                 </div>
                 <div className='GooglePay__details'>
-                    <Image className='GooglePay__details--image' src='/Images/Assets/payment.png' alt='Payment Details' width={600} height={400} quality={95} />
+                    <div className="GooglePay__brand">
+                        <Image
+                            className="GooglePay__brand--logo"
+                            src="/Images/Assets/mosaic-logo.svg"
+                            alt="Mosaic Logo"
+                            width={100}
+                            height={100}
+                            priority
+                        />
+                        <h2 className="GooglePay__brand--title">SECURE YOUR SPOT</h2>
+                        <p className="GooglePay__brand--subtitle">Be part of the ideas that shape the future.</p>
+                    </div>
                     <div className='GooglePay__details--priceDetails'>
                         <p>Price Details</p>
                         <div className='GooglePay__details--priceDetails__snu'>

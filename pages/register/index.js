@@ -341,13 +341,18 @@ export default function Register() {
           </div>
         </div>
         <div className="RegisterSection__amount">
-          <Image
-            className="RegisterSection__amount--image"
-            src="/Images/Assets/payment.png"
-            alt="Payment Details"
-            width={600}
-            height={400}
-          />
+          <div className="RegisterSection__brand">
+            <Image
+              className="RegisterSection__brand--logo"
+              src="/Images/Assets/mosaic-logo.svg"
+              alt="Mosaic Logo"
+              width={100}
+              height={100}
+              priority
+            />
+            <h2 className="RegisterSection__brand--title">SECURE YOUR SPOT</h2>
+            <p className="RegisterSection__brand--subtitle">Be part of the ideas that shape the future.</p>
+          </div>
           <div className="RegisterSection__amount--priceDetails">
             <p>Price Details</p>
             <div className="RegisterSection__amount--priceDetails__snu">

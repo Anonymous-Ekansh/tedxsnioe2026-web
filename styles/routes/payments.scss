@@ -44,12 +44,6 @@
     @include respondAt(915px) {
       margin-bottom: 3rem;
     }
-    &--image {
-      width: 26rem;
-      @include respondAt(915px) {
-        width: 20rem;
-      }
-    }
     &--priceDetails {
       p {
         color: rgba(18, 18, 18, 0.8);
@@ -76,4 +70,58 @@
       }
     }
   }
+
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    
+    &--logo {
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 0 15px rgba(230, 90, 154, 0.3));
+      animation: pulseLogo 4s ease-in-out infinite alternate;
+    }
+    
+    &--title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: white;
+      margin: 0 0 0.5rem 0;
+      letter-spacing: 0.03em;
+      background: linear-gradient(135deg, white 30%, var(--pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(230, 90, 154, 0.1);
+
+      @include respondAt(915px) {
+        font-size: 1.8rem;
+      }
+    }
+    
+    &--subtitle {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin: 0;
+      max-width: 280px;
+      line-height: 1.4;
+    }
+  }
+}
+
+@keyframes pulseLogo {
+  0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(230, 90, 154, 0.3)); }
+  100% { transform: scale(1.05); filter: drop-shadow(0 0 25px rgba(230, 90, 154, 0.5)); }
 }

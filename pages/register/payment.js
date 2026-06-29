@@ -43,7 +43,18 @@ export default function Payment() {
                 <div onClick={() => handleClick('CASH')} className='PaymentContainer__option--mode'>Cash</div>
             </div>
             <div className='PaymentContainer__details'>
-                <Image className='PaymentContainer__details--image' src='/Images/Assets/payment.png' />
+                <div className="PaymentContainer__brand">
+                    <Image
+                        className="PaymentContainer__brand--logo"
+                        src="/Images/Assets/mosaic-logo.svg"
+                        alt="Mosaic Logo"
+                        width={100}
+                        height={100}
+                        priority
+                    />
+                    <h2 className="PaymentContainer__brand--title">SECURE YOUR SPOT</h2>
+                    <p className="PaymentContainer__brand--subtitle">Be part of the ideas that shape the future.</p>
+                </div>
                 <div className='PaymentContainer__details--priceDetails'>
                     <p>Price Details</p>
                     <div className='PaymentContainer__details--priceDetails__snu'>

@@ -89,13 +89,8 @@ export default function GooglePay() {
         }
     };
     const handleClick = async () => {
-        if (tid === '') {
-            alert('Please enter a valid transaction id');
-            return;
-        }
-
-        if (!screenshot) {
-            alert('Please upload the payment screenshot');
+        if (tid === '' && !screenshot) {
+            alert('Please enter a Transaction ID/UTR or upload a payment screenshot');
             return;
         }
 
@@ -120,7 +115,7 @@ export default function GooglePay() {
                     number_of_people: paymentData.number_of_people,
                     is_snu_student: paymentData.is_snu_student,
                     total_amount: paymentData.total_amount,
-                    transaction_id: tid.trim(),
+                    transaction_id: tid.trim() ? tid.trim() : null,
                     payment_method: 'upi',
                     status: 'pending',
 
@@ -143,32 +138,30 @@ export default function GooglePay() {
                 throw paymentError;
             }
 
-            const screenshotUrl = await uploadScreenshot(screenshot, paymentRecord.id);
-            console.log('SCREENSHOT URL , URL:', screenshotUrl);
-            // Upload screenshot after payment record is created
-            const { data: updateData, error: updateError } = await supabase
-            .from('payments')
-            .update({ 
-                transaction_screenshot_url: screenshotUrl  // Match the exact column name
-            })
-            .eq('id', paymentRecord.id)
-            .select();
+            if (screenshot) {
+                const screenshotUrl = await uploadScreenshot(screenshot, paymentRecord.id);
+                console.log('SCREENSHOT URL , URL:', screenshotUrl);
+                // Upload screenshot after payment record is created
+                const { data: updateData, error: updateError } = await supabase
+                .from('payments')
+                .update({ 
+                    transaction_screenshot_url: screenshotUrl  // Match the exact column name
+                })
+                .eq('id', paymentRecord.id)
+                .select();
 
-            if (updateError) {
-                console.error('Failed to update screenshot URL:', updateError);
-                throw updateError;
-            } else {
-                console.log('Screenshot URL updated successfully:', updateData);
+                if (updateError) {
+                    console.error('Failed to update screenshot URL:', updateError);
+                    throw updateError;
+                } else {
+                    console.log('Screenshot URL updated successfully:', updateData);
+                }
             }
 
-            // console.log('Payment record updated with screenshot:', updateData);
-            console.log('Complete payment record:', paymentRecord);
-
-            
             // Redirect to success page with payment details
             const queryParams = new URLSearchParams({
                 receiptNumber: `TXR${paymentRecord.id.slice(-8)}`,
-                transactionId: tid.trim(),
+                transactionId: tid.trim() || 'Uploaded Screenshot',
                 amount: paymentData.total_amount,
                 participants: paymentData.participants.length
             });
@@ -199,9 +192,11 @@ export default function GooglePay() {
                         <input
                             onChange={(e) => setTid(e.target.value)}
                             type='text'
-                            placeholder='Transaction ID'
-                            required
+                            placeholder='Transaction ID / UTR Number'
                         />
+                    </div>
+                    <div className='GooglePay__qr--or'>
+                        <span>— OR —</span>
                     </div>
                     <div className='GooglePay__qr--screenshot'>
                         <label htmlFor="screenshot" style={{
@@ -211,14 +206,13 @@ export default function GooglePay() {
                             fontSize: '0.9rem',
                             color: '#333'
                         }}>
-                            Upload Payment Screenshot *
+                            Upload Payment Screenshot
                         </label>
                         <input
                             type="file"
                             id="screenshot"
                             accept="image/*"
                             onChange={handleScreenshotChange}
-                            required
                             style={{
                                 width: '100%',
                                 padding: '0.5rem',

@@ -70,6 +70,7 @@
     @include respondAt(915px) {
       padding: 2rem 1.5rem;
       max-width: 90%;
+      order: 2;
     }
 
     &--snu,
@@ -252,6 +253,7 @@
 
     @include respondAt(915px) {
       max-width: 90%;
+      order: 1;
     }
 
 

@@ -90,7 +90,7 @@ export default function GooglePay() {
     };
     const handleClick = async () => {
         if (tid === '' && !screenshot) {
-            alert('Please enter a Transaction ID/UTR or upload a payment screenshot');
+            alert('Please enter a UTR number or upload a payment screenshot');
             return;
         }
 
@@ -103,7 +103,7 @@ export default function GooglePay() {
         try {
             console.log('Starting payment submission process...');
             console.log('Payment data:', paymentData);
-            console.log('Transaction ID:', tid);
+            console.log('UTR Number:', tid);
             console.log('Screenshot file:', screenshot);
 
             // First, insert the payment record
@@ -133,7 +133,7 @@ export default function GooglePay() {
             if (paymentError) {
                 console.error('Payment insertion error:', paymentError);
                 if (paymentError.code === '23505') { // Unique constraint violation
-                    throw new Error('This transaction ID has already been used. Please check your transaction ID.');
+                    throw new Error('This UTR number has already been used. Please check your UTR number.');
                 }
                 throw paymentError;
             }
@@ -192,7 +192,7 @@ export default function GooglePay() {
                         <input
                             onChange={(e) => setTid(e.target.value)}
                             type='text'
-                            placeholder='Transaction ID / UTR Number'
+                            placeholder='UTR Number'
                         />
                     </div>
                     <div className='GooglePay__qr--or'>

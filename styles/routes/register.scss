@@ -1,146 +1,340 @@
+/* ═══════════════════════════════════════════════════════════════
+   Registration Page — Mosaic dark plum design
+   Glassmorphic panels, glowing input elements, responsive layout
+   ═══════════════════════════════════════════════════════════════ */
+
 .RegisterSection {
-  margin-bottom: 5rem;
-  padding-top: 8rem;
+  width: 100%;
+  min-height: 100vh;
+  padding: 8rem 2rem 5rem;
+  box-sizing: border-box;
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4rem;
+  position: relative;
+  overflow: hidden;
+
+  /* Gradient background */
+  background:
+    radial-gradient(1000px 700px at 15% 20%, rgba(230, 90, 154, 0.22), transparent 70%),
+    radial-gradient(850px 650px at 85% 80%, rgba(169, 172, 214, 0.18), transparent 70%),
+    radial-gradient(700px 500px at 50% 50%, rgba(151, 213, 207, 0.12), transparent 60%),
+    linear-gradient(135deg, #0d0d0d 0%, #160611 40%, #241020 80%, #491733 100%);
+
+  /* Grain texture overlay */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.28;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+  }
+
+  /* Ensure content stacks above background overlays */
+  & > * {
+    position: relative;
+    z-index: 2;
+  }
+
   @include respondAt(915px) {
     flex-direction: column;
+    align-items: center;
+    gap: 3rem;
     padding-top: 6rem;
-    padding-bottom: 0;
+    padding-bottom: 3rem;
   }
+
+  /* ─── Glassmorphic Details Panel ───────────────────────── */
   &__details {
-    @include respondAt(915px) {
-      width: 20rem;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 480px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 25px 60px rgba(230, 90, 154, 0.15);
     }
+
+    @include respondAt(915px) {
+      padding: 2rem 1.5rem;
+      max-width: 90%;
+    }
+
     &--snu,
     &--people {
+      margin-bottom: 2rem;
+
       p {
-        font-family: "Raleway", sans-serif;
-        color: #636872;
-        font-weight: 600;
-        font-size: 1.1rem;
-        margin-bottom: 0.7rem;
+        font-family: var(--font-body);
+        color: var(--muted);
+        font-weight: 500;
+        font-size: 1rem;
+        letter-spacing: 0.02em;
+        margin-bottom: 0.8rem;
         margin-top: 0;
       }
+
       &__options {
         display: flex;
-        @include respondAt(915px) {
+        gap: 1rem;
+
+        @include respondAt(480px) {
           flex-direction: column;
-          align-items: flex-start;
         }
+
         &--red {
-          color: black;
-          border: 2px red solid;
-          padding: 0.8rem 2rem 0.8rem 2rem;
-          margin-right: 1rem;
-          border-radius: 5px;
+          color: white !important;
+          background: linear-gradient(135deg, var(--pink) 0%, #a11d21 100%);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          padding: 0.8rem 1.5rem;
+          border-radius: 8px;
           cursor: pointer;
+          font-family: var(--font-body);
+          font-weight: 600;
+          font-size: 0.95rem;
+          text-align: center;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+          box-shadow: 0 4px 15px rgba(230, 90, 154, 0.35);
+
+          &:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+          }
+
           @include respondAt(915px) {
-            width: 10rem;
+            width: 100%;
+            box-sizing: border-box;
           }
         }
+
         &--white {
-          color: black;
-          border: 1.41px rgba(0, 0, 0, 0.2) solid;
-          padding: 0.8rem 2rem 0.8rem 2rem;
-          margin-right: 1rem;
-          border-radius: 5px;
+          color: rgba(255, 255, 255, 0.6) !important;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          padding: 0.8rem 1.5rem;
+          border-radius: 8px;
           cursor: pointer;
+          font-family: var(--font-body);
+          font-weight: 500;
+          font-size: 0.95rem;
+          text-align: center;
+          transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: white !important;
+          }
+
           @include respondAt(915px) {
-            width: 10rem;
+            width: 100%;
+            box-sizing: border-box;
           }
         }
       }
     }
+
     &--people {
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
+
     &--value {
-      p {
-        color: #0b0b0b;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      & > p {
+        color: white;
         font-weight: 800;
-        font-family: "Raleway", sans-serif;
-        font-size: 1.1rem;
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        letter-spacing: 0.01em;
+        margin: 1rem 0 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 0.5rem;
       }
-      &__email {
-        &--warn {
-          font-size: 5rem;
-        }
-      }
+
       &__name,
       &__email,
       &__phone {
+        display: flex;
+        flex-direction: column;
+
         p {
-          color: #636872;
-          font-weight: 600;
-          font-size: 1rem;
+          color: var(--muted);
+          font-family: var(--font-body);
+          font-weight: 500;
+          font-size: 0.9rem;
+          margin-bottom: 0.5rem;
+          margin-top: 0;
         }
+
         &--warn {
-          font-size: .7rem !important;
-          margin-top: .3rem;
-          color: rgb(180, 179, 179) !important;
+          font-size: 0.8rem !important;
+          margin-top: 0.35rem;
+          color: rgba(230, 90, 154, 0.8) !important;
+          font-weight: 400 !important;
+          font-family: var(--font-body) !important;
         }
+
         input {
-          font-family: "Raleway", sans-serif;
-          border: 0.51px rgba(0, 0, 0, 0.2) solid;
-          border-radius: 6px;
-          width: 25rem;
-          padding: 0.7rem 0rem 0.7rem 1rem;
-          @include respondAt(915px) {
-            width: 19rem;
+          font-family: var(--font-body);
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 8px;
+          color: white;
+          width: 100%;
+          box-sizing: border-box;
+          padding: 0.8rem 1rem;
+          font-size: 0.95rem;
+          outline: none;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+
+          &::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+          }
+
+          &:focus {
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: var(--pink);
+            box-shadow: 0 0 12px rgba(230, 90, 154, 0.35);
           }
         }
       }
     }
+
     &--submit {
-      font-family: "Raleway", sans-serif;
+      font-family: var(--font-body);
       font-weight: 700;
-      padding: 0.8rem 2rem 0.8rem 2rem;
-      border: 2px solid red;
-      border-radius: 7px;
+      color: white !important;
+      background: linear-gradient(90deg, #a11d21 0%, var(--pink) 100%);
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
       text-align: center;
-      margin-top: 2rem;
+      margin-top: 2.5rem;
+      font-size: 1rem;
       cursor: pointer;
-      @include respondAt(915px)
-      {
-        margin-bottom: 2rem;
+      box-shadow: 0 8px 24px rgba(161, 29, 33, 0.4);
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.25s ease, filter 0.25s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(230, 90, 154, 0.65);
+        filter: brightness(1.1);
+      }
+
+      &:active {
+        transform: translateY(0);
       }
     }
   }
+
+  /* ─── Glassmorphic Amount & Pricing Panel ──────────────── */
   &__amount {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
     @include respondAt(915px) {
-      margin-bottom: 3rem;
+      max-width: 90%;
     }
+
     &--image {
-      width: 26rem;
-      @include respondAt(915px ){
-        width: 20rem;
-      }
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      object-fit: cover;
     }
+
     &--priceDetails {
-      p {
-        color: rgba(18, 18, 18, 0.8);
-        font-family: "Inter", sans-serif;
-        font-weight: 500;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        font-size: 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      box-sizing: border-box;
+
+      & > p {
+        color: white;
+        font-family: var(--font-display);
+        font-weight: 900;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.35rem;
+        letter-spacing: 0.01em;
       }
+
       &__snu,
       &__people,
       &__ticket {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 0.8rem;
+
         p {
-          color: rgba(18, 18, 18, 0.49);
-          font-size: 0.9rem;
-          margin-bottom: 0.5rem;
+          margin: 0;
+          font-family: var(--font-body);
+
+          &:first-child {
+            color: var(--muted);
+            font-size: 0.95rem;
+            font-weight: 400;
+          }
+
+          &:last-child {
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+          }
         }
       }
+
+      hr {
+        border: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 1.5rem 0;
+      }
+
       &__total {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+
+        p {
+          margin: 0;
+          font-family: var(--font-body);
+
+          &:first-child {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+          }
+
+          &:last-child {
+            color: var(--yellow);
+            font-size: 1.35rem;
+            font-weight: 800;
+          }
+        }
       }
     }
   }
@@ -149,13 +343,26 @@
 .OpeningSoon {
   width: 100vw;
   height: 100vh;
-  // padding-top: 10rem;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   font-size: 3rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-display);
+  color: white;
+  background: linear-gradient(135deg, #160611 0%, #241020 50%, #491733 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.28;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+  }
+
   @include respondAt(915px) {
     font-size: 2rem;
   }

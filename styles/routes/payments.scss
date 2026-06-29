@@ -17,6 +17,7 @@
     @include respondAt(915px)
     {
         margin-bottom: 2rem;
+        order: 2;
     }
     &--title {
       font-family: "Raleway", sans-serif;
@@ -43,6 +44,7 @@
   &__details {
     @include respondAt(915px) {
       margin-bottom: 3rem;
+      order: 1;
     }
     &--priceDetails {
       p {

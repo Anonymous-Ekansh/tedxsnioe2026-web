@@ -182,6 +182,7 @@
         @include respondAt(500px) {
           max-width: 280px;
           width: 100%;
+          align-items: flex-start;
         }
 
         /* ─── Name ──────────────────────────────────────── */
@@ -197,6 +198,10 @@
 
           @include respondAt(915px) {
             font-size: 1.1rem;
+          }
+
+          @include respondAt(500px) {
+            text-align: left;
           }
         }
 
@@ -214,6 +219,10 @@
           @include respondAt(915px) {
             font-size: 0.8rem;
           }
+
+          @include respondAt(500px) {
+            text-align: left;
+          }
         }
 
         /* ─── Phone ─────────────────────────────────────── */
@@ -229,6 +238,10 @@
 
           @include respondAt(915px) {
             font-size: 0.85rem;
+          }
+
+          @include respondAt(500px) {
+            text-align: left;
           }
         }
       }

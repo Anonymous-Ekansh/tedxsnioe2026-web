@@ -97,6 +97,7 @@ export default function Footer() {
             <span className="FooterNew__nav-link" onClick={() => scrollTo("about")}>About Us</span>
             <Link href="/pastConferences" className="FooterNew__nav-link">Past Conferences</Link>
             <span className="FooterNew__nav-link" onClick={() => scrollTo("sponsors")}>Sponsors</span>
+            <Link href="/register" className="FooterNew__nav-link" style={{ color: "var(--ted-red, red)" }}>Register</Link>
           </nav>
         </motion.div>
 

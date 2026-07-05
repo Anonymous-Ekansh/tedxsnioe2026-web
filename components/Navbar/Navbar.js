@@ -31,6 +31,7 @@ function Navbar({ isSmall = false }) {
     });
 
     const scrollTo = async (id) => {
+        setNavState(false);
         if (pathName !== '/') {
             await router.push('/');
             // Wait for the page to render before scrolling
@@ -112,6 +113,7 @@ function Navbar({ isSmall = false }) {
                             }`}
                     >
                         <li
+                            onClick={() => setNavState(false)}
                             className={`${pathName === "/"
                                 ? "NavbarContainer__Menu--list-activeItem"
                                 : "NavbarContainer__Menu--list-item"
@@ -122,6 +124,7 @@ function Navbar({ isSmall = false }) {
                             </p>
                         </li>
                         <li
+                            onClick={() => setNavState(false)}
                             className={`${pathName === "/events"
                                 ? "NavbarContainer__Menu--list-activeItem"
                                 : "NavbarContainer__Menu--list-item"
@@ -132,6 +135,7 @@ function Navbar({ isSmall = false }) {
                             >About Us</p>
                         </li>
                         <li
+                            onClick={() => setNavState(false)}
                             className={`${pathName === "/gallery"
                                 ? "NavbarContainer__Menu--list-activeItem"
                                 : "NavbarContainer__Menu--list-item"
@@ -142,6 +146,7 @@ function Navbar({ isSmall = false }) {
                             >Sponsors</p>
                         </li>
                         <li
+                            onClick={() => setNavState(false)}
                             className={`${pathName === "/pastConferences"
                                 ? "NavbarContainer__Menu--list-activeItem"
                                 : "NavbarContainer__Menu--list-item"
@@ -153,6 +158,7 @@ function Navbar({ isSmall = false }) {
                         </li>
 
                         <li
+                            onClick={() => setNavState(false)}
                             className={`${pathName === "/aboutqissa"
                                 ? "NavbarContainer__Menu--list-activeItem"
                                 : "NavbarContainer__Menu--list-item"
@@ -164,6 +170,7 @@ function Navbar({ isSmall = false }) {
                         </li>
 
                         <li
+                            onClick={() => setNavState(false)}
                             className={`${pathName === "/contact"
                                 ? "NavbarContainer__Menu--list-activeItem"
                                 : "NavbarContainer__Menu--list-item"
@@ -175,6 +182,7 @@ function Navbar({ isSmall = false }) {
                         </li>
 
                         <li
+                            onClick={() => setNavState(false)}
                             className={`${pathName === "/register"
                                 ? "NavbarContainer__Menu--list-activeItem"
                                 : "NavbarContainer__Menu--list-item"

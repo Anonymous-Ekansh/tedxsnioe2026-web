@@ -75,7 +75,14 @@ export default function PayTM() {
                     <p onClick={() => handleClick()} className='GooglePay__qr--bottom'>Proceed</p>
                 </div>
                 <div className='GooglePay__details'>
-                    <Image className='GooglePay__details--image' src='/Images/Assets/payment.png' />
+                    <div className="PaymentGuides">
+                        <h3>How to find your UTR/Transaction Number?</h3>
+                        <div className="PaymentGuides__buttons">
+                            <Link href="/register/guide/gpay" target="_blank" rel="noopener noreferrer">Google Pay Guide</Link>
+                            <Link href="/register/guide/phonepe" target="_blank" rel="noopener noreferrer">PhonePe Guide</Link>
+                            <Link href="/register/guide/paytm" target="_blank" rel="noopener noreferrer">Paytm Guide</Link>
+                        </div>
+                    </div>
                     <div className='GooglePay__details--priceDetails'>
                         <p>Price Details</p>
                         <div className='GooglePay__details--priceDetails__snu'>

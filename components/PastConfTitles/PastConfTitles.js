@@ -3,15 +3,15 @@ import useConf from '../../hooks/useConf';
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 
 const conferences = [
-    { id: 'conf0', year: '2025', title: 'Simplexity' },
-    { id: 'conf1', year: '2024', title: 'Through The Looking Glass' },
-    { id: 'conf2', year: '2023', title: 'Kaleidoscope' },
-    { id: 'conf3', year: '2022', title: 'Misfits' },
-    { id: 'conf4', year: '2021', title: 'Rewire' },
-    { id: 'conf5', year: '2019', title: 'Blindspots' },
-    { id: 'conf6', year: '2018', title: 'Out of the Blue' },
-    { id: 'conf7', year: '2017', title: 'Ignite' },
-    { id: 'conf8', year: '2016', title: 'conference' },
+    { id: 'conf0', year: '2025', title: 'Simplexity', themeColor: '#e62b1e' },
+    { id: 'conf1', year: '2024', title: 'Through The Looking Glass', themeColor: '#72d3f7' },
+    { id: 'conf2', year: '2023', title: 'Kaleidoscope', themeColor: '#9c51b6' },
+    { id: 'conf3', year: '2022', title: 'Misfits', themeColor: '#f39c12' },
+    { id: 'conf4', year: '2021', title: 'Rewire', themeColor: '#2ecc71' },
+    { id: 'conf5', year: '2019', title: 'Blindspots', themeColor: '#34495e' },
+    { id: 'conf6', year: '2018', title: 'Out of the Blue', themeColor: '#3498db' },
+    { id: 'conf7', year: '2017', title: 'Ignite', themeColor: '#e74c3c' },
+    { id: 'conf8', year: '2016', title: 'conference', themeColor: '#95a5a6' },
 ];
 
 function PastConfTitles() {
@@ -75,14 +75,10 @@ function PastConfTitles() {
         >
             <div className='PastConfTitlesContainer__track'>
                 {items.map((conf, index) => {
-                    const colorIndex = index % conferences.length;
-                    // Deterministically generate pseudo-random pleasing bright pastel colors using golden ratio angles
-                    const hue = (colorIndex * 137.5) % 360;
-                    const isSimplexity = conf.title.toLowerCase() === 'simplexity';
-                    const tileColor = isSimplexity ? '#e62b1e' : `hsl(${hue}, 86%, 74%)`;
+                    const tileColor = conf.themeColor || '#e62b1e';
                     const isActive = conference === conf.id;
-                    const textStyle = isSimplexity ? { color: '#ffffff' } : {};
-                    const titleTextStyle = isSimplexity ? { color: 'rgba(255, 255, 255, 0.85)' } : {};
+                    const textStyle = { color: '#ffffff' };
+                    const titleTextStyle = { color: 'rgba(255, 255, 255, 0.85)' };
 
                     return (
                         <React.Fragment key={`${conf.id}-${index}`}>

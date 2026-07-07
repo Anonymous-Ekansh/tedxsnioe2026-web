@@ -18,21 +18,21 @@ export default function GPayGuide() {
                         <h3>Step 2: Go to Transaction History</h3>
                         <p>Scroll down to the bottom of the main screen and tap on <strong>"Show transaction history"</strong>.</p>
                         <div className="GuidePage__image-placeholder">
-                            [Insert Screenshot of Transaction History Button Here]
+                            <img src="/Images/Guide/googlepay 1.jpeg" alt="Transaction History Button" />
                         </div>
                     </div>
                     <div className="GuidePage__step">
                         <h3>Step 3: Select the Payment</h3>
                         <p>Find and tap on the payment you just made to TEDxShivNadarUniversity.</p>
                         <div className="GuidePage__image-placeholder">
-                            [Insert Screenshot of Specific Transaction Here]
+                            <img src="/Images/Guide/googlepay 2.jpeg" alt="Specific Transaction" />
                         </div>
                     </div>
                     <div className="GuidePage__step">
                         <h3>Step 4: Locate the UPI Transaction ID</h3>
                         <p>Under the transaction details, look for the 12-digit number labeled <strong>"UPI transaction ID"</strong>. This is your UTR number.</p>
                         <div className="GuidePage__image-placeholder">
-                            [Insert Screenshot showing UPI Transaction ID Here]
+                            <img src="/Images/Guide/googlepay 3.jpeg" alt="UPI Transaction ID" />
                         </div>
                     </div>
                 </div>

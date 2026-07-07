@@ -18,21 +18,21 @@ export default function PhonePeGuide() {
                         <h3>Step 2: Go to History</h3>
                         <p>Tap on the <strong>"History"</strong> icon located at the bottom right corner of the screen.</p>
                         <div className="GuidePage__image-placeholder">
-                            [Insert Screenshot of History Tab Here]
+                            <img src="/Images/Guide/phonepe 1.jpeg" alt="History Tab" />
                         </div>
                     </div>
                     <div className="GuidePage__step">
                         <h3>Step 3: Select the Payment</h3>
                         <p>Find and tap on the recent payment made to TEDxShivNadarUniversity.</p>
                         <div className="GuidePage__image-placeholder">
-                            [Insert Screenshot of Specific Transaction Here]
+                            <img src="/Images/Guide/phonepe 2.jpeg" alt="Specific Transaction" />
                         </div>
                     </div>
                     <div className="GuidePage__step">
                         <h3>Step 4: Locate the UTR Number</h3>
                         <p>In the "Transfer Details" section, you will see a 12-digit number labeled <strong>"UTR"</strong>. This is your UTR number.</p>
                         <div className="GuidePage__image-placeholder">
-                            [Insert Screenshot showing UTR Number Here]
+                            <img src="/Images/Guide/phonepe 3.jpeg" alt="UTR Number" />
                         </div>
                     </div>
                 </div>

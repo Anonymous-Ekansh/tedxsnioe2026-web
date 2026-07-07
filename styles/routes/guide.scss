@@ -1,11 +1,16 @@
 .GuidePage {
     min-height: 100vh;
     width: 100%;
+    box-sizing: border-box;
     color: #ffffff;
     padding: 8rem 2rem 5rem;
     font-family: var(--font-body, "Inter", sans-serif);
     position: relative;
     overflow: hidden;
+
+    @media (max-width: 600px) {
+        padding: 6rem 1rem 3rem;
+    }
 
     /* Gradient background matching register theme */
     background:
@@ -33,6 +38,8 @@
 
     &__container {
         max-width: 600px;
+        width: 100%;
+        box-sizing: border-box;
         margin: 0 auto;
         background: rgba(255, 255, 255, 0.03);
         backdrop-filter: blur(25px);
@@ -41,6 +48,10 @@
         border-radius: 20px;
         padding: 3rem 2.5rem;
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+
+        @media (max-width: 600px) {
+            padding: 2rem 1.5rem;
+        }
     }
 
     &__title {

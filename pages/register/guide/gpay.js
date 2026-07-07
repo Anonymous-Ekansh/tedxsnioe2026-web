@@ -11,8 +11,8 @@ export default function GPayGuide() {
                 <h1 className="GuidePage__title">How to find UTR in Google Pay (GPay)</h1>
                 <div className="GuidePage__steps">
                     <div className="GuidePage__step">
-                        <h3>Step 1: Open Google Pay</h3>
-                        <p>Open the Google Pay app on your device.</p>
+                        <h3>Step 1: Make Payment</h3>
+                        <p>Open the Google Pay app on your device and make the payment using the provided QR code.</p>
                     </div>
                     <div className="GuidePage__step">
                         <h3>Step 2: Go to Transaction History</h3>

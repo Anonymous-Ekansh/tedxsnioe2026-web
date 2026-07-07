@@ -11,8 +11,8 @@ export default function PhonePeGuide() {
                 <h1 className="GuidePage__title">How to find UTR in PhonePe</h1>
                 <div className="GuidePage__steps">
                     <div className="GuidePage__step">
-                        <h3>Step 1: Open PhonePe</h3>
-                        <p>Open the PhonePe app on your device.</p>
+                        <h3>Step 1: Make Payment</h3>
+                        <p>Open the PhonePe app on your device and make the payment using the provided QR code.</p>
                     </div>
                     <div className="GuidePage__step">
                         <h3>Step 2: Go to History</h3>

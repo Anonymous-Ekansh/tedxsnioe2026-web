@@ -1,8 +1,21 @@
 import ConfDetailsSlider from '../ConfDetailsSlider/ConfDetailsSlider';
 import './ConfDetailsHeader.scss'
 import Link from "next/link";
+import React, { useState } from 'react';
 
 function ConfHeader({title,year,desc, images, url}) {
+    const [text, setText] = useState('Watch AfterMovie');
+
+    const handleAftermovieClick = (e) => {
+        if (url === '#') {
+            e.preventDefault();
+            setText('Coming soon...');
+            setTimeout(() => {
+                setText('Watch AfterMovie');
+            }, 2000);
+        }
+    };
+
     return (
         <div className='ConfHeader'>
             <div className='ConfHeader__heading'>
@@ -18,10 +31,10 @@ function ConfHeader({title,year,desc, images, url}) {
                     <p className='ConfHeader__details--content__desc'>
                         {desc}
                     </p>
-                    {url && ( // Render the link only if 'url' is truthy
+                    {url && (
                         <p className='ConfHeader__details--content__aftermovie'>
-                            <Link style={{ color: "white" }} href={`${url}`}>
-                                Watch AfterMovie
+                            <Link style={{ color: "white" }} href={`${url}`} onClick={handleAftermovieClick}>
+                                {text}
                             </Link>
                         </p>
                     )}

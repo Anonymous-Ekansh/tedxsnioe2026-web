@@ -72,7 +72,7 @@ export default function PastSpeakers() {
             {/* Section heading */}
             <div className="Speakers__header">
                 <h2 className="Speakers__title">VOICES</h2>
-                <p className="Speakers__subline">that shaped the stage</p>
+                <p className="Speakers__subline">that have shaped our stage</p>
             </div>
 
             {/* Speaker cards 2x3 grid */}

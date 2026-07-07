@@ -1,30 +1,38 @@
 import Link from 'next/link';
 import './Footer.scss';
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import { motion } from 'framer-motion';
 import { useMotionVariants } from '../shared/motionVariants';
 import ButterflyLogo from '../shared/ButterflyLogo';
 
 export default function Footer() {
   const pathName = usePathname();
+  const router = useRouter();
   const mv = useMotionVariants();
 
   const scrollTo = async (id) => {
     if (pathName !== '/') {
       await router.push('/');
-      const element = document.getElementById(id);
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      });
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+            inline: "nearest",
+          });
+        }
+      }, 500);
     } else {
       const element = document.getElementById(id);
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest",
-      });
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+          inline: "nearest",
+        });
+      }
     }
   };
 
@@ -96,7 +104,8 @@ export default function Footer() {
             <Link href="/" className="FooterNew__nav-link">Home</Link>
             <span className="FooterNew__nav-link" onClick={() => scrollTo("about")}>About Us</span>
             <Link href="/pastConferences" className="FooterNew__nav-link">Past Conferences</Link>
-            <span className="FooterNew__nav-link" onClick={() => scrollTo("sponsors")}>Sponsors</span>
+            <Link href="/sponsors" className="FooterNew__nav-link">Sponsors</Link>
+            <Link href="/contact" className="FooterNew__nav-link">Contact Us</Link>
             <Link href="/register" className="FooterNew__nav-link" style={{ color: "var(--ted-red, red)" }}>Register</Link>
           </nav>
         </motion.div>

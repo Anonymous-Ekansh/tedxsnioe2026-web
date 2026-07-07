@@ -141,9 +141,9 @@ function Navbar({ isSmall = false }) {
                                 : "NavbarContainer__Menu--list-item"
                                 }`}
                         >
-                            <p style={{ color: "white" }}
-                                onClick={() => scrollTo("sponsors")}
-                            >Sponsors</p>
+                            <p style={{ color: "white" }}>
+                                <Link style={{ color: "white" }} href="/sponsors">Sponsors</Link>
+                            </p>
                         </li>
                         <li
                             onClick={() => setNavState(false)}

@@ -76,7 +76,7 @@ function ConfDetails() {
             // TODO: Update the description and year and the image paths
             desc: "Even when gazing into the same reflection, stepping Through the Looking Glass reveals entirely new dimensions - urging us to invert our senses, question our minds, and bring what's dark into the light. For the 2024 conference, TEDxShivNadarUniversity brought together 9 speakers and 2 performers, each inviting the audience to confront the unknown, rediscover themselves, and see the world anew.",
             year: "2024",
-            url: "placeholder insert yt link",
+            url: "https://www.youtube.com/watch?v=gz4FGR7FBag",
             speakers: [
                 {
                     name: 'Ashvina Basnet',

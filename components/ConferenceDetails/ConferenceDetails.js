@@ -68,7 +68,12 @@ function ConfDetails() {
                 }
             ],
             images: [
-                { url: '/Images/simplexity.jpeg' }
+                { url: '/Images/simplexity.jpeg' },
+                { url: '/Images/simplexity2.jpg' },
+                { url: '/Images/simplexity3.jpg' },
+                { url: '/Images/simplexity4.jpg' },
+                { url: '/Images/simplexity5.jpg' },
+                { url: '/Images/simplexity6.jpg' }
             ]
         },
         {

@@ -106,10 +106,14 @@ export default function GooglePay() {
             console.log('Transaction ID/UTR:', tid);
             console.log('Screenshot file:', screenshot);
 
+            // Generate ID client-side to avoid needing a SELECT policy
+            const paymentId = crypto.randomUUID();
+
             // First, insert the payment record
-            const { data: paymentRecord, error: paymentError } = await supabase
+            const { error: paymentError } = await supabase
                 .from('payments')
                 .insert({
+                    id: paymentId,
                     // New flexible structure
                     participants: paymentData.participants,
                     number_of_people: paymentData.number_of_people,
@@ -126,9 +130,7 @@ export default function GooglePay() {
                     name_two: paymentData.participants[1]?.name || null,
                     email_two: paymentData.participants[1]?.email || null,
                     phone_two: paymentData.participants[1]?.phone || null
-                })
-                .select()
-                .single();
+                });
 
             if (paymentError) {
                 console.error('Payment insertion error:', paymentError);
@@ -139,28 +141,27 @@ export default function GooglePay() {
             }
 
             if (screenshot) {
-                const screenshotUrl = await uploadScreenshot(screenshot, paymentRecord.id);
+                const screenshotUrl = await uploadScreenshot(screenshot, paymentId);
                 console.log('SCREENSHOT URL , URL:', screenshotUrl);
                 // Upload screenshot after payment record is created
-                const { data: updateData, error: updateError } = await supabase
+                const { error: updateError } = await supabase
                 .from('payments')
                 .update({ 
                     transaction_screenshot_url: screenshotUrl  // Match the exact column name
                 })
-                .eq('id', paymentRecord.id)
-                .select();
+                .eq('id', paymentId);
 
                 if (updateError) {
                     console.error('Failed to update screenshot URL:', updateError);
                     throw updateError;
                 } else {
-                    console.log('Screenshot URL updated successfully:', updateData);
+                    console.log('Screenshot URL updated successfully');
                 }
             }
 
             // Redirect to success page with payment details
             const queryParams = new URLSearchParams({
-                receiptNumber: `TXR${paymentRecord.id.slice(-8)}`,
+                receiptNumber: `TXR${paymentId.slice(-8)}`,
                 transactionId: tid.trim() || 'Uploaded Screenshot',
                 amount: paymentData.total_amount,
                 participants: paymentData.participants.length

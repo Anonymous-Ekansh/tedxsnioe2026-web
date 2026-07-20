@@ -86,15 +86,12 @@ export default function AdminDashboard() {
     try {
       setLoading(true);
 
-      // Use regular supabase client for now to test
-      const { data, error } = await supabase
-        .from('payments')
-        .select('*')
-        .order('created_at', { ascending: false });
+      const response = await fetch(`/api/admin/payments?filter=${filter}`);
+      const { payments: data, error } = await response.json();
 
-      if (error) {
+      if (!response.ok) {
         console.error('Error fetching payments:', error);
-        alert('Error loading payments: ' + error.message);
+        alert('Error loading payments: ' + error);
         return;
       }
 

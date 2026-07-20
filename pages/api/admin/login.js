@@ -6,8 +6,8 @@ export default async function handler(req, res) {
     const { email, password } = req.body || {};
 
     // These env vars are now safely checked on the server
-    const ADMIN_EMAIL = process.env.ADMIN_MAIL;
-    const ADMIN_PASSWORD = process.env.ADMIN_PASS;
+    const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
+    const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
     if (!email || !password) {
         return res.status(400).json({ error: 'Missing credentials' });

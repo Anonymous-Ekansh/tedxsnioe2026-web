@@ -2,7 +2,7 @@ import '../../styles/routes/google_pay.scss';
 import useTicket from '../../hooks/useTicket'
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { payment } from '../../operations/payment.fetch';
+
 import { useRouter } from 'next/router';
 import BlurredSpinner from '../../components/BlurredSpinner/BlurredSpinner';
 import { supabase } from '../../lib/supabase';
@@ -106,10 +106,17 @@ export default function GooglePay() {
             console.log('Transaction ID/UTR:', tid);
             console.log('Screenshot file:', screenshot);
 
-            // Generate ID client-side to avoid needing a SELECT policy
+            // Generate ID client-side
             const paymentId = crypto.randomUUID();
+            
+            let screenshotUrl = null;
+            if (screenshot) {
+                // Upload screenshot BEFORE inserting payment record
+                screenshotUrl = await uploadScreenshot(screenshot, paymentId);
+                console.log('SCREENSHOT URL:', screenshotUrl);
+            }
 
-            // First, insert the payment record
+            // Insert the payment record with all fields in one go
             const { error: paymentError } = await supabase
                 .from('payments')
                 .insert({
@@ -119,9 +126,12 @@ export default function GooglePay() {
                     number_of_people: paymentData.number_of_people,
                     is_snu_student: paymentData.is_snu_student,
                     total_amount: paymentData.total_amount,
+                    price_per_person: paymentData.price_per_person || null,
+                    offer_type: paymentData.offer_type || null,
                     transaction_id: tid.trim() ? tid.trim() : null,
                     payment_method: 'upi',
                     status: 'pending',
+                    transaction_screenshot_url: screenshotUrl, // Inserted directly, no UPDATE needed!
 
                     // Legacy fields for backward compatibility
                     name_one: paymentData.participants[0]?.name || '',
@@ -138,25 +148,6 @@ export default function GooglePay() {
                     throw new Error('This Transaction ID/UTR has already been used. Please check your Transaction ID/UTR.');
                 }
                 throw paymentError;
-            }
-
-            if (screenshot) {
-                const screenshotUrl = await uploadScreenshot(screenshot, paymentId);
-                console.log('SCREENSHOT URL , URL:', screenshotUrl);
-                // Upload screenshot after payment record is created
-                const { error: updateError } = await supabase
-                .from('payments')
-                .update({ 
-                    transaction_screenshot_url: screenshotUrl  // Match the exact column name
-                })
-                .eq('id', paymentId);
-
-                if (updateError) {
-                    console.error('Failed to update screenshot URL:', updateError);
-                    throw updateError;
-                } else {
-                    console.log('Screenshot URL updated successfully');
-                }
             }
 
             // Redirect to success page with payment details

@@ -17,7 +17,7 @@ export default function Qissa() {
     return (
         <div className="QissaPage">
             <Head>
-                <title>Qissa | TEDxShivNadarUniversity</title>
+                <title>Qissa | TEDxShiv Nadar University</title>
                 <meta name="description" content="Qissa - Step into the role of a 'human book' and share your stories." />
             </Head>
 

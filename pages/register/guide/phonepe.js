@@ -23,7 +23,7 @@ export default function PhonePeGuide() {
                     </div>
                     <div className="GuidePage__step">
                         <h3>Step 3: Select the Payment</h3>
-                        <p>Find and tap on the recent payment made to TEDxShivNadarUniversity.</p>
+                        <p>Find and tap on the recent payment made to TEDxShiv Nadar University.</p>
                         <div className="GuidePage__image-placeholder">
                             <img src="/Images/Guide/phonepe 2.jpeg" alt="Specific Transaction" />
                         </div>

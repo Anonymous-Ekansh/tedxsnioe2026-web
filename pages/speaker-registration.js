@@ -6,8 +6,8 @@ export default function SpeakerRegistration() {
     return (
         <div className="SpeakerRegistration">
             <Head>
-                <title>Speaker Registration | Qissa | TEDxShivNadarUniversity</title>
-                <meta name="description" content="Register as a speaker for Qissa at TEDxShivNadarUniversity" />
+                <title>Speaker Registration | Qissa | TEDxShiv Nadar University</title>
+                <meta name="description" content="Register as a speaker for Qissa at TEDxShiv Nadar University" />
             </Head>
 
             {/* Hero Section */}

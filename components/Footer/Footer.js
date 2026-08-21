@@ -122,7 +122,7 @@ export default function Footer() {
       {/* Bottom hairline + copyright */}
       <div className="FooterNew__hairline" />
       <div className="FooterNew__copyright">
-        <p>&copy; 2026 TEDxShivNadarUniversity. This independent TEDx event is operated under license from TED.</p>
+        <p>&copy; 2026 TEDxShiv Nadar University. This independent TEDx event is operated under license from TED.</p>
       </div>
     </motion.footer>
   );

@@ -23,7 +23,7 @@ export default function PaytmGuide() {
                     </div>
                     <div className="GuidePage__step">
                         <h3>Step 3: Select the Payment</h3>
-                        <p>Under the "Payment History" section, find and tap on the payment made to TEDxShivNadarUniversity.</p>
+                        <p>Under the "Payment History" section, find and tap on the payment made to TEDxShiv Nadar University.</p>
                         <div className="GuidePage__image-placeholder">
                             <img src="/Images/Guide/paytm 2.jpeg" alt="Specific Transaction" />
                         </div>

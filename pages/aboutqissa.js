@@ -47,8 +47,8 @@ export default function AboutQissa() {
     return (
         <div className="QissaPage">
             <Head>
-                <title>About Qissa | TEDxShivNadarUniversity</title>
-                <meta name="description" content="Learn about Qissa and become a speaker at TEDxShivNadarUniversity" />
+                <title>About Qissa | TEDxShiv Nadar University</title>
+                <meta name="description" content="Learn about Qissa and become a speaker at TEDxShiv Nadar University" />
             </Head>
 
             {/* Hero Section */}
@@ -81,7 +81,7 @@ export default function AboutQissa() {
                 <section className="AboutQissa__Section">
                     <h2 className="AboutQissa__Section--title">What is Qissa?</h2>
                     <p className="AboutQissa__Section--text">
-                        "Qissa" is an Urdu word meaning "story" or "tale." At TEDxShivNadarUniversity, Qissa is a platform where individuals step into the role of a "human book" and share their personal narratives with an engaged, attentive audience.
+                        "Qissa" is an Urdu word meaning "story" or "tale." At TEDxShiv Nadar University, Qissa is a platform where individuals step into the role of a "human book" and share their personal narratives with an engaged, attentive audience.
                     </p>
                     <p className="AboutQissa__Section--text">
                         Unlike traditional presentations, Qissa is about intimate storytelling—sharing experiences that have shaped who you are, lessons learned through struggle or success, and insights that could inspire others in our community.
@@ -153,7 +153,7 @@ export default function AboutQissa() {
                 {/* CTA Section or sm*/}
                 <section className="AboutQissa__CTA">
                     <h2>Ready to Share Your Story?</h2>
-                    <p>Join us and become a "human book" at TEDxShivNadarUniversity's Qissa event.</p>
+                    <p>Join us and become a "human book" at TEDxShiv Nadar University's Qissa event.</p>
                     <Link href="/speaker-registration" className="AboutQissa__CTA--button">
                         Apply as Speaker
                     </Link>

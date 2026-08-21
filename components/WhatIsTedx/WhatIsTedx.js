@@ -23,11 +23,11 @@ export default function WhatIsTedx() {
                 </motion.h2>
 
                 <motion.p className="WhatIsTedx__body" variants={mv.fadeUp}>
-                    In the spirit of ideas worth spreading, TED has created a program called TEDx. TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDxShivNadarUniversity, where x&nbsp;=&nbsp;independently organized TED event.
+                    In the spirit of ideas worth spreading, TED has created a program called TEDx. TEDx is a program of local, self-organized events that bring people together to share a TED-like experience. Our event is called TEDxShiv Nadar University, where x&nbsp;=&nbsp;independently organized TED event.
                 </motion.p>
 
                 <motion.p className="WhatIsTedx__body" variants={mv.fadeUp}>
-                    At our TEDxShivNadarUniversity event, TEDTalks video and live speakers will combine to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the TEDx program, but individual TEDx events, including ours, are self-organized.
+                    At our TEDxShiv Nadar University event, TEDTalks video and live speakers will combine to spark deep discussion and connection in a small group. The TED Conference provides general guidance for the TEDx program, but individual TEDx events, including ours, are self-organized.
                 </motion.p>
 
                 <motion.div className="WhatIsTedx__divider" variants={mv.fadeIn} />

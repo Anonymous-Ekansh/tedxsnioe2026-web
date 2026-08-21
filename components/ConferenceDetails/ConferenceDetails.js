@@ -11,7 +11,7 @@ function ConfDetails() {
     const details = [
         {
             title: "Simplexity",
-            desc: "What appears simple from a distance unravels into intricate layers when examined more closely and what seems overwhelmingly complex can reveal an elegant logic with just a slight change in view. Simple and complex are not rigid boundaries; they are perspectives, shifting with depth, distance, and context. For the 2025 conference, TEDxShivNadarUniversity brought together a constellation of voices to explore this overlooked middle ground, the spectrum between order and chaos. Welcome to Simplexity: where opposites meet continuity.",
+            desc: "What appears simple from a distance unravels into intricate layers when examined more closely and what seems overwhelmingly complex can reveal an elegant logic with just a slight change in view. Simple and complex are not rigid boundaries; they are perspectives, shifting with depth, distance, and context. For the 2025 conference, TEDxShiv Nadar University brought together a constellation of voices to explore this overlooked middle ground, the spectrum between order and chaos. Welcome to Simplexity: where opposites meet continuity.",
             year: "2025",
             url: "#",
             speakers: [
@@ -79,7 +79,7 @@ function ConfDetails() {
         {
             title: "Through The Looking Glass",
             // TODO: Update the description and year and the image paths
-            desc: "Even when gazing into the same reflection, stepping Through the Looking Glass reveals entirely new dimensions - urging us to invert our senses, question our minds, and bring what's dark into the light. For the 2024 conference, TEDxShivNadarUniversity brought together 9 speakers and 2 performers, each inviting the audience to confront the unknown, rediscover themselves, and see the world anew.",
+            desc: "Even when gazing into the same reflection, stepping Through the Looking Glass reveals entirely new dimensions - urging us to invert our senses, question our minds, and bring what's dark into the light. For the 2024 conference, TEDxShiv Nadar University brought together 9 speakers and 2 performers, each inviting the audience to confront the unknown, rediscover themselves, and see the world anew.",
             year: "2024",
             url: "https://www.youtube.com/watch?v=gz4FGR7FBag",
             speakers: [
@@ -156,7 +156,7 @@ function ConfDetails() {
         },
         {
             title: "Kaleidoscope",
-            desc: "Even for the same scenarios, turning the mirrors of perception yields unique patterns, reminding us to continually adapt our lens and embrace the ever-changing landscape before us. For the 2023 conference, TEDxShivNadarUniversity brought together 7 speakers and 3 performers all with wonderfully different ideas who conveyed to the audience that life is indeed about perspective!",
+            desc: "Even for the same scenarios, turning the mirrors of perception yields unique patterns, reminding us to continually adapt our lens and embrace the ever-changing landscape before us. For the 2023 conference, TEDxShiv Nadar University brought together 7 speakers and 3 performers all with wonderfully different ideas who conveyed to the audience that life is indeed about perspective!",
             year: "2023",
             url: "https://www.youtube.com/watch?v=55QuxoQRGc0",
             speakers: [
@@ -227,7 +227,7 @@ function ConfDetails() {
         },
         {
             title: "Misfits",
-            desc: "Misfits are people whose ideas and initiatives set them apart from the crowd, and they have the courage to do something different and make a difference. For the 2022 conference, TEDxShivNadarUniversity brought together 13 people who embody this definition.",
+            desc: "Misfits are people whose ideas and initiatives set them apart from the crowd, and they have the courage to do something different and make a difference. For the 2022 conference, TEDxShiv Nadar University brought together 13 people who embody this definition.",
             year: "2022",
             url: "https://youtu.be/txqzy5Dwtww?si=C_AWV6tUjzGh8372",
             speakers: [{
@@ -636,7 +636,7 @@ function ConfDetails() {
         },
         {
             title: "Conference",
-            desc: "TEDxShivNadarUniversity 2016 conference hosted 13 speakers and artists from various professional and social fields. This conference was nothing short of a spectacle of stories and lessons from exceptional people which inspired and captivated everyone who witnessed it.",
+            desc: "TEDxShiv Nadar University 2016 conference hosted 13 speakers and artists from various professional and social fields. This conference was nothing short of a spectacle of stories and lessons from exceptional people which inspired and captivated everyone who witnessed it.",
             year: "2016",
             speakers: [
                 {

@@ -20,7 +20,7 @@ export const TicketTemplate = () => {
             You are officially on board. All systems operational.<br/><br/>
 
             With love,<br/>
-            Team TEDxShivNadarUniversity
+            Team TEDxShiv Nadar University
         </p>
     </div>
 </body>

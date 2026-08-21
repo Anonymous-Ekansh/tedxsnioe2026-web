@@ -112,9 +112,7 @@ export default function Footer() {
 
         {/* Right column: Event context */}
         <motion.div className="FooterNew__col FooterNew__col--right" variants={mv.fadeIn}>
-          <span className="FooterNew__event-label">
-            TED<span className="inline-tedx-x">X</span> CONFERENCE 2026
-          </span>
+
           <p className="FooterNew__event-tagline">
             One day. Many perspectives.<br />Countless connections.
           </p>
@@ -124,7 +122,7 @@ export default function Footer() {
       {/* Bottom hairline + copyright */}
       <div className="FooterNew__hairline" />
       <div className="FooterNew__copyright">
-        <p>&copy; 2026 TEDxShivNadarUniversity. This is an independently organized TED event.</p>
+        <p>&copy; 2026 TEDxShivNadarUniversity. This independent TEDx event is operated under license from TED.</p>
       </div>
     </motion.footer>
   );

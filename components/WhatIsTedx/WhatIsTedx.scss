@@ -1,0 +1,128 @@
+.WhatIsTedx {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+
+  /* ─── Inner wrapper ───────────────────────────────────── */
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 720px;
+
+    @media (max-width: 780px) {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  /* ─── Eyebrow ─────────────────────────────────────────── */
+  &__eyebrow {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--lavender);
+    margin-bottom: 20px;
+  }
+
+  /* ─── Title ───────────────────────────────────────────── */
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(48px, 6vw, 72px);
+    color: #fff;
+    line-height: 1.05;
+    margin: 0 0 36px 0;
+    letter-spacing: -0.02em;
+  }
+
+  &__tedx-highlight {
+    color: #EB0028;
+  }
+
+  &__x {
+    font-size: 0.7em;
+  }
+
+  /* ─── Body text ───────────────────────────────────────── */
+  &__body {
+    font-family: var(--font-body-light);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.8;
+    color: rgba(244, 201, 218, 0.8); /* blush at 80% — matches AboutUs */
+    margin: 0 0 20px 0;
+    max-width: 640px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  /* ─── Divider ─────────────────────────────────────────── */
+  &__divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--pink), transparent);
+    margin-top: 48px;
+    opacity: 0.5;
+
+    @media (max-width: 780px) {
+      margin: 32px auto 0;
+    }
+  }
+
+  /* ─── CTA Link ────────────────────────────────────────── */
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--mint);
+    text-decoration: none;
+    margin-top: 32px;
+    padding: 12px 28px;
+    border: 1px solid rgba(169, 172, 214, 0.3);
+    border-radius: 28px;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background: rgba(169, 172, 214, 0.12);
+      color: #fff;
+      border-color: rgba(169, 172, 214, 0.5);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 780px) {
+      margin-top: 24px;
+    }
+  }
+
+  &__link-arrow {
+    transition: transform 0.2s ease;
+
+    .WhatIsTedx__link:hover & {
+      transform: translate(2px, -2px);
+    }
+  }
+}
+
+/* ─── Responsive ───────────────────────────────────────── */
+@media (max-width: 780px) {
+  .WhatIsTedx {
+    &__title {
+      font-size: clamp(36px, 8vw, 48px);
+    }
+
+    &__body {
+      font-size: 15px;
+      max-width: 100%;
+    }
+  }
+}

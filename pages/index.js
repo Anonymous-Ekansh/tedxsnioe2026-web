@@ -1,7 +1,7 @@
 import AboutUs from "../components/AboutUs/AboutUs";
 import LandingSection from "../components/LandingSection/LandingSection";
 import PastSpeakers from "../components/PastSpeakers/PastSpeakers";
-import Sponsors from "../components/Sponsors/Sponsors";
+import WhatIsTedx from "../components/WhatIsTedx/WhatIsTedx";
 import RegistrationCTA from "../components/RegistrationCTA/RegistrationCTA";
 
 import '../styles/routes/home.scss'
@@ -26,9 +26,9 @@ function Home() {
             </section>
             
             <section
-                id="sponsors"
-                className="SponsorsSection">
-                <Sponsors />
+                id="what-is-tedx"
+                className="WhatIsTedxSection">
+                <WhatIsTedx />
             </section>
 
             <section

@@ -69,13 +69,13 @@ function Navbar({ isSmall = false }) {
                             <Image
                                 src='/Images/TEDx logo - White.png'
                                 alt="TEDx Logo"
-                                width={isSmall ? 150 : 250}
-                                height={isSmall ? 45 : 70}
+                                width={isSmall ? 95 : 250}
+                                height={isSmall ? 28 : 70}
                                 priority
                                 quality={95}
                                 style={{
                                     objectFit: 'contain',
-                                    objectPosition: 'center'
+                                    objectPosition: isSmall ? 'left' : 'center'
                                 }}
                             />
                         </Link>
@@ -92,7 +92,7 @@ function Navbar({ isSmall = false }) {
                                 fill="none"
                                 className="NavbarContainer__Hamburger--svg"
                                 viewBox="-10 -10 120 120"
-                                width="40"
+                                width="32"
                             >
                                 <path
                                     className="NavbarContainer__Hamburger--line"

@@ -3,15 +3,15 @@ import useConf from '../../hooks/useConf';
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 
 const conferences = [
-    { id: 'conf0', year: '2025', title: 'Simplexity', themeColor: '#e62b1e' },
-    { id: 'conf1', year: '2024', title: 'Through The Looking Glass', themeColor: '#72d3f7' },
-    { id: 'conf2', year: '2023', title: 'Kaleidoscope', themeColor: '#9c51b6' },
-    { id: 'conf3', year: '2022', title: 'Misfits', themeColor: '#f39c12' },
-    { id: 'conf4', year: '2021', title: 'Rewire', themeColor: '#2ecc71' },
-    { id: 'conf5', year: '2019', title: 'Blindspots', themeColor: '#34495e' },
-    { id: 'conf6', year: '2018', title: 'Out of the Blue', themeColor: '#3498db' },
-    { id: 'conf7', year: '2017', title: 'Ignite', themeColor: '#e74c3c' },
-    { id: 'conf8', year: '2016', title: 'conference', themeColor: '#95a5a6' },
+    { id: 'conf0', year: '2025', title: 'Simplexity', themeColor: '#ff0033' }, // Vivid Red
+    { id: 'conf1', year: '2024', title: 'Through The Looking Glass', themeColor: '#00e5ff' }, // Vivid Cyan
+    { id: 'conf2', year: '2023', title: 'Kaleidoscope', themeColor: '#d500f9' }, // Vivid Purple
+    { id: 'conf3', year: '2022', title: 'Misfits', themeColor: '#ff9100' }, // Vivid Orange
+    { id: 'conf4', year: '2021', title: 'Rewire', themeColor: '#00e676' }, // Vivid Green
+    { id: 'conf5', year: '2019', title: 'Blindspots', themeColor: '#2979ff' }, // Vivid Blue
+    { id: 'conf6', year: '2018', title: 'Out of the Blue', themeColor: '#00b0ff' }, // Vivid Light Blue
+    { id: 'conf7', year: '2017', title: 'Ignite', themeColor: '#ff1744' }, // Vivid Rose Red
+    { id: 'conf8', year: '2016', title: 'conference', themeColor: '#f50057' }, // Vivid Pink
 ];
 
 function PastConfTitles() {

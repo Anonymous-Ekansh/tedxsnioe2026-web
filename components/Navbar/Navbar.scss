@@ -20,7 +20,7 @@
   @include make-flex($dir: row, $just: space-between, $align: center);
 
   @include respondAt(915px) {
-    padding: 0.75rem 1rem;
+    padding: 0.15rem 1rem 0.15rem 0.25rem;
     @include make-flex($dir: column, $just: flex-start, $align: center);
   }
 

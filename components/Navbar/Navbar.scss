@@ -2,6 +2,11 @@
   position: fixed;
   z-index: 100;
   @include box(100vw, auto);
+  transition: transform 0.3s ease-in-out;
+
+  &--hidden {
+    transform: translateY(-100%);
+  }
 
   // padding: 0.5rem; 
   @include respondAt(915px) {

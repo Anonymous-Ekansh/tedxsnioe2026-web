@@ -11,6 +11,25 @@ function Navbar({ isSmall = false }) {
     const pathName = usePathname();
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     const router = useRouter();
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
+    useEffect(() => {
+        const controlNavbar = () => {
+            if (typeof window !== "undefined") {
+                if (window.scrollY > lastScrollY && window.scrollY > 80) {
+                    setIsVisible(false);
+                    setNavState(false); // Close mobile menu if open
+                } else {
+                    setIsVisible(true);
+                }
+                setLastScrollY(window.scrollY);
+            }
+        };
+        window.addEventListener("scroll", controlNavbar);
+        return () => window.removeEventListener("scroll", controlNavbar);
+    }, [lastScrollY]);
+
     useEffect(() => {
         setNavState(false);
     }, [pathName]);
@@ -60,7 +79,7 @@ function Navbar({ isSmall = false }) {
 
     return (
         <nav
-            className={`NavbarWrapper ${isSmallScreen ? "NavbarWrapper--small" : ""}`}
+            className={`NavbarWrapper ${isSmallScreen ? "NavbarWrapper--small" : ""} ${!isVisible ? "NavbarWrapper--hidden" : ""}`}
         >
             <div className="NavbarContainer">
                 <div className="NavbarContainer__AlwaysOnTop">

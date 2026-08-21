@@ -183,12 +183,11 @@ export default function LandingSection() {
                     <span className="dot" />
                     <span className="hero-meta-title">
                         <span className="hero-tedx-brand">
-                            TED<span className="hero-tedx-x">X</span>
+                            TED<span className="hero-tedx-x">x</span>
                         </span>
-                        {" "}Conference 2026
+                        {" "}Shiv Nadar University
                     </span>
                 </div>
-                <div className="hero-top-right">SHIV NADAR UNIVERSITY</div>
             </div>
 
             {/* Main content */}

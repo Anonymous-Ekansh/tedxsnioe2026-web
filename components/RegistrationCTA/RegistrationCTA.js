@@ -35,7 +35,7 @@ export default function RegistrationCTA() {
                     className="CTA__marker"
                     variants={mv.fadeIn}
                 >
-                    TED<span className="inline-tedx-x">X</span> CONFERENCE 2026
+                    TED<span className="inline-tedx-x">x</span> Shiv Nadar University
                 </motion.span>
 
                 {/* Be part of / the picture. */}

@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 import { motion } from 'framer-motion';
 import { useMotionVariants } from '../shared/motionVariants';
-import ButterflyLogo from '../shared/ButterflyLogo';
+import Image from 'next/image';
 
 export default function Footer() {
   const pathName = usePathname();
@@ -56,9 +56,9 @@ export default function Footer() {
         <motion.div className="FooterNew__col FooterNew__col--left" variants={mv.fadeIn}>
           <div className="FooterNew__brand">
             <span className="FooterNew__brand-tedx">
-              TED<span className="FooterNew__brand-x">X</span>
+              TED<span className="FooterNew__brand-x">x</span>
             </span>
-            <span className="FooterNew__brand-name">ShivNadarUniversity</span>
+            <span className="FooterNew__brand-name">Shiv Nadar University</span>
           </div>
 
           <div className="FooterNew__social">
@@ -99,7 +99,15 @@ export default function Footer() {
             },
           } : { hidden: { opacity: 1 }, visible: { opacity: 1 } }}
         >
-          <ButterflyLogo size={80} interactive={true} />
+          <div style={{ marginBottom: '1.5rem' }}>
+            <Image 
+              src='/Images/TEDx logo - White.png' 
+              alt="TEDx Logo" 
+              width={250} 
+              height={70} 
+              style={{ objectFit: 'contain', objectPosition: 'center' }}
+            />
+          </div>
           <nav className="FooterNew__nav">
             <Link href="/" className="FooterNew__nav-link">Home</Link>
             <span className="FooterNew__nav-link" onClick={() => scrollTo("about")}>About Us</span>

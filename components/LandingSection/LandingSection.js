@@ -229,17 +229,7 @@ export default function LandingSection() {
                         </div>
                         <div className="ed-text-wrap">
                             <span className="ed-label">Date</span>
-                            <span className="ed-value">TBA, 2026</span>
-                        </div>
-                    </motion.div>
-                    
-                    <motion.div className="ed-item" whileHover={{ y: -5 }}>
-                        <div className="ed-icon-wrap">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        </div>
-                        <div className="ed-text-wrap">
-                            <span className="ed-label">Time</span>
-                            <span className="ed-value">TBA</span>
+                            <span className="ed-value">20th Sept 2026</span>
                         </div>
                     </motion.div>
                     

@@ -25,7 +25,7 @@
   @include make-flex($dir: row, $just: space-between, $align: center);
 
   @include respondAt(915px) {
-    padding: 0.15rem 1rem 0.15rem 0.25rem;
+    padding: 0.75rem 1.25rem;
     @include make-flex($dir: column, $just: flex-start, $align: center);
   }
 
@@ -36,6 +36,15 @@
 
     @include box(auto, 100%);
     @include make-flex($dir: row, $just: space-between, $align: center);
+  }
+
+  &__Logo {
+    img {
+      @include respondAt(915px) {
+        height: 32px !important;
+        width: auto !important;
+      }
+    }
   }
 
   -webkit-backdrop-filter: saturate(280%) blur(25px);
@@ -73,11 +82,16 @@
 
       @include respondAt(915px) {
         display: none;
-        margin-right: 3rem;
+        margin: 0;
+        width: 100%;
+        padding: 1.5rem 0;
+        gap: 1.5rem;
 
         &-open {
-          display: block;
-          @include make-flex($dir: column, $just: center ,$align: center);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
         }
       }
 

@@ -25,7 +25,7 @@
   @include make-flex($dir: row, $just: space-between, $align: center);
 
   @include respondAt(915px) {
-    padding: 0.75rem 1.25rem;
+    padding: 0.35rem 1.25rem;
     @include make-flex($dir: column, $just: flex-start, $align: center);
   }
 
@@ -41,7 +41,7 @@
   &__Logo {
     img {
       @include respondAt(915px) {
-        height: 32px !important;
+        height: 44px !important;
         width: auto !important;
       }
     }

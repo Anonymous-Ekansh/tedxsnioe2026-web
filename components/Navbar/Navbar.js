@@ -176,17 +176,7 @@ function Navbar({ isSmall = false }) {
                             </p>
                         </li>
 
-                        <li
-                            onClick={() => setNavState(false)}
-                            className={`${pathName === "/aboutqissa"
-                                ? "NavbarContainer__Menu--list-activeItem"
-                                : "NavbarContainer__Menu--list-item"
-                                }`}
-                        >
-                            <p style={{ color: "white" }}>
-                                <Link style={{ color: "white" }} href="/aboutqissa">About Qissa</Link>
-                            </p>
-                        </li>
+
 
                         <li
                             onClick={() => setNavState(false)}

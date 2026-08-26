@@ -13,7 +13,7 @@ function ConfDetails() {
             title: "Simplexity",
             desc: "What appears simple from a distance unravels into intricate layers when examined more closely and what seems overwhelmingly complex can reveal an elegant logic with just a slight change in view. Simple and complex are not rigid boundaries; they are perspectives, shifting with depth, distance, and context. For the 2025 conference, TEDxShiv Nadar University brought together a constellation of voices to explore this overlooked middle ground, the spectrum between order and chaos. Welcome to Simplexity: where opposites meet continuity.",
             year: "2025",
-            url: "https://www.instagram.com/reel/DcRcCynIUed/?utm_source=ig_web_button_share_sheet",
+            url: "/Videos/2025_aftermovie.mp4",
             speakers: [
                 {
                     name: 'Dr. Rupamanjari Ghosh',

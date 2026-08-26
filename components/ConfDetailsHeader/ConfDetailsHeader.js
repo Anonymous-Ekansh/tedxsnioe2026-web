@@ -33,7 +33,7 @@ function ConfHeader({title,year,desc, images, url}) {
                     </p>
                     {url && (
                         <p className='ConfHeader__details--content__aftermovie'>
-                            <Link style={{ color: "white" }} href={`${url}`} onClick={handleAftermovieClick}>
+                            <Link style={{ color: "white" }} href={`${url}`} onClick={handleAftermovieClick} target="_blank" rel="noopener noreferrer">
                                 {text}
                             </Link>
                         </p>

@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useState, useCallback } from 'react';
 
 const conferences = [
     { id: 'conf0', year: '2025', title: 'Simplexity', themeColor: '#ff0033' }, // Vivid Red
-    { id: 'conf1', year: '2024', title: 'Through The Looking Glass', themeColor: '#00e5ff' }, // Vivid Cyan
+    { id: 'conf1', year: '2024', title: 'Through The Looking Glass', themeColor: '#0097a7' }, // Muted Cyan
     { id: 'conf2', year: '2023', title: 'Kaleidoscope', themeColor: '#d500f9' }, // Vivid Purple
     { id: 'conf3', year: '2022', title: 'Misfits', themeColor: '#ff9100' }, // Vivid Orange
     { id: 'conf4', year: '2021', title: 'Rewire', themeColor: '#00e676' }, // Vivid Green

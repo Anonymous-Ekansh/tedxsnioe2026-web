@@ -41,11 +41,18 @@
   }
 
   &__tedx-highlight {
-    color: #EB0028;
+    color: #e62b1e; /* Official TED red */
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    display: inline-block;
   }
 
   &__x {
-    font-size: 0.7em;
+    font-size: 0.55em;
+    vertical-align: top;
+    line-height: 1.1;
+    margin-left: 0.05em;
   }
 
   /* ─── Body text ───────────────────────────────────────── */

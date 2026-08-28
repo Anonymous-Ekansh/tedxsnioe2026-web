@@ -177,7 +177,7 @@ export default function GooglePay() {
                             marginTop: '1rem',
                             marginBottom: '0.5rem',
                             fontSize: '0.9rem',
-                            color: '#333',
+                            color: '#fff',
                             fontWeight: 'bold'
                         }}>
                             Transaction ID/UTR Number <span style={{color: '#e53e3e'}}>(Mandatory)</span>
@@ -195,7 +195,7 @@ export default function GooglePay() {
                             marginTop: '1rem',
                             marginBottom: '0.5rem',
                             fontSize: '0.9rem',
-                            color: '#333'
+                            color: '#fff'
                         }}>
                             Upload Payment Screenshot (Optional)
                         </label>
@@ -212,7 +212,7 @@ export default function GooglePay() {
                                 marginBottom: '0.5rem'
                             }}
                         />
-                        <small style={{ fontSize: '0.8rem', color: '#666' }}>
+                        <small style={{ fontSize: '0.8rem', color: '#aaa' }}>
                             Upload screenshot of payment confirmation (Max 5MB)
                         </small>
                     </div>

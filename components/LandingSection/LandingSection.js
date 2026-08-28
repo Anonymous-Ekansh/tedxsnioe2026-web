@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import Link from 'next/link';
 import './LandingSection.scss';
 
 // SVG paths for the Mosaic logo
@@ -245,6 +246,9 @@ export default function LandingSection() {
                 </motion.div>
 
                 <div className="hero-actions">
+                    <Link href="/register" className="btn-primary">
+                        REGISTER NOW <span className="btn-arrow">&rarr;</span>
+                    </Link>
                     <button className="btn-secondary" onClick={handleExploreClick}>
                         EXPLORE THEME &rarr;
                     </button>

@@ -1,9 +1,14 @@
 import nodemailer from "nodemailer";
 import { TicketTemplate } from "../../public/Templates/TicketTemplate";
+import { authenticateAdmin } from "../../lib/adminAuth";
+
 async function SendEmail(req, res) {
+    // Authenticate admin
+    const adminEmail = authenticateAdmin(req, res);
+    if (!adminEmail) return; // 401 already sent
+
     const body = await req.body;
     let emailList = [];
-    console.log(body);
     if (body.email1 !== '') {
         emailList.push(body.email1);
     }

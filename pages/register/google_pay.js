@@ -57,11 +57,8 @@ export default function GooglePay() {
 
     const uploadScreenshot = async (file, paymentId) => {
         try {
-            console.log('Starting screenshot upload for payment:', paymentId);
-            console.log('File details:', { name: file.name, size: file.size, type: file.type });
 
             const fileName = `${paymentId}_${Date.now()}.${file.name.split('.').pop()}`;
-            console.log('Generated filename:', fileName);
 
             // Upload the file
             const { data: uploadData, error: uploadError } = await supabase.storage
@@ -73,14 +70,13 @@ export default function GooglePay() {
                 throw uploadError;
             }
 
-            console.log('Upload successful:', uploadData);
+
 
             // Get public URL - make sure to await this
             const { data: urlData } = await supabase.storage
                 .from('payment-screenshots')
                 .getPublicUrl(fileName);
 
-            console.log('Generated public URL:', urlData.publicUrl);
             return urlData.publicUrl;
         } catch (error) {
             console.error('Error uploading screenshot:', error);
@@ -101,10 +97,6 @@ export default function GooglePay() {
 
         setLoading(true);
         try {
-            console.log('Starting payment submission process...');
-            console.log('Payment data:', paymentData);
-            console.log('Transaction ID/UTR:', tid);
-            console.log('Screenshot file:', screenshot);
 
             // Generate ID client-side
             const paymentId = crypto.randomUUID();
@@ -113,7 +105,6 @@ export default function GooglePay() {
             if (screenshot) {
                 // Upload screenshot BEFORE inserting payment record
                 screenshotUrl = await uploadScreenshot(screenshot, paymentId);
-                console.log('SCREENSHOT URL:', screenshotUrl);
             }
 
             // Insert the payment record with all fields in one go

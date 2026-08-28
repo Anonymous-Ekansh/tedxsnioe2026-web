@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
 import Image from 'next/image';
 import "../styles/routes/admin.scss";
 
@@ -35,14 +34,38 @@ export default function AdminDashboard() {
   });
 
   useEffect(() => {
-    // Simple authentication check
+    // Check for existing admin session with valid token
     const email = localStorage.getItem('adminEmail');
-    if (email) {
+    const token = localStorage.getItem('adminToken');
+    if (email && token) {
       setAdminEmail(email);
       setIsAuthenticated(true);
-      fetchPayments();
+      fetchPayments(token);
     }
   }, []);
+
+  // Helper to get auth headers
+  const getAuthHeaders = () => {
+    const token = localStorage.getItem('adminToken');
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    };
+  };
+
+  // Handle 401 responses by logging out
+  const handleAuthError = (response) => {
+    if (response.status === 401) {
+      localStorage.removeItem('adminEmail');
+      localStorage.removeItem('adminToken');
+      setIsAuthenticated(false);
+      setAdminEmail('');
+      setPayments([]);
+      alert('Session expired. Please log in again.');
+      return true;
+    }
+    return false;
+  };
 
 
   const handleLogin = async (e) => {
@@ -64,33 +87,41 @@ export default function AdminDashboard() {
 
       if (response.ok && data.success) {
         localStorage.setItem('adminEmail', adminEmail);
+        localStorage.setItem('adminToken', data.token);
         setIsAuthenticated(true);
-        fetchPayments();
+        fetchPayments(data.token);
       } else {
         alert(data.error || 'Invalid admin credentials');
       }
     } catch (error) {
-      console.error('Login error:', error);
       alert('Login failed. Please try again.');
     }
   };
 
   const handleLogout = () => {
     localStorage.removeItem('adminEmail');
+    localStorage.removeItem('adminToken');
     setIsAuthenticated(false);
     setAdminEmail('');
     setPayments([]);
   };
 
-  const fetchPayments = async () => {
+  const fetchPayments = async (tokenOverride) => {
     try {
       setLoading(true);
+      const token = tokenOverride || localStorage.getItem('adminToken');
 
-      const response = await fetch(`/api/admin/payments?filter=${filter}`);
+      const response = await fetch(`/api/admin/payments?filter=${filter}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      
+      if (handleAuthError(response)) return;
+
       const { payments: data, error } = await response.json();
 
       if (!response.ok) {
-        console.error('Error fetching payments:', error);
         alert('Error loading payments: ' + error);
         return;
       }
@@ -98,7 +129,6 @@ export default function AdminDashboard() {
       setPayments(data || []);
       calculateStats(data || []);
     } catch (error) {
-      console.error('Error:', error);
       alert('Error: ' + error.message);
     } finally {
       setLoading(false);
@@ -125,21 +155,19 @@ export default function AdminDashboard() {
     try {
       const response = await fetch('/api/admin/payments', {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify({
           paymentId,
           status,
-          reviewNotes: notes,
-          reviewedBy: adminEmail
+          reviewNotes: notes
         }),
       });
+
+      if (handleAuthError(response)) return;
 
       if (response.ok) {
         // If approving, send confirmation email
         if (status === 'approved' && paymentObj) {
-          // Collect emails from participants or fallback to name_one/name_two
           let email1 = '';
           let email2 = '';
           if (paymentObj.participants && paymentObj.participants.length > 0) {
@@ -149,16 +177,12 @@ export default function AdminDashboard() {
             email1 = paymentObj.email_one || '';
             email2 = paymentObj.email_two || '';
           }
-          // Call the sendEmail API
           await fetch('/api/sendEmail', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
+            headers: getAuthHeaders(),
             body: JSON.stringify({ email1, email2 }),
           });
         }
-        // Refresh payments
         fetchPayments();
         setSelectedPayment(null);
         setReviewNotes('');
@@ -167,7 +191,6 @@ export default function AdminDashboard() {
         alert('Error updating payment status');
       }
     } catch (error) {
-      console.error('Error:', error);
       alert('Error updating payment status');
     }
   };
@@ -213,19 +236,15 @@ export default function AdminDashboard() {
     try {
       const response = await fetch('/api/admin/manual-payments', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...manualEntry,
-          added_by: adminEmail
-        }),
+        headers: getAuthHeaders(),
+        body: JSON.stringify(manualEntry),
       });
+
+      if (handleAuthError(response)) return;
 
       if (response.ok) {
         alert('Manual entry added successfully');
         setShowManualEntry(false);
-        // Reset form
         setManualEntry({
           participants: [{ name: '', email: '', phone: '' }],
           number_of_people: 1,
@@ -242,7 +261,6 @@ export default function AdminDashboard() {
         alert(`Error: ${errorData.error}`);
       }
     } catch (error) {
-      console.error('Error:', error);
       alert('Error adding manual entry');
     }
   };
@@ -508,12 +526,7 @@ export default function AdminDashboard() {
                   </span>
                 </div>
 
-                {/* Debug info to see what screenshot data we have */}
-                <div className="detail-row" style={{ fontSize: '0.8rem', color: '#666' }}>
-                  <strong>Debug Info:</strong>
-                  <div>Screenshot URL: {selectedPayment.transaction_screenshot_url || 'No screenshot URL'}</div>
-                  <div>Payment ID: {selectedPayment.id}</div>
-                </div>
+
 
                 {selectedPayment.transaction_screenshot_url ? (
                   <div className="detail-row">

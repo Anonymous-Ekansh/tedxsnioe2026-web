@@ -1,8 +1,17 @@
 import { supabaseAdmin } from '../../../lib/supabase';
+import { authenticateAdmin } from '../../../lib/adminAuth';
 
 export default async function handler(req, res) {
+  // Authenticate admin on every request
+  const adminEmail = authenticateAdmin(req, res);
+  if (!adminEmail) return; // 401 already sent
+
+  if (!supabaseAdmin) {
+    return res.status(500).json({ error: 'Admin client not configured - missing SUPABASE_SERVICE_ROLE_KEY' });
+  }
+
   if (req.method === 'POST') {
-    return createManualPayment(req, res);
+    return createManualPayment(req, res, adminEmail);
   } else if (req.method === 'PUT') {
     return updatePayment(req, res);
   } else if (req.method === 'DELETE') {
@@ -14,7 +23,7 @@ export default async function handler(req, res) {
 }
 
 // Create manual payment entry
-async function createManualPayment(req, res) {
+async function createManualPayment(req, res, adminEmail) {
   try {
     const {
       participants, // Array of {name, email, phone}
@@ -24,15 +33,14 @@ async function createManualPayment(req, res) {
       payment_method,
       transaction_id,
       status,
-      review_notes,
-      added_by
+      review_notes
     } = req.body;
 
     // Validate required fields
-    if (!participants || !number_of_people || !total_amount || !payment_method || !added_by) {
+    if (!participants || !number_of_people || !total_amount || !payment_method) {
       return res.status(400).json({ 
         error: 'Missing required fields',
-        required: ['participants', 'number_of_people', 'total_amount', 'payment_method', 'added_by']
+        required: ['participants', 'number_of_people', 'total_amount', 'payment_method']
       });
     }
 
@@ -43,7 +51,7 @@ async function createManualPayment(req, res) {
       });
     }
 
-    // For cash payments, transaction_id is optional
+    // For UPI payments, transaction_id is required
     if (payment_method === 'upi' && !transaction_id) {
       return res.status(400).json({ 
         error: 'Transaction ID is required for UPI payments'
@@ -61,12 +69,12 @@ async function createManualPayment(req, res) {
           total_amount,
           payment_method,
           transaction_id: transaction_id || null,
-          status: status || 'pending', // Manual entries are usually pending
-          reviewed_by: added_by,
+          status: status || 'pending',
+          reviewed_by: adminEmail,
           reviewed_at: new Date().toISOString(),
           review_notes: review_notes || 'Manually added entry',
           manually_added: true,
-          added_by,
+          added_by: adminEmail,
           
           // Legacy fields for backward compatibility
           name_one: participants[0]?.name || '',
@@ -105,6 +113,10 @@ async function updatePayment(req, res) {
     if (!paymentId || !updateData) {
       return res.status(400).json({ error: 'Payment ID and update data are required' });
     }
+
+    // Prevent updating sensitive fields from client
+    delete updateData.id;
+    delete updateData.created_at;
 
     const { data, error } = await supabaseAdmin
       .from('payments')

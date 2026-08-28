@@ -1,10 +1,19 @@
 import { supabaseAdmin } from '../../../lib/supabase';
+import { authenticateAdmin } from '../../../lib/adminAuth';
 
 export default async function handler(req, res) {
+  // Authenticate admin on every request
+  const adminEmail = authenticateAdmin(req, res);
+  if (!adminEmail) return; // 401 already sent
+
+  if (!supabaseAdmin) {
+    return res.status(500).json({ error: 'Admin client not configured - missing SUPABASE_SERVICE_ROLE_KEY' });
+  }
+
   if (req.method === 'GET') {
     return getPricingRules(req, res);
   } else if (req.method === 'POST') {
-    return createPricingRule(req, res);
+    return createPricingRule(req, res, adminEmail);
   } else if (req.method === 'PUT') {
     return updatePricingRule(req, res);
   } else if (req.method === 'DELETE') {
@@ -44,7 +53,7 @@ async function getPricingRules(req, res) {
 }
 
 // Create new pricing rule
-async function createPricingRule(req, res) {
+async function createPricingRule(req, res, adminEmail) {
   try {
     const {
       rule_name,
@@ -55,14 +64,13 @@ async function createPricingRule(req, res) {
       price_per_person,
       total_price,
       valid_from,
-      valid_until,
-      created_by
+      valid_until
     } = req.body;
 
-    if (!rule_name || !price_per_person || !created_by) {
+    if (!rule_name || !price_per_person) {
       return res.status(400).json({ 
         error: 'Missing required fields',
-        required: ['rule_name', 'price_per_person', 'created_by']
+        required: ['rule_name', 'price_per_person']
       });
     }
 
@@ -78,7 +86,7 @@ async function createPricingRule(req, res) {
         total_price,
         valid_from: valid_from || new Date().toISOString(),
         valid_until,
-        created_by
+        created_by: adminEmail
       })
       .select()
       .single();

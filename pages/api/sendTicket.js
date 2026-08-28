@@ -1,7 +1,12 @@
 import nodemailer from "nodemailer";
 import { FinalTicketTemplate } from "../../public/Templates/FinalTicket";
+import { authenticateAdmin } from "../../lib/adminAuth";
 
 async function SendFinalTicket(req, res) {
+    // Authenticate admin
+    const adminEmail = authenticateAdmin(req, res);
+    if (!adminEmail) return; // 401 already sent
+
     const body = await req.body;
     let emailList = [];
     let nameList = [];
@@ -21,7 +26,7 @@ async function SendFinalTicket(req, res) {
         res.send({ status: 200, message: "Emails sent successfully" });
     } catch (e) {
         console.log(e);
-        res.send({ status: 500, message: "Emails sent successfully" });
+        res.send({ status: 500, message: "Failed to send emails" });
     }
 }
 
@@ -42,7 +47,6 @@ async function sendConfirmationMails(emailList, nameList) {
     for (let i = 0; i < emailList.length; i++) {
         const email = emailList[i];
         const name = nameList[i];
-        console.log(email, name);
         var mailOptions = {
             to: email,
             from: 'TEDxShiv Nadar University <tedx.club@snu.edu.in>',

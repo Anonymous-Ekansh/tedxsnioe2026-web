@@ -7,14 +7,10 @@ export default function PaymentSuccess({initialData}) {
     const [paymentInfo, setPaymentInfo] = useState(null);
 
     useEffect(() => {
-        console.log('Router query:', router.query);
-        console.log('Initial data:', initialData);
-
         if (!router.isReady) return; // Wait for router to be ready
 
         // Get payment info from URL query parameters
         const { receiptNumber, transactionId, amount, participants } = router.query;
-        console.log('Query parameters:', router.query); // Debug log
         
         if (receiptNumber && transactionId && amount) {
             setPaymentInfo({

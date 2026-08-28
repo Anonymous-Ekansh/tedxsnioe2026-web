@@ -295,25 +295,27 @@ export default function PaymentSuccess({initialData}) {
                 }
 
                 .ps__btn--primary {
-                    background: linear-gradient(135deg, #e65a9a, #a9acd6);
+                    background: linear-gradient(135deg, #e65a9a, #d23276);
                     color: #fff;
+                    border: none;
                 }
 
                 .ps__btn--primary:hover {
                     transform: translateY(-2px);
-                    box-shadow: 0 8px 24px rgba(230, 90, 154, 0.3);
+                    box-shadow: 0 8px 24px rgba(230, 90, 154, 0.4);
                 }
 
                 .ps__btn--secondary {
-                    background: transparent;
-                    color: #a9acd6;
-                    border: 1px solid rgba(169, 172, 214, 0.3);
+                    background: linear-gradient(135deg, #97d5cf, #62b8af);
+                    color: #1a1a2e;
+                    border: none;
                 }
 
                 .ps__btn--secondary:hover {
-                    background: rgba(169, 172, 214, 0.1);
-                    color: #fff;
+                    background: linear-gradient(135deg, #a8e0db, #70c4bc);
+                    color: #1a1a2e;
                     transform: translateY(-2px);
+                    box-shadow: 0 8px 24px rgba(151, 213, 207, 0.4);
                 }
 
                 .ps__note {

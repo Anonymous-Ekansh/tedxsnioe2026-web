@@ -89,8 +89,8 @@ export default function GooglePay() {
         }
     };
     const handleClick = async () => {
-        if (tid === '' && !screenshot) {
-            alert('Please enter a Transaction ID/UTR or upload a payment screenshot');
+        if (tid.trim() === '') {
+            alert('Please enter a Transaction ID/UTR');
             return;
         }
 
@@ -181,14 +181,22 @@ export default function GooglePay() {
                     <p style={{ fontSize: "1rem", marginTop: "0", marginBottom: ".5rem" }} className='GooglePay__qr--text'>Urshita Rathi</p>
                     <Image className='GooglePay__qr--image' src='/Images/Assets/urshita_qr.jpeg' alt='Google Pay QR' width={600} height={400} quality={95} />
                     <div className='GooglePay__qr--TID'>
+                        <label htmlFor="tid" style={{
+                            display: 'block',
+                            marginTop: '1rem',
+                            marginBottom: '0.5rem',
+                            fontSize: '0.9rem',
+                            color: '#333',
+                            fontWeight: 'bold'
+                        }}>
+                            Transaction ID/UTR Number <span style={{color: '#e53e3e'}}>(Mandatory)</span>
+                        </label>
                         <input
+                            id="tid"
                             onChange={(e) => setTid(e.target.value)}
                             type='text'
                             placeholder='Transaction ID/UTR Number'
                         />
-                    </div>
-                    <div className='GooglePay__qr--or'>
-                        <span>— OR —</span>
                     </div>
                     <div className='GooglePay__qr--screenshot'>
                         <label htmlFor="screenshot" style={{
@@ -198,7 +206,7 @@ export default function GooglePay() {
                             fontSize: '0.9rem',
                             color: '#333'
                         }}>
-                            Upload Payment Screenshot
+                            Upload Payment Screenshot (Optional)
                         </label>
                         <input
                             type="file"

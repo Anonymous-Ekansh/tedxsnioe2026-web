@@ -126,7 +126,9 @@
       @include respondAt(500px) {
         flex-direction: column;
         align-items: center;
-        margin: 0;
+        justify-content: center;
+        width: 100%;
+        margin: 0 auto;
       }
 
       /* ─── Individual mosaic tile card ─────────────────── */

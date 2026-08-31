@@ -323,10 +323,10 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  background-color: var(--pink);
-  color: #0A0A0A;
+  background-color: var(--near-black, #0A0A0A);
+  color: var(--pink);
   font-family: 'Jost', var(--body);
-  font-weight: 400;
+  font-weight: 700;
   font-size: 13px;
   letter-spacing: 0.22em;
   text-transform: uppercase;

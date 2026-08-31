@@ -70,7 +70,7 @@
     @include respondAt(915px) {
       padding: 2rem 1.5rem;
       max-width: 90%;
-      order: 1;
+      order: 2;
     }
 
     &--snu,
@@ -252,8 +252,7 @@
     gap: 2rem;
 
     @include respondAt(915px) {
-      max-width: 90%;
-      order: 2;
+      display: contents;
     }
 
 
@@ -267,6 +266,12 @@
       padding: 2.5rem;
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
       box-sizing: border-box;
+
+      @include respondAt(915px) {
+        order: 3;
+        width: 100%;
+        max-width: 90%;
+      }
 
       & > p {
         color: white;
@@ -350,6 +355,13 @@
     width: 100%;
     margin-bottom: 1.5rem;
     
+    @include respondAt(915px) {
+      order: 1;
+      width: 100%;
+      max-width: 90%;
+      margin-bottom: 0;
+    }
+
     &--logo {
       margin-bottom: 1.5rem;
       filter: drop-shadow(0 0 15px rgba(230, 90, 154, 0.3));

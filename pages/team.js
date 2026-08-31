@@ -4,84 +4,82 @@ import { useMotionVariants } from "../components/shared/motionVariants";
 import "../styles/routes/team.scss";
 
 const CORE_TEAM = [
-  { name: "Dipro Mukherjee", role: "Lead Organiser", image: "/Images/team/Dipro - Lead Organizer.jpg" },
-  { name: "Aanya Anand", role: "Co-Lead Organiser", image: "/Images/team/Aanya.jpg" },
-  { name: "Anindya Rastogi", role: "Curator & Licensee", image: "/Images/team/anindya.jpeg" },
-  { name: "Vedant Dubey", role: "Managing Director", image: "/Images/team/Vedant Dubey.JPG" },
-  { name: "Mithreyi SR", role: "Creative Director", image: "/Images/team/mithreyi cd.jpg" },
-  { name: "Samiya Singh", role: "Communications Director", image: "/Images/team/Samiya Singh.jpg" },
-  { name: "Anshika Gupta", role: "Head of Finance", image: "/Images/team/Anshika.jpg" },
-  { name: "Arnav Prabhakar", role: "Head of Production", image: "/Images/team/arnav_prabhakar_tedx.jpeg" },
-  { name: "Darpin Mevcha", role: "Treasurer", image: "/Images/team/Darpin 1.jpg" },
-  { name: "Sahas Suri", role: "Fresher Coordinator", image: "/Images/team/Freshman Coordinator - Sahas Suri - 1.jpg" },
+  { name: "Rhea", role: "Lead Organizer", image: "/Images/team/Rhea Vohra photo.jpg" },
+  { name: "Srinithya", role: "CoLead Organizer & Treasurer", image: "/Images/team/Srinithya Pasupuleti.jpg" },
+  { name: "Sanyukta", role: "Curator and Licensee", image: "/Images/team/Sanyukta .jpg", pos: "center" },
+  { name: "Viraaj", role: "Curator and Co-licensee & Asec-2", image: "/Images/team/Viraaj(core).jpg" },
+  { name: "Shreyaa", role: "Managing Director & Secretary", image: "/Images/team/PR Lead_ Shreyaa Venkataraman.jpg", pos: "center" },
+  { name: "Saad", role: "Executive Director", image: "/Images/team/Saad.png" },
+  { name: "Urshita", role: "Head of Finance & ASec-I", image: "/Images/team/Urshita.jpg" },
+  { name: "Perinbapriyan", role: "Creative Director", image: "/Images/team/Peri.jpg", pos: "center" },
+  { name: "Enya", role: "Communications Director", image: "/Images/team/Enya Dhingra PR.jpg", pos: "center" },
+  { name: "Nithin", role: "Head of Production", image: "/Images/team/Nithin .jpg" },
+  { name: "Vyusti", role: "Fresher Coordinator", image: "/Images/team/vyusti.jpeg" },
+  { name: "Mithreyi", role: "Advisor", image: "/Images/team/mithreyi cd.jpg" },
 ];
 
 const DEPARTMENTS = [
   {
     title: "Content",
     members: [
-      { name: "Viraaj Vashisht", image: "/Images/team/Viraaj Vashisht, content lead.jpg" },
-      { name: "Swara Mishra", image: "/Images/team/Content Lead-Swara Mishra.jpg" },
-    ],
-  },
-  {
-    title: "Sponsorship",
-    members: [
-      { name: "Rhea Vohra", image: "/Images/team/Rhea Vohra photo.jpg" },
+      { name: "Vyusti Mishra", image: "/Images/team/vyusti.jpeg" },
+      { name: "Ashini Saxena", image: "/Images/team/Ashini.jpg" },
     ],
   },
   {
     title: "Marketing",
     members: [
-      { name: "Aditya Kumar", image: "/Images/team/Aditya Kumar Marketing.jpg" },
-      { name: "Swaraj", image: "/Images/team/SwarajMarketingLead.jpg" },
-    ],
-  },
-  {
-    title: "Public Relations",
-    members: [
-      { name: "Shreyaa Venkatraman", image: "/Images/team/PR Lead_ Shreyaa Venkataraman.jpg" },
-      { name: "Enya Dhingra", image: "/Images/team/Enya Dhingra PR.jpg" },
-    ],
-  },
-  {
-    title: "Web Development",
-    members: [
-      { name: "Akshat Bansal", image: "/Images/team/Akshat Bansal WebDev.jpg" },
-    ],
-  },
-  {
-    title: "Videography",
-    members: [
-      { name: "Nithin", image: "/Images/team/nitin_tedx.jpeg" },
-      { name: "Shubh", image: "/Images/team/Videography Lead - Shubh Choubey - 2.jpg" },
-    ],
-  },
-  {
-    title: "Decor",
-    members: [
-      { name: "Sivanesan Srinivasan", image: "/Images/team/Sivanesan Srinivasan - Decor&PFA.jpg" },
-      { name: "Srinithya Pasupuleti", image: "/Images/team/Srinithya Pasupuleti Decor & PFA.jpg" },
-      { name: "Urshita Rathi", image: "/Images/team/Urshita_decor & pfa lead.jpg" },
-    ],
-  },
-  {
-    title: "Design",
-    members: [
-      { name: "Shreyaash Thakur", image: "/Images/team/Shreyaash_DesLead.jpg" },
-      { name: "Perinbapriyan", image: "/Images/team/Perinbapriyan.jpg" },
+      { name: "Swara Munde", image: "/Images/team/Swara.png" },
+      { name: "Vriti Mehta", image: "/Images/team/Vriti.jpg", pos: "center" },
     ],
   },
   {
     title: "Event Management",
     members: [
-      { name: "Ayushi", image: "/Images/team/Ayushi_Logistics Lead.jpg" },
+      { name: "Saina Malik", image: "/Images/team/Saina.jpg" },
+      { name: "Arunoday Bajpai", image: "/Images/team/Arunoday .png" },
     ],
   },
   {
-    title: "Logistics",
+    title: "Decor",
     members: [
-      { name: "Aayush", image: "/Images/team/Ayush Logistics Lead.jpg" },
+      { name: "Vidushi Pareek", image: "/Images/team/vidushi.jpg", pos: "center" },
+      { name: "Yashwanth Konijeti", image: "/Images/team/Yashwanth Konijeti final.jpg" },
+    ],
+  },
+  {
+    title: "Public Relations",
+    members: [
+      { name: "Diya Singh", image: "/Images/team/diya .jpg" },
+      { name: "Lavanya Paliwal", image: "/Images/team/Lavanya .jpg" },
+    ],
+  },
+  {
+    title: "Videography",
+    members: [
+      { name: "Vedaant Walia", image: "/Images/team/Vedaant.jpg" },
+      { name: "Tanisha Chhabra", image: "/Images/team/Tanisha.png", pos: "center" },
+    ],
+  },
+  {
+    title: "Design",
+    members: [
+      { name: "Shubhi Kashyap", image: "/Images/team/Shubhi.jpg" },
+      { name: "Tarun S", image: "/Images/team/Tarun.jpg" },
+    ],
+  },
+  {
+    title: "Sponsorship",
+    members: [
+      { name: "Khushi Sarraf", image: "/Images/team/khushi.jpg" },
+      { name: "Divpreet Kaur", image: "/Images/team/Divpreet Kaur .jpg", pos: "center" },
+    ],
+  },
+  {
+    title: "Web Development",
+    members: [
+      { name: "Priyansh Khandeliya", image: "/Images/team/Priyansh khandeliya.jpg" },
+      { name: "Ekansh Jain", image: "/Images/team/Ekansh.jpg" },
     ],
   },
 ];
@@ -155,7 +153,7 @@ const MeetTheTeam = () => {
               whileHover={{ y: -5, transition: { duration: 0.25 } }}
             >
               <div className="TeamSection__card-photo">
-                <img src={member.image} alt={member.name} loading="eager" />
+                <img src={member.image} alt={member.name} loading="eager" style={{ objectPosition: member.pos || 'top center' }} />
               </div>
               <p className="TeamSection__card-name">{member.name}</p>
               <p className="TeamSection__card-role">{member.role}</p>
@@ -250,7 +248,7 @@ const MeetTheTeam = () => {
                             whileHover={{ y: -5, transition: { duration: 0.2 } }}
                           >
                             <div className="TeamSection__card-photo">
-                              <img src={m.image} alt={m.name} loading="lazy" />
+                              <img src={m.image} alt={m.name} loading="lazy" style={{ objectPosition: m.pos || 'top center' }} />
                             </div>
                             <p className="TeamSection__card-name">{m.name}</p>
                           </motion.div>

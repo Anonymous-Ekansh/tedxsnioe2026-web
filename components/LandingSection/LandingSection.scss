@@ -339,15 +339,6 @@
   text-decoration: none;
   transition: transform 0.25s ease, filter 0.25s ease;
 
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 3px solid #0d0d0d;
-    clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
-    pointer-events: none;
-  }
-
   &:hover {
     filter: brightness(1.08);
     transform: translateY(-2px);

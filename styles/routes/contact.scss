@@ -149,23 +149,23 @@
         will-change: transform;
 
         /* Card 1: pink */
-        &:nth-child(1) {
+        &:nth-child(5n + 1) {
           background-color: #e65a9a;
         }
         /* Card 2: lavender */
-        &:nth-child(2) {
+        &:nth-child(5n + 2) {
           background-color: #a9acd6;
         }
         /* Card 3: mint teal */
-        &:nth-child(3) {
+        &:nth-child(5n + 3) {
           background-color: #97d5cf;
         }
         /* Card 4: blush pink */
-        &:nth-child(4) {
+        &:nth-child(5n + 4) {
           background-color: #f4c9da;
         }
         /* Card 5: yellow */
-        &:nth-child(5) {
+        &:nth-child(5n) {
           background-color: #f6d56f;
         }
 

@@ -197,6 +197,20 @@
     }
   }
 
+  &__card-phone {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: var(--lavender);
+    opacity: 0.8;
+    margin: 0.2rem 0 0;
+    letter-spacing: 0.04em;
+
+    @include respondAt(768px) {
+      font-size: 0.65rem;
+    }
+  }
+
   /* ═══════════════════════════════════════════════════════
      Core Grid
      ═══════════════════════════════════════════════════════ */

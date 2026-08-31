@@ -5,12 +5,12 @@ import "../styles/routes/team.scss";
 
 const CORE_TEAM = [
   { name: "Rhea", role: "Lead Organizer", image: "/Images/team/Rhea Vohra photo.jpg" },
-  { name: "Srinithya", role: "CoLead Organizer & Treasurer", image: "/Images/team/Srinithya Pasupuleti.jpg" },
+  { name: "Srinithya", role: "Treasurer & Co-Lead Organizer", image: "/Images/team/Srinithya Pasupuleti.jpg" },
   { name: "Sanyukta", role: "Curator and Licensee", image: "/Images/team/Sanyukta .jpg", pos: "center" },
-  { name: "Viraaj", role: "Curator and Co-licensee & Asec-2", image: "/Images/team/Viraaj(core).jpg" },
-  { name: "Shreyaa", role: "Managing Director & Secretary", image: "/Images/team/PR Lead_ Shreyaa Venkataraman.jpg", pos: "center" },
+  { name: "Viraaj", role: "ASec-2 & Curator & Co-licensee", image: "/Images/team/Viraaj(core).jpg", zoom: 1.35, pos: "center" },
+  { name: "Shreyaa", role: "Secretary & Managing Director", image: "/Images/team/PR Lead_ Shreyaa Venkataraman.jpg", pos: "center" },
   { name: "Saad", role: "Executive Director", image: "/Images/team/Saad.png" },
-  { name: "Urshita", role: "Head of Finance & ASec-I", image: "/Images/team/Urshita.jpg" },
+  { name: "Urshita", role: "ASec-I & Head of Finance", image: "/Images/team/Urshita.jpg" },
   { name: "Perinbapriyan", role: "Creative Director", image: "/Images/team/Peri.jpg", pos: "center" },
   { name: "Enya", role: "Communications Director", image: "/Images/team/Enya Dhingra PR.jpg", pos: "center" },
   { name: "Nithin", role: "Head of Production", image: "/Images/team/Nithin .jpg" },
@@ -20,66 +20,65 @@ const CORE_TEAM = [
 
 const DEPARTMENTS = [
   {
-    title: "Content",
+    title: "Content & Curation",
     members: [
-      { name: "Vyusti Mishra", image: "/Images/team/vyusti.jpeg" },
-      { name: "Ashini Saxena", image: "/Images/team/Ashini.jpg" },
+      { name: "Vyusti Mishra", image: "/Images/team/vyusti.jpeg", phone: "+91 98101 75756" },
+      { name: "Ashini Saxena", image: "/Images/team/Ashini.jpg", phone: "+91 89231 29931" },
     ],
   },
   {
     title: "Marketing",
     members: [
-      { name: "Swara Munde", image: "/Images/team/Swara.png" },
-      { name: "Vriti Mehta", image: "/Images/team/Vriti.jpg", pos: "center" },
+      { name: "Swara Munde", image: "/Images/team/Swara.png", phone: "+91 88820 51532" },
+      { name: "Vriti Mehta", image: "/Images/team/Vriti.jpg", pos: "center", phone: "+91 86708 48333" },
     ],
   },
   {
     title: "Event Management",
     members: [
-      { name: "Saina Malik", image: "/Images/team/Saina.jpg" },
-      { name: "Arunoday Bajpai", image: "/Images/team/Arunoday .png" },
+      { name: "Saina Malik", image: "/Images/team/Saina.jpg", phone: "+91 79822 64494" },
+      { name: "Arunoday Bajpai", image: "/Images/team/Arunoday .png", phone: "+91 89608 60850" },
     ],
   },
   {
-    title: "Decor",
+    title: "Decor & PFA",
     members: [
-      { name: "Vidushi Pareek", image: "/Images/team/vidushi.jpg", pos: "center" },
-      { name: "Yashwanth Konijeti", image: "/Images/team/Yashwanth Konijeti final.jpg" },
+      { name: "Vidushi Pareek", image: "/Images/team/vidushi.jpg", pos: "center", phone: "+91 96962 42334" },
+      { name: "Yashwanth Konijeti", image: "/Images/team/Yashwanth Konijeti final.jpg", phone: "+91 93462 43234" },
     ],
   },
   {
     title: "Public Relations",
     members: [
-      { name: "Diya Singh", image: "/Images/team/diya .jpg" },
-      { name: "Lavanya Paliwal", image: "/Images/team/Lavanya .jpg" },
+      { name: "Diya Singh", image: "/Images/team/diya .jpg", pos: "center", phone: "+91 93542 47960" },
     ],
   },
   {
     title: "Videography",
     members: [
-      { name: "Vedaant Walia", image: "/Images/team/Vedaant.jpg" },
-      { name: "Tanisha Chhabra", image: "/Images/team/Tanisha.png", pos: "center" },
+      { name: "Vedaant Walia", image: "/Images/team/Vedaant.jpg", phone: "+91 98106 25375" },
+      { name: "Tanisha Chhabra", image: "/Images/team/Tanisha.png", pos: "center", phone: "+91 63966 33954" },
     ],
   },
   {
     title: "Design",
     members: [
-      { name: "Shubhi Kashyap", image: "/Images/team/Shubhi.jpg" },
-      { name: "Tarun S", image: "/Images/team/Tarun.jpg" },
+      { name: "Shubhi Kashyap", image: "/Images/team/Shubhi.jpg", phone: "+91 80764 39463" },
+      { name: "Tarun S", image: "/Images/team/Tarun.jpg", phone: "+91 73977 60906" },
     ],
   },
   {
     title: "Sponsorship",
     members: [
-      { name: "Khushi Sarraf", image: "/Images/team/khushi.jpg" },
-      { name: "Divpreet Kaur", image: "/Images/team/Divpreet Kaur .jpg", pos: "center" },
+      { name: "Khushi Sarraf", image: "/Images/team/khushi.jpg", phone: "+91 74900 30910" },
+      { name: "Divpreet Kaur", image: "/Images/team/Divpreet Kaur .jpg", pos: "center", phone: "+91 93042 93058" },
     ],
   },
   {
     title: "Web Development",
     members: [
-      { name: "Priyansh Khandeliya", image: "/Images/team/Priyansh khandeliya.jpg" },
-      { name: "Ekansh Jain", image: "/Images/team/Ekansh.jpg" },
+      { name: "Priyansh Khandeliya", image: "/Images/team/Priyansh khandeliya.jpg", phone: "+91 99287 99766" },
+      { name: "Ekansh Jain", image: "/Images/team/Ekansh.jpg", phone: "+91 70044 26881" },
     ],
   },
 ];
@@ -139,24 +138,27 @@ const MeetTheTeam = () => {
           animate="visible"
           variants={{
             hidden: {},
-            visible: { transition: { staggerChildren: 0.04, delayChildren: 0.3 } },
+            visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
           }}
         >
           {CORE_TEAM.map((member, idx) => (
             <motion.div
               className="TeamSection__card"
               key={idx}
-              variants={mv.shouldAnimate ? mv.mosaicAssembleItem(idx) : {
+              variants={mv.shouldAnimate ? mv.fadeUp : {
                 hidden: { opacity: 1 },
                 visible: { opacity: 1 },
               }}
               whileHover={{ y: -5, transition: { duration: 0.25 } }}
             >
               <div className="TeamSection__card-photo">
-                <img src={member.image} alt={member.name} loading="eager" style={{ objectPosition: member.pos || 'top center' }} />
+                <div style={{ width: '100%', height: '100%', transform: member.zoom ? `scale(${member.zoom})` : 'none', transformOrigin: member.pos || 'center' }}>
+                  <img src={member.image} alt={member.name} loading="eager" style={{ objectPosition: member.pos || 'top center' }} />
+                </div>
               </div>
               <p className="TeamSection__card-name">{member.name}</p>
               <p className="TeamSection__card-role">{member.role}</p>
+              {member.phone && <p className="TeamSection__card-phone">{member.phone}</p>}
             </motion.div>
           ))}
         </motion.div>
@@ -170,7 +172,7 @@ const MeetTheTeam = () => {
           variants={mv.fadeUp}
           style={{ marginTop: '3rem' }}
         >
-          DEPARTMENTS
+          SUBCORE TEAMS
         </motion.p>
 
         <motion.div
@@ -238,19 +240,22 @@ const MeetTheTeam = () => {
                             className="TeamSection__card"
                             key={mIdx}
                             variants={{
-                              hidden: { opacity: 0, scale: 0.5 },
+                              hidden: { opacity: 0, y: 15 },
                               visible: {
                                 opacity: 1,
-                                scale: 1,
-                                transition: { type: 'spring', stiffness: 500, damping: 25 },
+                                y: 0,
+                                transition: { duration: 0.4, ease: 'easeOut' },
                               },
                             }}
                             whileHover={{ y: -5, transition: { duration: 0.2 } }}
                           >
                             <div className="TeamSection__card-photo">
-                              <img src={m.image} alt={m.name} loading="lazy" style={{ objectPosition: m.pos || 'top center' }} />
+                              <div style={{ width: '100%', height: '100%', transform: m.zoom ? `scale(${m.zoom})` : 'none', transformOrigin: m.pos || 'center' }}>
+                                <img src={m.image} alt={m.name} loading="lazy" style={{ objectPosition: m.pos || 'top center' }} />
+                              </div>
                             </div>
                             <p className="TeamSection__card-name">{m.name}</p>
+                            {m.phone && <p className="TeamSection__card-phone">{m.phone}</p>}
                           </motion.div>
                         ))}
                       </motion.div>

@@ -60,6 +60,41 @@ function Contact() {
                         <p className='ContactUsSection__container--details__card--designation'>Finance Head</p>
                         <p className='ContactUsSection__container--details__card--phone'>+91-9636896601</p>
                     </motion.div>
+                    <motion.div className='ContactUsSection__container--details__card' variants={mv.fadeUp}>
+                        <p className='ContactUsSection__container--details__card--name'>Viraaj</p>
+                        <p className='ContactUsSection__container--details__card--designation'>Curator & Co-licensee</p>
+                        <p className='ContactUsSection__container--details__card--phone'>+91-9871927183</p>
+                    </motion.div>
+                    <motion.div className='ContactUsSection__container--details__card' variants={mv.fadeUp}>
+                        <p className='ContactUsSection__container--details__card--name'>Saad</p>
+                        <p className='ContactUsSection__container--details__card--designation'>Executive Director</p>
+                        <p className='ContactUsSection__container--details__card--phone'>+91-8929508824</p>
+                    </motion.div>
+                    <motion.div className='ContactUsSection__container--details__card' variants={mv.fadeUp}>
+                        <p className='ContactUsSection__container--details__card--name'>Perinbapriyan</p>
+                        <p className='ContactUsSection__container--details__card--designation'>Creative Director</p>
+                        <p className='ContactUsSection__container--details__card--phone'>+91-9360466022</p>
+                    </motion.div>
+                    <motion.div className='ContactUsSection__container--details__card' variants={mv.fadeUp}>
+                        <p className='ContactUsSection__container--details__card--name'>Enya</p>
+                        <p className='ContactUsSection__container--details__card--designation'>Communication Director</p>
+                        <p className='ContactUsSection__container--details__card--phone'>+91-9818441574</p>
+                    </motion.div>
+                    <motion.div className='ContactUsSection__container--details__card' variants={mv.fadeUp}>
+                        <p className='ContactUsSection__container--details__card--name'>Nithin</p>
+                        <p className='ContactUsSection__container--details__card--designation'>Head of Production</p>
+                        <p className='ContactUsSection__container--details__card--phone'>+91-7708714014</p>
+                    </motion.div>
+                    <motion.div className='ContactUsSection__container--details__card' variants={mv.fadeUp}>
+                        <p className='ContactUsSection__container--details__card--name'>Vyusti</p>
+                        <p className='ContactUsSection__container--details__card--designation'>Fresher Coordinator</p>
+                        <p className='ContactUsSection__container--details__card--phone'>+91-9810175756</p>
+                    </motion.div>
+                    <motion.div className='ContactUsSection__container--details__card' variants={mv.fadeUp}>
+                        <p className='ContactUsSection__container--details__card--name'>Mithreyi</p>
+                        <p className='ContactUsSection__container--details__card--designation'>Advisor</p>
+                        <p className='ContactUsSection__container--details__card--phone'>+91-7010308876</p>
+                    </motion.div>
                 </motion.div>
             </motion.div>
         </div>

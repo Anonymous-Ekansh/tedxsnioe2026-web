@@ -30,7 +30,8 @@ export default function AdminDashboard() {
     declined: 0,
     totalRevenue: 0,
     onePerson: 0,
-    twoPerson: 0
+    threePerson: 0,
+    fivePerson: 0
   });
 
   useEffect(() => {
@@ -144,9 +145,13 @@ export default function AdminDashboard() {
       totalRevenue: paymentData
         .filter(p => p.status === 'approved')
         .reduce((sum, p) => sum + parseFloat(p.total_amount), 0),
-      audience: paymentData.filter(p => p.number_of_people === 1).length + paymentData.filter(p => p.number_of_people === 2).length * 2,
+      audience: paymentData.filter(p => p.number_of_people === 1).length + 
+                paymentData.filter(p => p.number_of_people === 2).length * 2 +
+                paymentData.filter(p => p.number_of_people === 3).length * 3 +
+                paymentData.filter(p => p.number_of_people === 5).length * 5,
       onePerson: paymentData.filter(p => p.number_of_people === 1).length,
-      twoPerson: paymentData.filter(p => p.number_of_people === 2).length
+      threePerson: paymentData.filter(p => p.number_of_people === 3).length,
+      fivePerson: paymentData.filter(p => p.number_of_people === 5).length
     };
     setStats(stats);
   };
@@ -390,10 +395,16 @@ export default function AdminDashboard() {
             1 Person ({stats.onePerson})
           </button>
           <button
-            className={peopleFilter === '2' ? 'active' : ''}
-            onClick={() => setPeopleFilter('2')}
+            className={peopleFilter === '3' ? 'active' : ''}
+            onClick={() => setPeopleFilter('3')}
           >
-            2 People ({stats.twoPerson})
+            3 People ({stats.threePerson})
+          </button>
+          <button
+            className={peopleFilter === '5' ? 'active' : ''}
+            onClick={() => setPeopleFilter('5')}
+          >
+            5 People ({stats.fivePerson})
           </button>
         </div>
 

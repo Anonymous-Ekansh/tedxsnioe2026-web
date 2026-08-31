@@ -43,8 +43,8 @@ export default function Register() {
 
   const calculatePrice = (size) => {
     if (size === 1) return 399;
-    if (size === 3) return 1100;
-    if (size === 5) return 1700;
+    if (size === 3) return 1099;
+    if (size === 5) return 1699;
     return 399;
   };
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { useMotionVariants } from "../components/shared/motionVariants";
 import "../styles/routes/team.scss";
 
@@ -152,8 +153,8 @@ const MeetTheTeam = () => {
               whileHover={{ y: -5, transition: { duration: 0.25 } }}
             >
               <div className="TeamSection__card-photo">
-                <div style={{ width: '100%', height: '100%', transform: member.zoom ? `scale(${member.zoom})` : 'none', transformOrigin: member.pos || 'center' }}>
-                  <img src={member.image} alt={member.name} loading="eager" style={{ objectPosition: member.pos || 'top center' }} />
+                <div style={{ position: 'relative', width: '100%', height: '100%', transform: member.zoom ? `scale(${member.zoom})` : 'none', transformOrigin: member.pos || 'center' }}>
+                  <Image src={member.image} alt={member.name} fill sizes="(max-width: 768px) 50vw, 20vw" priority style={{ objectPosition: member.pos || 'top center', objectFit: 'cover' }} />
                 </div>
               </div>
               <p className="TeamSection__card-name">{member.name}</p>
@@ -250,8 +251,8 @@ const MeetTheTeam = () => {
                             whileHover={{ y: -5, transition: { duration: 0.2 } }}
                           >
                             <div className="TeamSection__card-photo">
-                              <div style={{ width: '100%', height: '100%', transform: m.zoom ? `scale(${m.zoom})` : 'none', transformOrigin: m.pos || 'center' }}>
-                                <img src={m.image} alt={m.name} loading="lazy" style={{ objectPosition: m.pos || 'top center' }} />
+                              <div style={{ position: 'relative', width: '100%', height: '100%', transform: m.zoom ? `scale(${m.zoom})` : 'none', transformOrigin: m.pos || 'center' }}>
+                                <Image src={m.image} alt={m.name} fill sizes="(max-width: 768px) 40vw, 15vw" loading="lazy" style={{ objectPosition: m.pos || 'top center', objectFit: 'cover' }} />
                               </div>
                             </div>
                             <p className="TeamSection__card-name">{m.name}</p>

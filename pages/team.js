@@ -52,7 +52,7 @@ const DEPARTMENTS = [
     title: "Public Relations",
     members: [
       { name: "Diya Singh", image: "/Images/team/diya .jpg", pos: "center", phone: "+91 93542 47960" },
-      { name: "Udita Pannu", image: "/Images/team/Udita.jpeg", pos: "center" },
+      { name: "Udita Pannu", image: "/Images/team/Udita.jpeg", pos: "center", phone: "+91 85270 83038" },
     ],
   },
   {

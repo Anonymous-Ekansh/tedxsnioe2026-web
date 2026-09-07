@@ -25,6 +25,7 @@ const speakersData = [
         punchline: "Redefining limits for the next generation of adventurers."
       }
     ],
+    mobileText: "At just 17, Kaamya Karthikeyan became the youngest girl to complete the Seven Summits. A Computer Science and Engineering student, she balances academics with high-altitude mountaineering. She is the youngest Indian and second-youngest girl globally to summit Mount Everest from the Nepal side.",
     peaks: [
       "Mount Everest",
       "Aconcagua",
@@ -57,6 +58,23 @@ export default function SpeakerReveal() {
     target: containerRef,
     offset: ["start end", "end start"]
   });
+
+  // Drift from bright Hero colors down to transparent plum to reveal the solid plum base
+  const color1 = useTransform(scrollYProgress, [0, 1], ["rgba(230, 90, 154, 0.26)", "rgba(73, 23, 51, 0)"]);
+  const color2 = useTransform(scrollYProgress, [0, 1], ["rgba(244, 201, 218, 0.20)", "rgba(73, 23, 51, 0)"]);
+  const color3 = useTransform(scrollYProgress, [0, 1], ["rgba(169, 172, 214, 0.18)", "rgba(73, 23, 51, 0)"]);
+  
+  // Base starts at --plum (#491733) to match Hero's bottom edge, and ends at --plum to match Past Voices' top edge!
+  const baseGradStart = useTransform(scrollYProgress, [0, 0.5, 1], ["#491733", "#40132c", "#491733"]);
+  const baseGradMid = useTransform(scrollYProgress, [0, 0.5, 1], ["#491733", "#491733", "#491733"]);
+  const baseGradEnd = useTransform(scrollYProgress, [0, 0.5, 1], ["#491733", "#491733", "#491733"]);
+
+  const backgroundTemplate = useMotionTemplate`
+    radial-gradient(900px 600px at 18% 30%, ${color1}, transparent 62%),
+    radial-gradient(720px 520px at 82% 68%, ${color2}, transparent 60%),
+    radial-gradient(540px 420px at 58% 18%, ${color3}, transparent 60%),
+    linear-gradient(135deg, ${baseGradStart} 0%, ${baseGradMid} 56%, ${baseGradEnd} 100%)
+  `;
 
   // Subtle parallax for the main content
   const yLeft = useTransform(scrollYProgress, [0, 1], [-20, 30]);
@@ -138,8 +156,10 @@ export default function SpeakerReveal() {
       ref={containerRef}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      style={{ background: 'transparent' }}
     >
+      <motion.div className="SpeakerReveal__bg" style={{ background: backgroundTemplate }} />
+      <div className="SpeakerReveal__grain" />
+
       <div className="SpeakerReveal__header">
         <h2 className="SpeakerReveal__title">SPEAKER REVEAL</h2>
         <p className="SpeakerReveal__subline">meet our lineup</p>
@@ -172,40 +192,42 @@ export default function SpeakerReveal() {
             </motion.div>
 
             {/* Center Photo Block */}
-            <motion.div 
-              className="SpeakerReveal__photo-wrapper"
-              animate={{ scale: [1, 1.015, 1] }}
-              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 1.5 }}
-            >
-              <div className="SpeakerReveal__mosaic-grid" style={{ gridTemplateColumns: `repeat(${gridSize}, 1fr)`, gridTemplateRows: `repeat(${gridSize}, 1fr)` }}>
-                {tiles.map((tile) => (
-                  <motion.div
-                    key={tile.id}
-                    custom={tile}
-                    variants={tileVariants}
-                    className="SpeakerReveal__tile"
-                    style={{ 
-                      width: `${tileSize}px`, 
-                      height: `${tileSize}px`,
-                      willChange: "transform, opacity"
-                    }}
-                  >
-                    <img 
-                      src={currentSpeaker.image} 
-                      alt=""
-                      style={{
-                        width: `${wrapperSize}px`,
-                        height: `${wrapperSize}px`,
-                        maxWidth: 'none',
-                        maxHeight: 'none',
-                        left: `-${tile.col * tileSize}px`,
-                        top: `-${tile.row * tileSize}px`,
+            <div className="SpeakerReveal__photo-scale-mobile">
+              <motion.div 
+                className="SpeakerReveal__photo-wrapper"
+                animate={{ scale: [1, 1.015, 1] }}
+                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 1.5 }}
+              >
+                <div className="SpeakerReveal__mosaic-grid" style={{ gridTemplateColumns: `repeat(${gridSize}, 1fr)`, gridTemplateRows: `repeat(${gridSize}, 1fr)` }}>
+                  {tiles.map((tile) => (
+                    <motion.div
+                      key={tile.id}
+                      custom={tile}
+                      variants={tileVariants}
+                      className="SpeakerReveal__tile"
+                      style={{ 
+                        width: `${tileSize}px`, 
+                        height: `${tileSize}px`,
+                        willChange: "transform, opacity"
                       }}
-                    />
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+                    >
+                      <img 
+                        src={currentSpeaker.image} 
+                        alt=""
+                        style={{
+                          width: `${wrapperSize}px`,
+                          height: `${wrapperSize}px`,
+                          maxWidth: 'none',
+                          maxHeight: 'none',
+                          left: `-${tile.col * tileSize}px`,
+                          top: `-${tile.row * tileSize}px`,
+                        }}
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
 
             {/* Right Text Block */}
             <motion.div className="SpeakerReveal__text-right" style={{ y: yRight }}>
@@ -252,22 +274,39 @@ export default function SpeakerReveal() {
 
       <AnimatePresence mode="wait">
         {isInView && (
-          <motion.div 
-            key={`highlights-${currentSpeaker.id}`}
-            className="SpeakerReveal__highlights"
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-          >
-            {currentSpeaker.highlights.map((h, i) => (
-              <motion.div key={i} className="SpeakerReveal__highlight-card" variants={highlightVariants} custom={i}>
-                <div className="SpeakerReveal__highlight-headline">
-                  {h.headline}
-                </div>
-                <div className="SpeakerReveal__highlight-punchline">{h.punchline}</div>
+          <>
+            <motion.div 
+              key={`highlights-${currentSpeaker.id}`}
+              className="SpeakerReveal__highlights"
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              {currentSpeaker.highlights.map((h, i) => (
+                <motion.div key={i} className="SpeakerReveal__highlight-card" variants={highlightVariants} custom={i}>
+                  <div className="SpeakerReveal__highlight-headline">
+                    {h.headline}
+                  </div>
+                  <div className="SpeakerReveal__highlight-punchline">{h.punchline}</div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {currentSpeaker.mobileText && (
+              <motion.div 
+                key={`mobilebio-${currentSpeaker.id}`}
+                className="SpeakerReveal__mobile-bio"
+                style={{ marginTop: "-30px" }}
+                variants={highlightVariants}
+                custom={0}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+              >
+                {currentSpeaker.mobileText}
               </motion.div>
-            ))}
-          </motion.div>
+            )}
+          </>
         )}
       </AnimatePresence>
     </section>

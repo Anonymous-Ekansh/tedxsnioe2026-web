@@ -156,6 +156,8 @@ export default function LandingSection() {
 
     return (
         <section className="hero">
+            <div className="hero-bg" />
+            <div className="hero-grain" />
 
             {/* Mosaic mark: absolutely positioned on the right */}
             <div className="mosaic-art">

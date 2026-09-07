@@ -9,7 +9,7 @@ const CORE_TEAM = [
   { name: "Srinithya", role: "Treasurer & Co-Lead Organizer", image: "/Images/team/Srinithya Pasupuleti.jpg" },
   { name: "Sanyukta", role: "Curator & Licensee", image: "/Images/team/Sanyukta .jpg", pos: "center" },
   { name: "Viraaj", role: "ASec-2 & Curator & Co-licensee", image: "/Images/team/Viraaj(core).jpg", zoom: 1.35, pos: "center" },
-  { name: "Shreyaa", role: "Secretary & Managing Director", image: "/Images/team/PR Lead_ Shreyaa Venkataraman.jpg", pos: "center" },
+  { name: "Shreyaa", role: "Secretary & Managing Director", image: "/Images/team/Shreya.jpeg", pos: "center" },
   { name: "Saad", role: "Executive Director", image: "/Images/team/Saad.png" },
   { name: "Urshita", role: "ASec-I & Head of Finance", image: "/Images/team/Urshita.jpg" },
   { name: "Perinbapriyan", role: "Creative Director", image: "/Images/team/Peri.jpg", pos: "center" },

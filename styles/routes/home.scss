@@ -6,7 +6,7 @@
 /* ─── About Us — seamless plum continuation from hero ────────── */
 .AboutSection {
   width: 100vw;
-  background: linear-gradient(180deg, var(--plum) 0%, var(--navy) 100%);
+  background: transparent;
   padding: var(--section-pad-desktop) 0;
   position: relative;
   
@@ -34,7 +34,7 @@
 /* ─── Speakers — solid plum continuation from hero ─────────── */
 .PastSpeakersSection {
   width: 100vw;
-  background-color: var(--plum);
+  background: transparent;
   padding: var(--section-pad-desktop) 0;
   position: relative;
   
@@ -50,7 +50,7 @@
 /* ─── What is TEDx — dark navy → near-black ─────────────────── */
 .WhatIsTedxSection {
   width: 100vw;
-  background: linear-gradient(180deg, var(--navy) 0%, var(--near-black) 100%);
+  background: transparent;
   padding: var(--section-pad-desktop) 0;
   position: relative;
   
@@ -67,7 +67,7 @@
 .CTASection {
   width: 100vw;
   min-height: 100vh;
-  background-color: var(--near-black);
+  background: transparent;
   position: relative;
   display: flex;
   align-items: center;

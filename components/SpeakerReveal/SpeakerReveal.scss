@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+:root {
+  --plum: #491733;
+  --pink: #E65A9A;
+  --lavender: #A9ACD6;
+  --navy: #1B2432;
+  --mint: #97D5CF;
+  --blush: #F4C9DA;
+  --gold: #F6D56F;
+  --yellow: #f6d56f;
+  --forest: #405F3F;
+  --bg: #160611;
+  --bg2: #241020;
+  --ink: #FFF4FA;
+}
+
+.SpeakerReveal {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px 32px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  color: var(--ink);
+  
+  @media (max-width: 1279px) {
+    display: none;
+  }
+}
+
+.SpeakerReveal__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.SpeakerReveal__grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+}
+
+.SpeakerReveal__header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 10;
+}
+
+.SpeakerReveal__title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(72px, 10vw, 96px);
+  color: #fff;
+  margin: 0;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.SpeakerReveal__subline {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--lavender);
+  margin-top: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Main Content Area */
+.SpeakerReveal__main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Constrains total width including highlights */
+  position: relative;
+  gap: 60px;
+  margin-bottom: 60px; /* Gap above highlights */
+  z-index: 10;
+}
+
+/* Text Blocks */
+.SpeakerReveal__text-left,
+.SpeakerReveal__text-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.SpeakerReveal__text-left {
+  align-items: flex-end;
+  text-align: right;
+  /* Tighter grouping for left column elements */
+  gap: 12px;
+}
+
+.SpeakerReveal__text-right {
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Topic Pill */
+.SpeakerReveal__tag {
+  background: var(--yellow);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 100px;
+  display: inline-block;
+  margin-bottom: 12px; /* Extra space before name */
+}
+
+/* Speaker Name - The singular editorial serif */
+.SpeakerReveal__name {
+  font-family: var(--font-display);
+  font-size: 4.8rem;
+  font-weight: 900;
+  line-height: 0.9;
+  color: var(--ink);
+  margin: 0 0 16px 0; /* Huge visual gap pushing away from the subline */
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.SpeakerReveal__title-role {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--lavender);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Tagline/Hook */
+.SpeakerReveal__hook {
+  font-family: var(--font-body);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  max-width: 340px;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* Mosaic Photo Area */
+.SpeakerReveal__photo-wrapper {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  
+  /* Depth: Subtle edge glow & real drop shadow underneath the circle */
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.4), 
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 0 40px rgba(0,0,0,0.5); /* Inner shadow adds spherical depth */
+    
+  clip-path: circle(50% at 50% 50%);
+  -webkit-clip-path: circle(50% at 50% 50%);
+  transform: translateZ(0);
+}
+
+.SpeakerReveal__mosaic-grid {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.SpeakerReveal__tile {
+  position: relative;
+  overflow: hidden;
+  
+  img {
+    position: absolute;
+    object-fit: cover;
+    object-position: center 20%;
+    pointer-events: none;
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Highlights Grid */
+.SpeakerReveal__highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 1200px; /* Constrained strictly to the width of the main content block */
+  position: relative;
+  z-index: 10;
+}
+
+.SpeakerReveal__highlight-card {
+  padding: 32px 36px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  /* Depth & premium finish */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2), 
+    inset 0 1px 1px rgba(255, 255, 255, 0.08); /* Faint top inner highlight */
+}
+
+.SpeakerReveal__highlight-headline {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--lavender);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.accent-square {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--yellow);
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.SpeakerReveal__highlight-punchline {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+/* Peaks List (Right Column) */
+.SpeakerReveal__peaks-list {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.SpeakerReveal__peaks-heading {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 12px 0;
+}
+
+.SpeakerReveal__peaks-underline {
+  width: 40px;
+  height: 3px;
+  background: var(--yellow);
+  margin-bottom: 24px;
+}
+
+.SpeakerReveal__peaks-collage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  max-width: 440px;
+}
+
+.SpeakerReveal__peaks-item {
+  font-family: var(--font-body);
+  display: inline-block;
+}

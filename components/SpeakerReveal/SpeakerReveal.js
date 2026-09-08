@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { motion, useInView, AnimatePresence, useScroll, useTransform, useMotionTemplate } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import './SpeakerReveal.scss';
 
 // Cleaned up data - NO EMOJIS
@@ -47,7 +47,7 @@ const speakersData = [
     highlights: [
       {
         headline: "Platform Architect",
-        punchline: "Led product at FilterCopy and YouTube/Podcasts at Humans of Bombay."
+        punchline: "Led production at FilterCopy and YouTube/Podcasts at Humans of Bombay."
       },
       {
         headline: "Media Pioneer",
@@ -58,7 +58,7 @@ const speakersData = [
         punchline: "Mastering the art of personal branding through powerful storytelling."
       }
     ],
-    mobileText: "Over the past 8 years, Anant Kaushik has led product at FilterCopy and headed YouTube & Podcasts at Humans of Bombay. Now, as the Co-Founder and CEO of Out Of Ordinary Media, he is building his own venture at the intersection of content, branding, and digital media.",
+    mobileText: "Over the past 8 years, Anant Kaushik has led production at FilterCopy and headed YouTube & Podcasts at Humans of Bombay. Now, as the Co-Founder and CEO of Out Of Ordinary Media, he is building his own venture at the intersection of content, branding, and digital media.",
     peaks: [
       "FilterCopy",
       "Humans of Bombay",
@@ -75,6 +75,7 @@ const speakersData = [
 export default function SpeakerReveal() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const isHovered = useRef(false);
+  const isNavHovered = useRef(false);
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.3 });
 
@@ -83,13 +84,25 @@ export default function SpeakerReveal() {
   // Auto-rotation logic
   useEffect(() => {
     if (speakersData.length <= 1 || !isInView) return;
-    const timer = setInterval(() => {
-      if (!isHovered.current) {
-        setCurrentIndex((prev) => (prev + 1) % speakersData.length);
-      }
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [isInView]);
+    
+    let timeoutId;
+    const runTimer = () => {
+      // 8 seconds if user is interacting/hovering over main section, otherwise 6 seconds
+      const delay = isHovered.current ? 8000 : 6000;
+      
+      timeoutId = setTimeout(() => {
+        if (!isNavHovered.current) {
+          setCurrentIndex((prev) => (prev + 1) % speakersData.length);
+        } else {
+          // If hovering over navigation, don't change slide, just check again soon
+          runTimer();
+        }
+      }, delay);
+    };
+    
+    runTimer();
+    return () => clearTimeout(timeoutId);
+  }, [isInView, currentIndex]);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + speakersData.length) % speakersData.length);
@@ -99,32 +112,7 @@ export default function SpeakerReveal() {
     setCurrentIndex((prev) => (prev + 1) % speakersData.length);
   };
 
-  // Scroll-linked continuous gradient & parallax
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
 
-  // Drift from bright Hero colors down to transparent plum to reveal the solid plum base
-  const color1 = useTransform(scrollYProgress, [0, 1], ["rgba(230, 90, 154, 0.26)", "rgba(73, 23, 51, 0)"]);
-  const color2 = useTransform(scrollYProgress, [0, 1], ["rgba(244, 201, 218, 0.20)", "rgba(73, 23, 51, 0)"]);
-  const color3 = useTransform(scrollYProgress, [0, 1], ["rgba(169, 172, 214, 0.18)", "rgba(73, 23, 51, 0)"]);
-  
-  // Base starts at --plum (#491733) to match Hero's bottom edge, and ends at --plum to match Past Voices' top edge!
-  const baseGradStart = useTransform(scrollYProgress, [0, 0.5, 1], ["#491733", "#40132c", "#491733"]);
-  const baseGradMid = useTransform(scrollYProgress, [0, 0.5, 1], ["#491733", "#491733", "#491733"]);
-  const baseGradEnd = useTransform(scrollYProgress, [0, 0.5, 1], ["#491733", "#491733", "#491733"]);
-
-  const backgroundTemplate = useMotionTemplate`
-    radial-gradient(900px 600px at 18% 30%, ${color1}, transparent 62%),
-    radial-gradient(720px 520px at 82% 68%, ${color2}, transparent 60%),
-    radial-gradient(540px 420px at 58% 18%, ${color3}, transparent 60%),
-    linear-gradient(135deg, ${baseGradStart} 0%, ${baseGradMid} 56%, ${baseGradEnd} 100%)
-  `;
-
-  // Subtle parallax for the main content
-  const yLeft = useTransform(scrollYProgress, [0, 1], [-20, 30]);
-  const yRight = useTransform(scrollYProgress, [0, 1], [20, -30]);
 
   // Generate 10x10 grid = 100 tiles for the mosaic
   const gridSize = 10;
@@ -203,8 +191,7 @@ export default function SpeakerReveal() {
       onMouseEnter={() => { isHovered.current = true; }}
       onMouseLeave={() => { isHovered.current = false; }}
     >
-      <motion.div className="SpeakerReveal__bg" style={{ background: backgroundTemplate }} />
-      <div className="SpeakerReveal__grain" />
+      <div className="SpeakerReveal__bg" />
 
       <div className="SpeakerReveal__header">
         <div className="SpeakerReveal__header-left">
@@ -212,12 +199,18 @@ export default function SpeakerReveal() {
           <p className="SpeakerReveal__subline" style={{marginTop: '12px'}}>meet our lineup</p>
         </div>
         {speakersData.length > 1 && (
-          <div className="SpeakerReveal__nav-wrapper SpeakerReveal__nav-desktop">
-            <span className="SpeakerReveal__nav-label">Explore Speakers</span>
-            <div className="SpeakerReveal__nav">
-              <button onClick={handlePrev} className="SpeakerReveal__nav-btn">{"<"}</button>
-              <button onClick={handleNext} className="SpeakerReveal__nav-btn pulse-arrow">{">"}</button>
+          <div 
+            className="SpeakerReveal__nav-wrapper SpeakerReveal__nav-desktop"
+            onMouseEnter={() => { isNavHovered.current = true; }}
+            onMouseLeave={() => { isNavHovered.current = false; }}
+          >
+            <button onClick={handlePrev} className="SpeakerReveal__text-btn">← PREV</button>
+            <div className="SpeakerReveal__pagination">
+              <span className="current">{currentIndex + 1}</span>
+              <span className="separator">/</span>
+              <span className="total">{speakersData.length}</span>
             </div>
+            <button onClick={handleNext} className="SpeakerReveal__text-btn">NEXT →</button>
           </div>
         )}
       </div>
@@ -232,7 +225,7 @@ export default function SpeakerReveal() {
             exit="exit"
           >
             {/* Left Text Block */}
-            <motion.div className="SpeakerReveal__text-left" style={{ y: yLeft }}>
+            <motion.div className="SpeakerReveal__text-left">
               <motion.span className="SpeakerReveal__tag" variants={textVariants} custom={0}>
                 {currentSpeaker.tag}
               </motion.span>
@@ -287,7 +280,7 @@ export default function SpeakerReveal() {
             </div>
 
             {/* Right Text Block */}
-            <motion.div className="SpeakerReveal__text-right" style={{ y: yRight }}>
+            <motion.div className="SpeakerReveal__text-right">
               <motion.p className="SpeakerReveal__hook" variants={textVariants} custom={3}>
                 {currentSpeaker.hook}
               </motion.p>
@@ -369,12 +362,18 @@ export default function SpeakerReveal() {
 
       {/* Mobile Nav at bottom */}
       {speakersData.length > 1 && (
-        <div className="SpeakerReveal__nav-wrapper SpeakerReveal__nav-mobile">
-          <div className="SpeakerReveal__nav">
-            <button onClick={handlePrev} className="SpeakerReveal__nav-btn">{"<"}</button>
-            <span className="SpeakerReveal__nav-label-mobile">Swipe or Click</span>
-            <button onClick={handleNext} className="SpeakerReveal__nav-btn pulse-arrow">{">"}</button>
+        <div 
+          className="SpeakerReveal__nav-wrapper SpeakerReveal__nav-mobile"
+          onMouseEnter={() => { isNavHovered.current = true; }}
+          onMouseLeave={() => { isNavHovered.current = false; }}
+        >
+          <button onClick={handlePrev} className="SpeakerReveal__text-btn">← PREV</button>
+          <div className="SpeakerReveal__pagination">
+            <span className="current">{currentIndex + 1}</span>
+            <span className="separator">/</span>
+            <span className="total">{speakersData.length}</span>
           </div>
+          <button onClick={handleNext} className="SpeakerReveal__text-btn">NEXT →</button>
         </div>
       )}
 

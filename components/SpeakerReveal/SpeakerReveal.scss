@@ -98,16 +98,11 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-}
-
-.SpeakerReveal__grain {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  opacity: 0.35;
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/></svg>");
+  background: 
+    radial-gradient(900px 600px at 18% 30%, rgba(230, 90, 154, 0.26), transparent 62%),
+    radial-gradient(720px 520px at 82% 68%, rgba(244, 201, 218, 0.20), transparent 60%),
+    radial-gradient(540px 420px at 58% 18%, rgba(169, 172, 214, 0.18), transparent 60%),
+    linear-gradient(135deg, #491733 0%, #40132c 56%, #491733 100%);
 }
 
 .SpeakerReveal__header {
@@ -174,51 +169,47 @@
   }
 }
 
-.SpeakerReveal__nav-label-mobile {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--lavender);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  opacity: 0.8;
-  padding: 0 16px;
-  display: flex;
-  align-items: center;
-}
-
-.SpeakerReveal__nav {
-  display: flex;
-  gap: 16px;
-  padding-bottom: 8px; /* align with baseline */
-}
-
-.SpeakerReveal__nav-btn {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.SpeakerReveal__text-btn {
+  background: rgba(230, 90, 154, 0.1);
+  border: 1px solid rgba(230, 90, 154, 0.3);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 1.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  padding: 10px 24px;
+  border-radius: 100px;
   cursor: pointer;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(230, 90, 154, 0.4);
-    box-shadow: 0 0 20px rgba(230, 90, 154, 0.15);
+    background: rgba(230, 90, 154, 0.2);
+    border-color: rgba(230, 90, 154, 0.5);
     transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(230, 90, 154, 0.2);
   }
-  
+
   &:active {
     transform: translateY(0);
+  }
+}
+
+.SpeakerReveal__pagination {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--lavender);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  .current {
+    color: var(--pink);
+  }
+  .separator {
+    opacity: 0.5;
   }
 }
 

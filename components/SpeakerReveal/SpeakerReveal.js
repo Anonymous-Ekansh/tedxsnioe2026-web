@@ -34,13 +34,47 @@ const speakersData = [
       "Mount Elbrus",
       "Mount Vinson",
       "Mount Kosciuszko"
-    ]
+    ],
+    peaksTitle: "7 Peaks. 7 Continents."
+  },
+  {
+    id: 2,
+    name: 'Anant Kaushik',
+    role: 'Co-Founder & CEO, Out Of Ordinary Media',
+    tag: 'Media & Storytelling',
+    image: '/Images/speakers/anant.jpeg',
+    hook: "Building communities out of the ordinary.",
+    highlights: [
+      {
+        headline: "Platform Architect",
+        punchline: "Led product at FilterCopy and YouTube/Podcasts at Humans of Bombay."
+      },
+      {
+        headline: "Media Pioneer",
+        punchline: "Building a new venture at the intersection of content and strategy."
+      },
+      {
+        headline: "Brand Visionary",
+        punchline: "Mastering the art of personal branding through powerful storytelling."
+      }
+    ],
+    mobileText: "Over the past 8 years, Anant Kaushik has led product at FilterCopy and headed YouTube & Podcasts at Humans of Bombay. Now, as the Co-Founder and CEO of Out Of Ordinary Media, he is building his own venture at the intersection of content, branding, and digital media.",
+    peaks: [
+      "FilterCopy",
+      "Humans of Bombay",
+      "Out of Ordinary",
+      "Digital Media",
+      "Personal Brand",
+      "Content",
+      "Storytelling"
+    ],
+    peaksTitle: "Brands. Content. Impact."
   }
 ];
 
 export default function SpeakerReveal() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+  const isHovered = useRef(false);
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 0.3 });
 
@@ -48,10 +82,22 @@ export default function SpeakerReveal() {
 
   // Auto-rotation logic
   useEffect(() => {
-    if (speakersData.length <= 1 || !isInView || isHovered) return;
-    const timer = setInterval(() => setCurrentIndex((prev) => (prev + 1) % speakersData.length), 3000);
+    if (speakersData.length <= 1 || !isInView) return;
+    const timer = setInterval(() => {
+      if (!isHovered.current) {
+        setCurrentIndex((prev) => (prev + 1) % speakersData.length);
+      }
+    }, 6000);
     return () => clearInterval(timer);
-  }, [isInView, isHovered, currentIndex]);
+  }, [isInView]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + speakersData.length) % speakersData.length);
+  };
+  
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % speakersData.length);
+  };
 
   // Scroll-linked continuous gradient & parallax
   const { scrollYProgress } = useScroll({
@@ -154,15 +200,26 @@ export default function SpeakerReveal() {
     <section 
       className="SpeakerReveal" 
       ref={containerRef}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => { isHovered.current = true; }}
+      onMouseLeave={() => { isHovered.current = false; }}
     >
       <motion.div className="SpeakerReveal__bg" style={{ background: backgroundTemplate }} />
       <div className="SpeakerReveal__grain" />
 
       <div className="SpeakerReveal__header">
-        <h2 className="SpeakerReveal__title">SPEAKER REVEAL</h2>
-        <p className="SpeakerReveal__subline">meet our lineup</p>
+        <div className="SpeakerReveal__header-left">
+          <h2 className="SpeakerReveal__title">SPEAKER REVEAL</h2>
+          <p className="SpeakerReveal__subline" style={{marginTop: '12px'}}>meet our lineup</p>
+        </div>
+        {speakersData.length > 1 && (
+          <div className="SpeakerReveal__nav-wrapper SpeakerReveal__nav-desktop">
+            <span className="SpeakerReveal__nav-label">Explore Speakers</span>
+            <div className="SpeakerReveal__nav">
+              <button onClick={handlePrev} className="SpeakerReveal__nav-btn">{"<"}</button>
+              <button onClick={handleNext} className="SpeakerReveal__nav-btn pulse-arrow">{">"}</button>
+            </div>
+          </div>
+        )}
       </div>
 
       <AnimatePresence mode="wait">
@@ -237,7 +294,7 @@ export default function SpeakerReveal() {
 
               {currentSpeaker.peaks && (
                 <motion.div className="SpeakerReveal__peaks-list" variants={textVariants} custom={4}>
-                  <h4 className="SpeakerReveal__peaks-heading">7 Peaks. 7 Continents.</h4>
+                  <h4 className="SpeakerReveal__peaks-heading">{currentSpeaker.peaksTitle || "7 Peaks. 7 Continents."}</h4>
                   <div className="SpeakerReveal__peaks-underline" />
                   <div className="SpeakerReveal__peaks-collage">
                     {currentSpeaker.peaks.map((peak, idx) => {
@@ -296,7 +353,7 @@ export default function SpeakerReveal() {
               <motion.div 
                 key={`mobilebio-${currentSpeaker.id}`}
                 className="SpeakerReveal__mobile-bio"
-                style={{ marginTop: "-30px" }}
+                style={{ marginTop: "-30px", marginBottom: "40px" }}
                 variants={highlightVariants}
                 custom={0}
                 initial="hidden"
@@ -309,6 +366,22 @@ export default function SpeakerReveal() {
           </>
         )}
       </AnimatePresence>
+
+      {/* Mobile Nav at bottom */}
+      {speakersData.length > 1 && (
+        <div className="SpeakerReveal__nav-wrapper SpeakerReveal__nav-mobile">
+          <div className="SpeakerReveal__nav">
+            <button onClick={handlePrev} className="SpeakerReveal__nav-btn">{"<"}</button>
+            <span className="SpeakerReveal__nav-label-mobile">Swipe or Click</span>
+            <button onClick={handleNext} className="SpeakerReveal__nav-btn pulse-arrow">{">"}</button>
+          </div>
+        </div>
+      )}
+
+      {/* Subtle Footer for anticipation */}
+      <div className="SpeakerReveal__footer-text">
+        <p>More speakers revealing soon. Stay tuned.</p>
+      </div>
     </section>
   );
 }

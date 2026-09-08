@@ -436,6 +436,7 @@ export default function AdminDashboard() {
                 <th>Amount</th>
                 <th>People</th>
                 <th>Type</th>
+                <th>Referred By</th>
                 <th>Transaction ID</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -458,6 +459,7 @@ export default function AdminDashboard() {
                   <td>₹{payment.total_amount}</td>
                   <td>{payment.number_of_people}</td>
                   <td>{payment.is_snu_student ? 'SNU' : 'Non-SNU'}</td>
+                  <td>{payment.referred_by || payment.participants?.[0]?.referredBy || '-'}</td>
                   <td>{payment.transaction_id || 'N/A'}</td>
                   <td>
                     <span className={`status ${payment.status}`}>
@@ -523,6 +525,9 @@ export default function AdminDashboard() {
                 </div>
                 <div className="detail-row">
                   <strong>Type:</strong> {selectedPayment.is_snu_student ? 'SNU Student' : 'Non-SNU'}
+                </div>
+                <div className="detail-row">
+                  <strong>Referred By:</strong> {selectedPayment.referred_by || selectedPayment.participants?.[0]?.referredBy || 'None'}
                 </div>
                 <div className="detail-row">
                   <strong>Payment Method:</strong> {selectedPayment.payment_method?.toUpperCase() || 'UPI'}

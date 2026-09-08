@@ -123,6 +123,7 @@ export default function GooglePay() {
                     payment_method: 'upi',
                     status: 'pending',
                     transaction_screenshot_url: screenshotUrl, // Inserted directly, no UPDATE needed!
+                    referred_by: paymentData.participants[0]?.referredBy || null,
 
                     // Legacy fields for backward compatibility
                     name_one: paymentData.participants[0]?.name || '',

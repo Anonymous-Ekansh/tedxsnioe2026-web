@@ -169,7 +169,8 @@
 
       &__name,
       &__email,
-      &__phone {
+      &__phone,
+      &__referredBy {
         display: flex;
         flex-direction: column;
 

@@ -9,6 +9,7 @@ export default function Register() {
   // State for bundle selection (1, 3, 5)
   const [bundleSize, setBundleSize] = useState(1);
   const [isSnu, setIsSnu] = useState(true);
+  const [referredBy, setReferredBy] = useState('');
   
   // State for participants
   const [participants, setParticipants] = useState([
@@ -75,8 +76,14 @@ export default function Register() {
 
     const totalAmount = calculatePrice(bundleSize);
     
+    // Attach the single bundle-level referral code to the primary participant's JSON object
+    const finalParticipants = participants.slice(0, bundleSize);
+    if (referredBy.trim() !== '') {
+      finalParticipants[0] = { ...finalParticipants[0], referredBy: referredBy.trim() };
+    }
+
     const paymentData = {
-      participants: participants.slice(0, bundleSize), // send only valid participants
+      participants: finalParticipants,
       number_of_people: bundleSize,
       is_snu_student: isSnu,
       total_amount: totalAmount,
@@ -187,6 +194,17 @@ export default function Register() {
                 </div>
               </div>
             ))}
+
+            {/* Global Referral for the entire bundle */}
+            <div className="RegisterSection__details--value__referredBy" style={{ marginTop: '0.5rem', marginBottom: '1rem' }}>
+              <p>Referred By (Optional)</p>
+              <input
+                value={referredBy}
+                onChange={(e) => setReferredBy(e.target.value)}
+                type="text"
+                placeholder="Referral Name"
+              />
+            </div>
           </div>
 
           <div

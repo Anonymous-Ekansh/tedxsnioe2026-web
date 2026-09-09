@@ -29,7 +29,9 @@ export default function AdminDashboard() {
     approved: 0,
     declined: 0,
     totalRevenue: 0,
+    audience: 0,
     onePerson: 0,
+    twoPerson: 0,
     threePerson: 0,
     fivePerson: 0
   });
@@ -150,6 +152,7 @@ export default function AdminDashboard() {
                 paymentData.filter(p => p.number_of_people === 3).length * 3 +
                 paymentData.filter(p => p.number_of_people === 5).length * 5,
       onePerson: paymentData.filter(p => p.number_of_people === 1).length,
+      twoPerson: paymentData.filter(p => p.number_of_people === 2).length,
       threePerson: paymentData.filter(p => p.number_of_people === 3).length,
       fivePerson: paymentData.filter(p => p.number_of_people === 5).length
     };
@@ -393,6 +396,12 @@ export default function AdminDashboard() {
             onClick={() => setPeopleFilter('1')}
           >
             1 Person ({stats.onePerson})
+          </button>
+          <button
+            className={peopleFilter === '2' ? 'active' : ''}
+            onClick={() => setPeopleFilter('2')}
+          >
+            2 People ({stats.twoPerson})
           </button>
           <button
             className={peopleFilter === '3' ? 'active' : ''}

@@ -43,10 +43,11 @@ export default function Register() {
   };
 
   const calculatePrice = (size) => {
-    if (size === 1) return 399;
-    if (size === 3) return 1099;
-    if (size === 5) return 1699;
-    return 399;
+    if (size === 1) return 449;
+    if (size === 2) return 859;
+    if (size === 3) return 1259;
+    if (size === 5) return 1999;
+    return 449;
   };
 
   const handleSubmit = (e) => {
@@ -119,12 +120,18 @@ export default function Register() {
           
           <div className="RegisterSection__details--people" style={{ marginTop: '1.5rem' }}>
             <p>Select Ticket Bundle</p>
-            <div className="RegisterSection__details--people__options" style={{ display: 'flex', gap: '10px' }}>
+            <div className="RegisterSection__details--people__options" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               <p
                 className={bundleSize === 1 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
                 onClick={() => handleBundleChange(1)}
               >
                 1 Person
+              </p>
+              <p
+                className={bundleSize === 2 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
+                onClick={() => handleBundleChange(2)}
+              >
+                2 People
               </p>
               <p
                 className={bundleSize === 3 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}

@@ -73,7 +73,7 @@ const speakersData = [
   {
     id: 3,
     name: 'Vetri Dhagumudi',
-    role: 'Founder & CEO, Hydris',
+    role: 'Former Global Director of sustainability at Nike',
     tag: 'AI & Sustainability',
     image: '/Images/speakers/vetri.jpeg',
     hook: "Building intelligent operations out of the ordinary.",

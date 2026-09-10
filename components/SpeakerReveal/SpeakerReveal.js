@@ -69,6 +69,39 @@ const speakersData = [
       "Storytelling"
     ],
     peaksTitle: "Brands. Content. Impact."
+  },
+  {
+    id: 3,
+    name: 'Vetri Dhagumudi',
+    role: 'Founder & CEO, Hydris',
+    tag: 'AI & Sustainability',
+    image: '/Images/speakers/vetri.jpeg',
+    hook: "Building intelligent operations out of the ordinary.",
+    highlights: [
+      {
+        headline: "Global Executive",
+        punchline: "Spent 13+ years leading sustainability at Nike and Kimberly-Clark, including 4 years as Nike's Global Nature Director."
+      },
+      {
+        headline: "Serial Founder",
+        punchline: "Previously founded JarvisWater, building AI/ML-based training software that tackled water industry's aging workforce crisis."
+      },
+      {
+        headline: "AI For Industry",
+        punchline: "Now Founder & CEO of Hydris, applying AI to industrial operations where technology and sustainability meet."
+      }
+    ],
+    mobileText: "Vetri Dhagumudi spent 13+ years leading sustainability at Nike and Kimberly-Clark. A serial founder, he previously built JarvisWater and is now the Founder & CEO of Hydris, applying AI to industrial operations.",
+    peaks: [
+      "NIKE",
+      "global nature director",
+      "HYDRIS",
+      "APPLIED AI",
+      "industrial operations",
+      "SUSTAINABILITY",
+      "TECHNOLOGY"
+    ],
+    peaksTitle: "AI. INDUSTRY. IMPACT."
   }
 ];
 

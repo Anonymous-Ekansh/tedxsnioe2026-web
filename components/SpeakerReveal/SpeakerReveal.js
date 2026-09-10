@@ -80,7 +80,7 @@ const speakersData = [
     highlights: [
       {
         headline: "Global Executive",
-        punchline: "Spent 13+ years leading sustainability at Nike and Kimberly-Clark, including 4 years as Nike's Global Nature Director."
+        punchline: "Spent 20+ years leading sustainability at Nike and Kimberly-Clark, including 4 years as Nike's Global Nature Director."
       },
       {
         headline: "Serial Founder",
@@ -91,7 +91,7 @@ const speakersData = [
         punchline: "Now Founder & CEO of Hydris, applying AI to industrial operations where technology and sustainability meet."
       }
     ],
-    mobileText: "Vetri Dhagumudi spent 13+ years leading sustainability at Nike and Kimberly-Clark. A serial founder, he previously built JarvisWater and is now the Founder & CEO of Hydris, applying AI to industrial operations.",
+    mobileText: "Vetri Dhagumudi spent 20+ years leading sustainability at Nike and Kimberly-Clark. A serial founder, he previously built JarvisWater and is now the Founder & CEO of Hydris, applying AI to industrial operations.",
     peaks: [
       "NIKE",
       "global nature director",

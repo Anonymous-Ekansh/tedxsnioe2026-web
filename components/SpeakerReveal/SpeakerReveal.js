@@ -73,7 +73,7 @@ const speakersData = [
   {
     id: 3,
     name: 'Vetri Dhagumudi',
-    role: 'Former Global Director of sustainability at Nike',
+    role: 'Former Global Director of sustainability at Nike\nFounder and CEO of Hydris AI',
     tag: 'AI & Sustainability',
     image: '/Images/speakers/vetri.jpeg',
     hook: "Building intelligent operations out of the ordinary.",
@@ -94,8 +94,8 @@ const speakersData = [
     mobileText: "Vetri Dhagumudi spent 20+ years leading sustainability at Nike and Kimberly-Clark. A serial founder, he previously built JarvisWater and is now the Founder & CEO of Hydris, applying AI to industrial operations.",
     peaks: [
       "NIKE",
-      "global nature director",
-      "HYDRIS",
+      "Former Global Director",
+      "HYDRIS AI",
       "APPLIED AI",
       "industrial operations",
       "SUSTAINABILITY",
@@ -270,7 +270,11 @@ export default function SpeakerReveal() {
                 ))}
               </motion.h3>
               <motion.p className="SpeakerReveal__title-role" variants={textVariants} custom={2}>
-                {currentSpeaker.role}
+                {currentSpeaker.role.split('\n').map((line, i, arr) => (
+                  <React.Fragment key={i}>
+                    {line}{i !== arr.length - 1 && <br/>}
+                  </React.Fragment>
+                ))}
               </motion.p>
             </motion.div>
 

@@ -106,14 +106,14 @@ const speakersData = [
   {
     id: 4,
     name: 'Arun Maira',
-    role: 'Former Chairman, BCG\nFormer Member, Planning Commission of India',
+    role: 'Former Chairman, Boston Consulting Group (BCG)\nFormer Member, Planning Commission of India',
     tag: 'Leadership & Strategy',
     image: '/Images/speakers/arun.jpg',
     hook: "A 50-year legacy shaping billion-dollar industries and driving national policy.",
     highlights: [
       {
         headline: "Corporate Titan",
-        punchline: "Spent 25 years building Tata Motors, followed by leading BCG as Chairman, driving transformation across top global corporations."
+        punchline: "Spent 25 years building Tata Motors, followed by leading Boston Consulting Group (BCG) as Chairman, driving transformation across top global corporations."
       },
       {
         headline: "National Architect",
@@ -129,7 +129,7 @@ const speakersData = [
       "TATA GROUP",
       "PLANNING COMMISSION",
       "POLICY MAKER",
-      "BCG",
+      "Boston Consulting Group (BCG)",
       "SYSTEMS THINKING",
       "LEADERSHIP",
       "AUTHOR"

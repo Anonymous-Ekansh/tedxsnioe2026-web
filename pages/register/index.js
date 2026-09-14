@@ -1,5 +1,5 @@
 import "../../styles/routes/register.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from 'next/image';
 
@@ -10,6 +10,44 @@ export default function Register() {
   const [bundleSize, setBundleSize] = useState(1);
   const [isSnu, setIsSnu] = useState(true);
   const [referredBy, setReferredBy] = useState('');
+  const [isFlashSale, setIsFlashSale] = useState(false);
+  const [timeLeft, setTimeLeft] = useState('');
+
+  useEffect(() => {
+    // Flash Sale set for Sept 15, 1 PM to 3 PM
+    const flashStart = new Date('2026-09-15T13:00:00+05:30');
+    const flashEnd = new Date('2026-09-15T15:00:00+05:30');
+
+    const checkFlashSale = () => {
+      const now = new Date();
+      
+      if (now >= flashStart && now <= flashEnd) {
+        setIsFlashSale(true);
+        setBundleSize(prev => {
+          if (prev !== 1) {
+            setParticipants(p => p.slice(0, 1));
+            return 1;
+          }
+          return prev;
+        });
+        
+        // Calculate time left
+        const diff = flashEnd - now;
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const mins = Math.floor((diff / 1000 / 60) % 60);
+        const secs = Math.floor((diff / 1000) % 60);
+        const formatZero = (num) => (num < 10 ? `0${num}` : num);
+        
+        setTimeLeft(`${formatZero(hours)}:${formatZero(mins)}:${formatZero(secs)}`);
+      } else {
+        setIsFlashSale(false);
+      }
+    };
+    
+    checkFlashSale();
+    const interval = setInterval(checkFlashSale, 1000); // Check every second for the timer
+    return () => clearInterval(interval);
+  }, []);
   
   // State for participants
   const [participants, setParticipants] = useState([
@@ -43,6 +81,7 @@ export default function Register() {
   };
 
   const calculatePrice = (size) => {
+    if (isFlashSale) return 299 * size; // Flash sale price
     if (size === 1) return 449;
     if (size === 2) return 859;
     if (size === 3) return 1259;
@@ -89,7 +128,7 @@ export default function Register() {
       is_snu_student: isSnu,
       total_amount: totalAmount,
       price_per_person: totalAmount / bundleSize,
-      offer_type: 'regular'
+      offer_type: isFlashSale ? 'flash_sale' : 'regular'
     };
     
     localStorage.setItem("paymentData", JSON.stringify(paymentData));
@@ -127,24 +166,81 @@ export default function Register() {
               >
                 1 Person
               </p>
-              <p
-                className={bundleSize === 2 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
-                onClick={() => handleBundleChange(2)}
-              >
-                2 People
-              </p>
-              <p
-                className={bundleSize === 3 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
-                onClick={() => handleBundleChange(3)}
-              >
-                3 People
-              </p>
-              <p
-                className={bundleSize === 5 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
-                onClick={() => handleBundleChange(5)}
-              >
-                5 People
-              </p>
+              {!isFlashSale && (
+                <>
+                  <p
+                    className={bundleSize === 2 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
+                    onClick={() => handleBundleChange(2)}
+                  >
+                    2 People
+                  </p>
+                  <p
+                    className={bundleSize === 3 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
+                    onClick={() => handleBundleChange(3)}
+                  >
+                    3 People
+                  </p>
+                  <p
+                    className={bundleSize === 5 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
+                    onClick={() => handleBundleChange(5)}
+                  >
+                    5 People
+                  </p>
+                </>
+              )}
+              {isFlashSale && (
+                <div style={{
+                  flex: '1 1 100%',
+                  boxSizing: 'border-box',
+                  background: 'rgba(255, 255, 255, 0.03)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  border: '1px solid rgba(255, 255, 255, 0.12)',
+                  borderRadius: '12px',
+                  padding: '16px 24px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: '12px',
+                  marginTop: '12px',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
+                }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    <span style={{ 
+                      fontFamily: 'var(--font-display)',
+                      background: 'linear-gradient(135deg, white 30%, var(--pink) 100%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      fontWeight: '900', 
+                      fontSize: '1.4rem', 
+                      textTransform: 'uppercase', 
+                      letterSpacing: '0.02em',
+                      textShadow: '0 0 20px rgba(230, 90, 154, 0.2)'
+                    }}>
+                      FLASH SALE ACTIVE!!!
+                    </span>
+                    <span style={{ color: 'var(--muted)', fontSize: '0.85rem', fontFamily: 'var(--font-body)' }}>
+                      Combo bundles are temporarily locked.
+                    </span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', fontFamily: 'var(--font-body)' }}>
+                      Ends In
+                    </span>
+                    <span style={{ 
+                      color: 'white', 
+                      fontFamily: 'monospace', 
+                      fontWeight: 'bold', 
+                      fontSize: '1.4rem', 
+                      letterSpacing: '2px',
+                      textShadow: '0 0 10px rgba(255,255,255,0.3)'
+                    }}>
+                      {timeLeft}
+                    </span>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 

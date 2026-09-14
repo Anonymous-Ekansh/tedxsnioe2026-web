@@ -102,6 +102,39 @@ const speakersData = [
       "TECHNOLOGY"
     ],
     peaksTitle: "AI. INDUSTRY. IMPACT."
+  },
+  {
+    id: 4,
+    name: 'Arun Maira',
+    role: 'Former Chairman, BCG\nFormer Member, Planning Commission of India',
+    tag: 'Leadership & Strategy',
+    image: '/Images/speakers/arun.jpg',
+    hook: "A 50-year legacy shaping billion-dollar industries and driving national policy.",
+    highlights: [
+      {
+        headline: "Corporate Titan",
+        punchline: "Spent 25 years building Tata Motors, followed by leading BCG as Chairman, driving transformation across top global corporations."
+      },
+      {
+        headline: "National Architect",
+        punchline: "Steered India's industrial and urban policies as a Member of the Planning Commission, shaping the nation's economic future."
+      },
+      {
+        headline: "Visionary Author",
+        punchline: "A renowned systems thinker and author of several definitive books on transformational leadership, ethical capitalism, and institutional change."
+      }
+    ],
+    mobileText: "With a career spanning over 50 years, Arun Maira is a titan of Indian industry and policy. He spent 25 years at the Tata Group before becoming Chairman of Boston Consulting Group (BCG). Later, as a Member of the Planning Commission of India, he helped steer the nation's industrial and economic policies. He is a renowned author and thought leader on systems thinking, leadership, and institutional transformation.",
+    peaks: [
+      "TATA GROUP",
+      "PLANNING COMMISSION",
+      "POLICY MAKER",
+      "BCG",
+      "SYSTEMS THINKING",
+      "LEADERSHIP",
+      "AUTHOR"
+    ],
+    peaksTitle: "INDUSTRY. POLICY. LEADERSHIP."
   }
 ];
 

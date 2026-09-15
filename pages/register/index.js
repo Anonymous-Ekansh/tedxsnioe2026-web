@@ -82,11 +82,10 @@ export default function Register() {
 
   const calculatePrice = (size) => {
     if (isFlashSale) return 299 * size; // Flash sale price
-    if (size === 1) return 449;
-    if (size === 2) return 859;
-    if (size === 3) return 1259;
-    if (size === 5) return 1999;
-    return 449;
+    if (size === 1) return 499;
+    if (size === 2) return 899;
+    if (size === 3) return 1299;
+    return 499;
   };
 
   const handleSubmit = (e) => {
@@ -179,12 +178,6 @@ export default function Register() {
                     onClick={() => handleBundleChange(3)}
                   >
                     3 People
-                  </p>
-                  <p
-                    className={bundleSize === 5 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
-                    onClick={() => handleBundleChange(5)}
-                  >
-                    5 People
                   </p>
                 </>
               )}

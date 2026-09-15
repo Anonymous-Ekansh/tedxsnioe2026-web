@@ -135,6 +135,38 @@ const speakersData = [
       "AUTHOR"
     ],
     peaksTitle: "INDUSTRY. POLICY. LEADERSHIP."
+  },
+  {
+    id: 5,
+    name: 'Muneef Khan',
+    role: 'Independent Journalist & Educator\nJournalism Faculty, Shiv Nadar University',
+    tag: 'Journalism & Public Discourse',
+    image: '/Images/speakers/muneef.jpg',
+    hook: "Understanding the stories behind the noise.",
+    highlights: [
+      {
+        headline: "Independent Journalist",
+        punchline: "Reporting on conflict, governance, and public affairs, his work has appeared in The Hindu, The Wire, ThePrint, and Rolling Stone India."
+      },
+      {
+        headline: "Journalism & Academia",
+        punchline: "An alumnus of the Asian College of Journalism, he actively shapes the next generation of storytellers as a faculty member at Shiv Nadar University."
+      },
+      {
+        headline: "Information & Public Narratives",
+        punchline: "His reporting critically examines how information is gathered and presented, decoding the complex narratives surrounding major global events."
+      }
+    ],
+    mobileText: "Based in New Delhi, Muneef Khan is an independent journalist whose reporting has appeared across publications including The Hindu, The Wire, ThePrint, Newslaundry and Rolling Stone India. His work examines how journalism, information and the narratives surrounding major events shape public understanding.",
+    peaks: [
+      "JOURNALISM",
+      "MEDIA",
+      "PUBLIC DISCOURSE",
+      "NARRATIVES",
+      "CONFLICT & WAR",
+      "TRUTH & INFO"
+    ],
+    peaksTitle: "JOURNALISM. INFORMATION. IMPACT."
   }
 ];
 

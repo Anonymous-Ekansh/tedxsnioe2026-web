@@ -8,10 +8,16 @@ export default function Register() {
   
   // State for bundle selection (1, 3, 5)
   const [bundleSize, setBundleSize] = useState(1);
-  const [isSnu, setIsSnu] = useState(true);
+  const [personType, setPersonType] = useState('snu'); // 'snu', 'non_snu', 'tedx_family'
   const [referredBy, setReferredBy] = useState('');
   const [isFlashSale, setIsFlashSale] = useState(false);
   const [timeLeft, setTimeLeft] = useState('');
+  const [tedxFamilyDetails, setTedxFamilyDetails] = useState({
+    relation: '',
+    memberName: '',
+    memberTeam: '',
+    memberSnuEmail: ''
+  });
 
   useEffect(() => {
     // Flash Sale set for Sept 15, 1 PM to 3 PM
@@ -102,13 +108,25 @@ export default function Register() {
         return;
       }
       
-      const emailRegex = isSnu ? snuEmailRegex : generalEmailRegex;
+      const emailRegex = personType === 'snu' ? snuEmailRegex : generalEmailRegex;
       if (!emailRegex.test(p.email)) {
-        alert(`Please enter a valid ${isSnu ? 'SNU ' : ''}email ID for Student ${i + 1}`);
+        alert(`Please enter a valid ${personType === 'snu' ? 'SNU ' : ''}email ID for Student ${i + 1}`);
         return;
       }
       if (!phoneRegex.test(p.phone)) {
         alert(`Please enter a valid phone number for Student ${i + 1}`);
+        return;
+      }
+    }
+
+    if (personType === 'tedx_family') {
+      const { relation, memberName, memberTeam, memberSnuEmail } = tedxFamilyDetails;
+      if (!relation || !memberName || !memberTeam || !memberSnuEmail) {
+        alert("Please fill all TEDx Member details.");
+        return;
+      }
+      if (!snuEmailRegex.test(memberSnuEmail)) {
+        alert("Please enter a valid SNU email ID for the TEDx member.");
         return;
       }
     }
@@ -124,10 +142,12 @@ export default function Register() {
     const paymentData = {
       participants: finalParticipants,
       number_of_people: bundleSize,
-      is_snu_student: isSnu,
+      is_snu_student: personType === 'snu',
+      person_type: personType,
       total_amount: totalAmount,
       price_per_person: totalAmount / bundleSize,
-      offer_type: isFlashSale ? 'flash_sale' : 'regular'
+      offer_type: isFlashSale ? 'flash_sale' : 'regular',
+      tedx_family_details: personType === 'tedx_family' ? tedxFamilyDetails : null
     };
     
     localStorage.setItem("paymentData", JSON.stringify(paymentData));
@@ -140,18 +160,27 @@ export default function Register() {
         <div className="RegisterSection__details">
           <div className="RegisterSection__details--snu">
             <p>Enter Details</p>
-            <div className="RegisterSection__details--snu__options">
+            <div className="RegisterSection__details--snu__options" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               <p
-                className={isSnu ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
-                onClick={() => setIsSnu(true)}
+                className={personType === 'snu' ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
+                onClick={() => setPersonType('snu')}
+                style={{ flex: 1, minWidth: '120px' }}
               >
                 SNU Student
               </p>
               <p
-                className={!isSnu ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
-                onClick={() => setIsSnu(false)}
+                className={personType === 'non_snu' ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
+                onClick={() => setPersonType('non_snu')}
+                style={{ flex: 1, minWidth: '120px' }}
               >
-                Non - SNU Student / Faculty
+                Non SNU
+              </p>
+              <p
+                className={personType === 'tedx_family' ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
+                onClick={() => setPersonType('tedx_family')}
+                style={{ flex: '1 1 100%' }}
+              >
+                Family of TEDx Member
               </p>
             </div>
           </div>
@@ -272,7 +301,7 @@ export default function Register() {
                     placeholder="Email Id"
                     required
                   />
-                  {isSnu && (
+                  {personType === 'snu' && (
                     <p className="RegisterSection__details--value__email--warn" style={{ fontSize: '0.8rem', marginTop: '0.2rem', color: '#ff4d4f' }}>
                       Please enter only snu email id
                     </p>
@@ -301,6 +330,66 @@ export default function Register() {
                 placeholder="Referral Name"
               />
             </div>
+
+            {personType === 'tedx_family' && (
+              <div style={{ marginTop: '1.5rem', marginBottom: '1.5rem', background: 'rgba(255, 255, 255, 0.02)', padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
+                <p style={{ 
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: '900', 
+                  fontSize: '1.2rem', 
+                  color: 'var(--yellow)',
+                  borderBottom: '1px solid rgba(255, 255, 255, 0.1)', 
+                  paddingBottom: '0.5rem', 
+                  marginBottom: '1.5rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.01em'
+                }}>
+                  TEDx Member Details
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  <div className="RegisterSection__details--value__name">
+                    <p>Relation with TEDx Member</p>
+                    <input
+                      value={tedxFamilyDetails.relation}
+                      onChange={(e) => setTedxFamilyDetails({...tedxFamilyDetails, relation: e.target.value})}
+                      type="text"
+                      placeholder="e.g. Parent, Sibling"
+                      required
+                    />
+                  </div>
+                  <div className="RegisterSection__details--value__name">
+                    <p>Member Name</p>
+                    <input
+                      value={tedxFamilyDetails.memberName}
+                      onChange={(e) => setTedxFamilyDetails({...tedxFamilyDetails, memberName: e.target.value})}
+                      type="text"
+                      placeholder="TEDx Member's Full Name"
+                      required
+                    />
+                  </div>
+                  <div className="RegisterSection__details--value__name">
+                    <p>Which team they are in</p>
+                    <input
+                      value={tedxFamilyDetails.memberTeam}
+                      onChange={(e) => setTedxFamilyDetails({...tedxFamilyDetails, memberTeam: e.target.value})}
+                      type="text"
+                      placeholder="e.g. Curation, Production, etc."
+                      required
+                    />
+                  </div>
+                  <div className="RegisterSection__details--value__name">
+                    <p>Member's SNU Email ID</p>
+                    <input
+                      value={tedxFamilyDetails.memberSnuEmail}
+                      onChange={(e) => setTedxFamilyDetails({...tedxFamilyDetails, memberSnuEmail: e.target.value})}
+                      type="email"
+                      placeholder="example@snu.edu.in"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           <div
@@ -329,7 +418,7 @@ export default function Register() {
             <p>Price Details</p>
             <div className="RegisterSection__amount--priceDetails__snu">
               <p>Type Of Person</p>
-              <p>{isSnu ? "SNU" : "NON-SNU"}</p>
+              <p>{personType === 'snu' ? "SNU" : (personType === 'tedx_family' ? "TEDx Family" : "NON-SNU")}</p>
             </div>
             <div className="RegisterSection__amount--priceDetails__people">
               <p>No. Of People</p>

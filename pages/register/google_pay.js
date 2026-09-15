@@ -124,6 +124,11 @@ export default function GooglePay() {
                     status: 'pending',
                     transaction_screenshot_url: screenshotUrl, // Inserted directly, no UPDATE needed!
                     referred_by: paymentData.participants[0]?.referredBy || null,
+                    person_type: paymentData.person_type || null,
+                    tedx_member_relation: paymentData.tedx_family_details?.relation || null,
+                    tedx_member_name: paymentData.tedx_family_details?.memberName || null,
+                    tedx_member_team: paymentData.tedx_family_details?.memberTeam || null,
+                    tedx_member_snu_email: paymentData.tedx_family_details?.memberSnuEmail || null,
 
                     // Legacy fields for backward compatibility
                     name_one: paymentData.participants[0]?.name || '',
@@ -232,7 +237,7 @@ export default function GooglePay() {
                         <p>Price Details</p>
                         <div className='GooglePay__details--priceDetails__snu'>
                             <p>Type Of Person</p>
-                            <p>{paymentData ? (paymentData.is_snu_student ? 'SNU' : 'NON-SNU') : (snu ? 'SNU' : 'NON-SNU')}</p>
+                            <p>{paymentData ? (paymentData.person_type === 'snu' ? 'SNU' : (paymentData.person_type === 'tedx_family' ? 'TEDx Family' : 'NON-SNU')) : (snu ? 'SNU' : 'NON-SNU')}</p>
                         </div>
                         <div className='GooglePay__details--priceDetails__people'>
                             <p>No. Of People</p>

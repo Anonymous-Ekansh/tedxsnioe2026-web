@@ -87,6 +87,7 @@ export default function Register() {
   };
 
   const calculatePrice = (size) => {
+    if (personType === 'tedx_family') return 399 * size;
     if (isFlashSale) return 299 * size; // Flash sale price
     if (size === 1) return 499;
     if (size === 2) return 899;

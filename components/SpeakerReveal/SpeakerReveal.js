@@ -170,8 +170,8 @@ const speakersData = [
   },
   {
     id: 6,
-    name: 'Suryaveer Hooja',
-    role: 'Musician & Performer\nFrontman of Ehsaas',
+    name: 'Suryaveer',
+    role: 'Musician & Performer',
     tag: 'Music & Entertainment',
     isPerformer: true,
     image: '/Images/speakers/suryaveer.jpeg',
@@ -183,19 +183,19 @@ const speakersData = [
       },
       {
         headline: "Party Starter",
-        punchline: "Frontman of the band Ehsaas, creating magic on stage."
+        punchline: "Creating magic on stage with every performance."
       },
       {
         headline: "Chart Topper",
         punchline: "Fusing traditional melodies with contemporary beats."
       }
     ],
-    mobileText: "Suryaveer Hooja is a renowned musician and the frontman of the band Ehsaas. With his soulful voice and energetic performances, he has been captivating audiences across the country. Get ready to experience a musical journey that fuses traditional melodies with contemporary beats.",
+    mobileText: "Suryaveer is a renowned musician known for his captivating live shows. With his soulful voice and energetic performances, he has been winning hearts across the country. Get ready to experience a musical journey that fuses traditional melodies with contemporary beats.",
     peaks: [
       "MUSIC",
       "LIVE BAND",
       "SURYAVEER",
-      "EHSAAS",
+      "PERFORMER",
       "PARTY",
       "VIBE",
       "ENTERTAINMENT"

@@ -167,6 +167,40 @@ const speakersData = [
       "TRUTH & INFO"
     ],
     peaksTitle: "JOURNALISM. INFORMATION. IMPACT."
+  },
+  {
+    id: 6,
+    name: 'Suryaveer Hooja',
+    role: 'Musician & Performer\nFrontman of Ehsaas',
+    tag: 'Music & Entertainment',
+    isPerformer: true,
+    image: '/Images/speakers/suryaveer.jpeg',
+    hook: "Bringing the house down with electrifying performances.",
+    highlights: [
+      {
+        headline: "Musical Maestro",
+        punchline: "Known for his soulful voice and energetic live performances."
+      },
+      {
+        headline: "Party Starter",
+        punchline: "Frontman of the band Ehsaas, creating magic on stage."
+      },
+      {
+        headline: "Chart Topper",
+        punchline: "Fusing traditional melodies with contemporary beats."
+      }
+    ],
+    mobileText: "Suryaveer Hooja is a renowned musician and the frontman of the band Ehsaas. With his soulful voice and energetic performances, he has been captivating audiences across the country. Get ready to experience a musical journey that fuses traditional melodies with contemporary beats.",
+    peaks: [
+      "MUSIC",
+      "LIVE BAND",
+      "SURYAVEER",
+      "EHSAAS",
+      "PARTY",
+      "VIBE",
+      "ENTERTAINMENT"
+    ],
+    peaksTitle: "MUSIC. ENERGY. VIBE."
   }
 ];
 
@@ -293,7 +327,9 @@ export default function SpeakerReveal() {
 
       <div className="SpeakerReveal__header">
         <div className="SpeakerReveal__header-left">
-          <h2 className="SpeakerReveal__title">SPEAKER REVEAL</h2>
+          <h2 className="SpeakerReveal__title">
+            {currentSpeaker.isPerformer ? "PERFORMER REVEAL" : "SPEAKER REVEAL"}
+          </h2>
           <p className="SpeakerReveal__subline" style={{marginTop: '12px'}}>meet our lineup</p>
         </div>
         {speakersData.length > 1 && (
@@ -322,6 +358,43 @@ export default function SpeakerReveal() {
             animate="visible"
             exit="exit"
           >
+            {currentSpeaker.isPerformer && (
+              <div className="SpeakerReveal__party-bombers">
+                <motion.div 
+                  className="bomber bomber-left"
+                  initial={{ y: 50, x: -50, scale: 0.5, rotate: -30, opacity: 0 }}
+                  animate={{ 
+                    y: [-20, -150, -50], 
+                    x: [0, 100, 50],
+                    scale: [1, 1.5, 1.2], 
+                    rotate: [-30, 20, 0],
+                    opacity: [0, 1, 0]
+                  }}
+                  transition={{ duration: 3, ease: "easeOut", times: [0, 0.3, 1] }}
+                >
+                  <svg width="60" height="60" viewBox="0 0 24 24" fill="var(--yellow)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                  </svg>
+                </motion.div>
+                <motion.div 
+                  className="bomber bomber-right"
+                  initial={{ y: 50, x: 50, scale: 0.5, rotate: 30, opacity: 0 }}
+                  animate={{ 
+                    y: [-20, -150, -50], 
+                    x: [0, -100, -50],
+                    scale: [1, 1.5, 1.2], 
+                    rotate: [30, -20, 0],
+                    opacity: [0, 1, 0]
+                  }}
+                  transition={{ duration: 3, ease: "easeOut", delay: 0.2, times: [0, 0.3, 1] }}
+                >
+                  <svg width="60" height="60" viewBox="0 0 24 24" fill="var(--pink)" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                  </svg>
+                </motion.div>
+              </div>
+            )}
+
             {/* Left Text Block */}
             <motion.div className="SpeakerReveal__text-left">
               <motion.span className="SpeakerReveal__tag" variants={textVariants} custom={0}>
@@ -334,6 +407,16 @@ export default function SpeakerReveal() {
                   </React.Fragment>
                 ))}
               </motion.h3>
+              {currentSpeaker.isPerformer && (
+                <motion.div 
+                  className="SpeakerReveal__performer-badge"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 1, type: "spring", stiffness: 200, damping: 10 }}
+                >
+                  GUEST PERFORMER
+                </motion.div>
+              )}
               <motion.p className="SpeakerReveal__title-role" variants={textVariants} custom={2}>
                 {currentSpeaker.role.split('\n').map((line, i, arr) => (
                   <React.Fragment key={i}>

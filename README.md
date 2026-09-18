@@ -1,4 +1,4 @@
-# TEDxSNIOE Website 2023
+# TEDxSNIOE Website 2026
 
 ## Next.JS Project Setup
 

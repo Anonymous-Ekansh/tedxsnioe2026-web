@@ -201,6 +201,40 @@ const speakersData = [
       "ENTERTAINMENT"
     ],
     peaksTitle: "MUSIC. ENERGY. VIBE."
+  },
+  {
+    id: 7,
+    name: 'Angel & Bharat',
+    role: 'Singer | Live Performer',
+    tag: 'Music & Entertainment',
+    isPerformer: true,
+    image: '/Images/speakers/angelbharat.png',
+    hook: "Creating mesmerizing melodies out of the ordinary.",
+    highlights: [
+      {
+        headline: "Musical Duo",
+        punchline: "Known for their harmonious duets and captivating stage presence."
+      },
+      {
+        headline: "Soulful Vibes",
+        punchline: "Blending soulful vocals with contemporary musical arrangements."
+      },
+      {
+        headline: "Live Experience",
+        punchline: "Delivering performances that resonate long after the music stops."
+      }
+    ],
+    mobileText: "Angel & Bharat are a talented musical duo known for their mesmerizing live performances. With harmonious vocals and a dynamic stage presence, they create an unforgettable musical experience.",
+    peaks: [
+      "MUSIC",
+      "LIVE MUSIC",
+      "ANGEL & BHARAT",
+      "PERFORMERS",
+      "HARMONY",
+      "VIBE",
+      "ENTERTAINMENT"
+    ],
+    peaksTitle: "MUSIC. HARMONY. VIBE."
   }
 ];
 

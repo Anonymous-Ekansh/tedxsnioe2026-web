@@ -157,285 +157,36 @@ export default function Register() {
 
   return (
     <>
-      <div className="RegisterSection">
-        <div className="RegisterSection__details">
-          <div className="RegisterSection__details--snu">
-            <p>Enter Details</p>
-            <div className="RegisterSection__details--snu__options" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              <p
-                className={personType === 'snu' ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
-                onClick={() => setPersonType('snu')}
-                style={{ flex: 1, minWidth: '120px' }}
-              >
-                SNU Student
-              </p>
-              <p
-                className={personType === 'non_snu' ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
-                onClick={() => setPersonType('non_snu')}
-                style={{ flex: 1, minWidth: '120px' }}
-              >
-                Non SNU
-              </p>
-              <p
-                className={personType === 'tedx_family' ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
-                onClick={() => setPersonType('tedx_family')}
-                style={{ flex: '1 1 100%' }}
-              >
-                Family of TEDx Member
-              </p>
-            </div>
-          </div>
-          
-          <div className="RegisterSection__details--people" style={{ marginTop: '1.5rem' }}>
-            <p>Select Ticket Bundle</p>
-            <div className="RegisterSection__details--people__options" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              <p
-                className={bundleSize === 1 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
-                onClick={() => handleBundleChange(1)}
-              >
-                1 Person
-              </p>
-              {!isFlashSale && (
-                <>
-                  <p
-                    className={bundleSize === 2 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
-                    onClick={() => handleBundleChange(2)}
-                  >
-                    2 People
-                  </p>
-                  <p
-                    className={bundleSize === 3 ? "RegisterSection__details--snu__options--red" : "RegisterSection__details--snu__options--white"}
-                    onClick={() => handleBundleChange(3)}
-                  >
-                    3 People
-                  </p>
-                </>
-              )}
-              {isFlashSale && (
-                <div style={{
-                  flex: '1 1 100%',
-                  boxSizing: 'border-box',
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)',
-                  borderRadius: '12px',
-                  padding: '16px 24px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  flexWrap: 'wrap',
-                  gap: '12px',
-                  marginTop: '12px',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.2)'
-                }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    <span style={{ 
-                      fontFamily: 'var(--font-display)',
-                      background: 'linear-gradient(135deg, white 30%, var(--pink) 100%)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      fontWeight: '900', 
-                      fontSize: '1.4rem', 
-                      textTransform: 'uppercase', 
-                      letterSpacing: '0.02em',
-                      textShadow: '0 0 20px rgba(230, 90, 154, 0.2)'
-                    }}>
-                      FLASH SALE ACTIVE!!!
-                    </span>
-                    <span style={{ color: 'var(--muted)', fontSize: '0.85rem', fontFamily: 'var(--font-body)' }}>
-                      Combo bundles are temporarily locked.
-                    </span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', fontFamily: 'var(--font-body)' }}>
-                      Ends In
-                    </span>
-                    <span style={{ 
-                      color: 'white', 
-                      fontFamily: 'monospace', 
-                      fontWeight: 'bold', 
-                      fontSize: '1.4rem', 
-                      letterSpacing: '2px',
-                      textShadow: '0 0 10px rgba(255,255,255,0.3)'
-                    }}>
-                      {timeLeft}
-                    </span>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className="RegisterSection__details--value">
-            {participants.map((p, index) => (
-              <div key={index} style={{ marginBottom: '2.5rem' }}>
-                <p style={{ 
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: '900', 
-                  fontSize: '1.35rem', 
-                  color: 'var(--yellow)',
-                  borderBottom: '1px solid var(--yellow)', 
-                  paddingBottom: '0.5rem', 
-                  marginBottom: '1.5rem',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.01em'
-                }}>
-                  DETAILS OF PARTICIPANT {index + 1}
-                </p>
-                <div className="RegisterSection__details--value__name">
-                  <p>Full Name</p>
-                  <input
-                    value={p.name}
-                    onChange={(e) => updateParticipant(index, 'name', e.target.value)}
-                    type="text"
-                    placeholder="Full Name"
-                    required
-                  />
-                </div>
-                <div className="RegisterSection__details--value__email">
-                  <p>Email</p>
-                  <input
-                    value={p.email}
-                    onChange={(e) => updateParticipant(index, 'email', e.target.value)}
-                    type="email"
-                    placeholder="Email Id"
-                    required
-                  />
-                  {personType === 'snu' && (
-                    <p className="RegisterSection__details--value__email--warn" style={{ fontSize: '0.8rem', marginTop: '0.2rem', color: '#ff4d4f' }}>
-                      Please enter only snu email id
-                    </p>
-                  )}
-                </div>
-                <div className="RegisterSection__details--value__phone">
-                  <p>Mobile Number</p>
-                  <input
-                    value={p.phone}
-                    onChange={(e) => updateParticipant(index, 'phone', e.target.value)}
-                    type="text"
-                    placeholder="Mobile Number"
-                    required
-                  />
-                </div>
-              </div>
-            ))}
-
-            {/* Global Referral for the entire bundle */}
-            <div className="RegisterSection__details--value__referredBy" style={{ marginTop: '0.5rem', marginBottom: '1rem' }}>
-              <p>Referred By (Optional)</p>
-              <input
-                value={referredBy}
-                onChange={(e) => setReferredBy(e.target.value)}
-                type="text"
-                placeholder="Referral Name"
-              />
-            </div>
-
-            {personType === 'tedx_family' && (
-              <div style={{ marginTop: '1.5rem', marginBottom: '1.5rem', background: 'rgba(255, 255, 255, 0.02)', padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                <p style={{ 
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: '900', 
-                  fontSize: '1.2rem', 
-                  color: 'var(--yellow)',
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.1)', 
-                  paddingBottom: '0.5rem', 
-                  marginBottom: '1.5rem',
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.01em'
-                }}>
-                  TEDx Member Details
-                </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                  <div className="RegisterSection__details--value__name">
-                    <p>Relation with TEDx Member</p>
-                    <input
-                      value={tedxFamilyDetails.relation}
-                      onChange={(e) => setTedxFamilyDetails({...tedxFamilyDetails, relation: e.target.value})}
-                      type="text"
-                      placeholder="e.g. Parent, Sibling"
-                      required
-                    />
-                  </div>
-                  <div className="RegisterSection__details--value__name">
-                    <p>Member Name</p>
-                    <input
-                      value={tedxFamilyDetails.memberName}
-                      onChange={(e) => setTedxFamilyDetails({...tedxFamilyDetails, memberName: e.target.value})}
-                      type="text"
-                      placeholder="TEDx Member's Full Name"
-                      required
-                    />
-                  </div>
-                  <div className="RegisterSection__details--value__name">
-                    <p>Which team they are in</p>
-                    <input
-                      value={tedxFamilyDetails.memberTeam}
-                      onChange={(e) => setTedxFamilyDetails({...tedxFamilyDetails, memberTeam: e.target.value})}
-                      type="text"
-                      placeholder="e.g. Curation, Production, etc."
-                      required
-                    />
-                  </div>
-                  <div className="RegisterSection__details--value__name">
-                    <p>Member's SNU Email ID</p>
-                    <input
-                      value={tedxFamilyDetails.memberSnuEmail}
-                      onChange={(e) => setTedxFamilyDetails({...tedxFamilyDetails, memberSnuEmail: e.target.value})}
-                      type="email"
-                      placeholder="example@snu.edu.in"
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div
-            onClick={handleSubmit}
-            style={{ color: "black", cursor: "pointer", textAlign: "center", marginTop: "1rem" }}
-            className="RegisterSection__details--submit"
-          >
-            Submit
-          </div>
-        </div>
-
-        <div className="RegisterSection__amount">
-          <div className="RegisterSection__brand">
-            <Image
-              className="RegisterSection__brand--logo"
-              src="/Images/Assets/mosaic-logo.svg"
-              alt="Mosaic Logo"
-              width={100}
-              height={100}
-              priority
-            />
-            <h2 className="RegisterSection__brand--title">SECURE YOUR SPOT</h2>
-            <p className="RegisterSection__brand--subtitle">Be part of the ideas that shape the future.</p>
-          </div>
-          <div className="RegisterSection__amount--priceDetails">
-            <p>Price Details</p>
-            <div className="RegisterSection__amount--priceDetails__snu">
-              <p>Type Of Person</p>
-              <p>{personType === 'snu' ? "SNU" : (personType === 'tedx_family' ? "TEDx Family" : "NON-SNU")}</p>
-            </div>
-            <div className="RegisterSection__amount--priceDetails__people">
-              <p>No. Of People</p>
-              <p>{bundleSize}</p>
-            </div>
-            <div className="RegisterSection__amount--priceDetails__ticket">
-              <p>Ticket Price (per person)</p>
-              <p>₹{Math.round(calculatePrice(bundleSize) / bundleSize)}</p>
-            </div>
-            <hr />
-            <div className="RegisterSection__amount--priceDetails__total">
-              <p>Total Amount</p>
-              <p>₹{calculatePrice(bundleSize)}</p>
-            </div>
-          </div>
-        </div>
+      <div className="RegisterSection" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', textAlign: 'center', padding: '2rem' }}>
+        <Image
+          className="RegisterSection__brand--logo"
+          src="/Images/Assets/mosaic-logo.svg"
+          alt="Mosaic Logo"
+          width={150}
+          height={150}
+          priority
+          style={{ marginBottom: '2rem' }}
+        />
+        <h2 style={{ 
+          fontFamily: 'var(--font-display)', 
+          fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+          fontWeight: '900', 
+          color: 'var(--ink)', 
+          textTransform: 'uppercase',
+          letterSpacing: '-0.02em',
+          margin: '0 0 1rem 0'
+        }}>
+          Registrations Closed
+        </h2>
+        <p style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '1.2rem',
+          color: 'var(--lavender)',
+          maxWidth: '600px',
+          lineHeight: '1.6'
+        }}>
+          Thank you for the overwhelming response! All tickets for TEDxShiv Nadar University are currently sold out. We can't wait to see you at the event.
+        </p>
       </div>
     </>
   );

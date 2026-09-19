@@ -95,9 +95,9 @@ export default function RegistrationCTA() {
                         },
                     } : { hidden: { opacity: 1 }, visible: { opacity: 1 } }}
                 >
-                    <Link href="/register" className="CTA__btn CTA__btn--primary">
-                        REGISTER NOW <span className="CTA__btn-arrow">&rarr;</span>
-                    </Link>
+                    <div className="CTA__btn CTA__btn--primary" style={{ opacity: 0.6, cursor: 'not-allowed' }}>
+                        REGISTRATIONS CLOSED
+                    </div>
                     <Link href="/contact" className="CTA__btn CTA__btn--secondary">
                         Contact Us
                     </Link>

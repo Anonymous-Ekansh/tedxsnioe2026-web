@@ -155,6 +155,44 @@ export default function Register() {
     router.push("/register/google_pay");
   };
 
+  const IS_REGISTRATION_CLOSED = true;
+
+  if (IS_REGISTRATION_CLOSED) {
+    return (
+      <div className="RegisterSection" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '60vh', textAlign: 'center', padding: '2rem' }}>
+        <Image
+          className="RegisterSection__brand--logo"
+          src="/Images/Assets/mosaic-logo.svg"
+          alt="Mosaic Logo"
+          width={150}
+          height={150}
+          priority
+          style={{ marginBottom: '2rem' }}
+        />
+        <h2 style={{ 
+          fontFamily: 'var(--font-display)', 
+          fontSize: 'clamp(2.5rem, 5vw, 4rem)', 
+          fontWeight: '900', 
+          color: 'var(--ink)', 
+          textTransform: 'uppercase',
+          letterSpacing: '-0.02em',
+          margin: '0 0 1rem 0'
+        }}>
+          Registrations Closed
+        </h2>
+        <p style={{
+          fontFamily: 'var(--font-body)',
+          fontSize: '1.2rem',
+          color: 'var(--lavender)',
+          maxWidth: '600px',
+          lineHeight: '1.6'
+        }}>
+          Thank you for the overwhelming response! All tickets for TEDxShiv Nadar University are currently sold out. We can't wait to see you at the event.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="RegisterSection">
